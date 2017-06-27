@@ -8,6 +8,13 @@
 </head>
 <body>
 Hello World!<br>
+<<<<<<< HEAD
 edit kkw // 17-06-27 - 15:30
+=======
+kiwooong zzangzzangman<br>
+hahahoho
+hohohi
+hihiha
+>>>>>>> refs/remotes/origin/taehoon
 </body>
 </html>
