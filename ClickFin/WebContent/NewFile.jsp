@@ -8,6 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+<<<<<<< HEAD
 <%
 	String DB_URL = "jdbc:oracle:thin:@SaucK:1521:orcl";
 	try{
@@ -30,5 +31,10 @@
 	}
 %>
 
+=======
+Hello World!<br>
+kiwooong zzangzzangman
+eunbyul
+>>>>>>> refs/remotes/origin/sukwoo
 </body>
 </html>
