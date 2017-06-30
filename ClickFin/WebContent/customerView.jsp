@@ -7,9 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-Hello World!<br>
-kiwooong zzangzzangman<br>
-joohan<br>
-hungry
+
 </body>
 </html>
