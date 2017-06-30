@@ -118,7 +118,7 @@
 </div>
 <form>
 	<input type="button" value="개인정보수정" 
-	onclick="location.href='http://localhost:8081/ClickFin/consultMyInfoModify.jsp'" >
+	onclick="location.href='http://SaucK:8080/ClickFin/consultMyInfoModify.jsp'" >
 </form>
 </body>
 </html>
