@@ -1,5 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
+    
+    <%
+	String user_id = (String)session.getAttribute("userID");
+	if(user_id == null || user_id.equals(""))
+	{
+		%><script>alert("잘못된 로그인");
+		parent.location.href("login.html");
+		</script><%
+		
+	}
+	%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -69,7 +80,7 @@
         <li class="group">
             <div class="title">고객 현황 </div>
             <ul class="sub">
-                <li><a href="#">전체 현황</a></li>
+                <li><a href="aInfo_Custom.jsp" target = "body">전체 현황<%session.setAttribute("userID",user_id); %></a></li>
                 <li><a href="#">개인별 현황</a></li>                   
             </ul>
         </li>
