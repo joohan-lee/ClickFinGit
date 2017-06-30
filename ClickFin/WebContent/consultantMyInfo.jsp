@@ -8,10 +8,10 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<title>클릭핀 컨설턴트 홈</title>
+<title>클릭핀 로그인.</title>
  <meta charset="UTF-8">
 
-</head>
+</head><font size = "20px" ,style = "text-align:center">Click Fin _ 컨설턴트모드</font>
 
 <style>
     body {
@@ -21,6 +21,7 @@
         font-family:"맑은 고딕";
         font-size:0.9em;
 	}
+	
     ul#navi {
         width: 200px;
         text-indent: 10px;
@@ -60,16 +61,15 @@
 
 <body>
 	<br>
-	<div id="header" style="width: 1000px;text-allign:center;">
-		<h1 style = "size: 20px">Click Fin _ 컨설턴트모드</h1>
-	</div>
     <div style = "text-align:right" ><%=id %>님 환영합니다.<br>
-    <a href ="logout.jsp">로그아웃</a>
+    <a href ="logout.jsp" >로그아웃</a></div>
+<div id="container" style="width: 1000px;">
+    <div id="menu" style="width: 200px;float:left;">
     <ul id="navi">
         <li class="group">
             <div class="title">컨설턴트</div>
             <ul class="sub">
-                <li><a href="consultantMyInfo.jsp">개인정보</a></li>
+                <li><a href="#">개인정보</a></li>
             </ul>
         </li>
         <li class="group">
@@ -91,5 +91,30 @@
             </ul>
         </li>          
     </ul>
+    </div>
+    <div id="content" style="text-align: left;width:500px;float:left;margin-left:30px;" >
+    	<table>
+    	<tr>
+    		<th>이름 : </th>
+    		<td>홍길동 </td>
+    	</tr>
+    	<tr>
+    		<th>전화번호 : </th>
+    		<td>010-1234-5678 </td>
+    	</tr>
+    	<tr>
+    		<th>주소 : </th>
+    		<td>서울특별시 강남구 </td>
+    	</tr>
+    	<tr>
+    		<th>이메일 : </th>
+    		<td>abc@naver.com</td>
+    	</tr>
+    	</table>
+    </div>
+</div>
+<form>
+	<input type="button" value="개인정보수정" >
+</form>
 </body>
 </html>
