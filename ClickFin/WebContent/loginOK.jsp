@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
 <%@ page import = "java.sql.*" %>
+<%@ page import="javax.sql.*" %>
+<%@ page import="javax.naming.*" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <%
 String identity = request.getParameter("userId");
@@ -13,15 +15,15 @@ String password = request.getParameter("userPw");
 <% 
 Connection conn = null;                                        // null로 초기화 한다.
 ResultSet rs = null;
+Statement stmt = null;
+DataSource ds;
 try{
-String url = "jdbc:oracle:thin:@SaucK:1521:ClickFin";        // 사용하려는 데이터베이스명을 포함한 URL 기술
-String id = "system";                                                    // 사용자 계정
-String pw = "epicenter";                                                // 사용자 계정의 패스워드
-
-Class.forName("oracle.jdbc.driver.OracleDriver");                       // 데이터베이스와 연동하기 위해 DriverManager에 등록한다.
-conn=DriverManager.getConnection(url,id,pw);              // DriverManager 객체로부터 Connection 객체를 얻어온다.
-Statement stmt = conn.createStatement(); 
-rs = stmt.executeQuery("SELECT* FROM users");
+	Context init = new InitialContext();
+	ds = (DataSource)init.lookup("java:comp/env/jdbc/oracle");
+	conn = ds.getConnection();
+	String sql = "select * from users";
+	stmt = conn.createStatement();
+	rs = stmt.executeQuery(sql);
 
 
 while(rs.next()){
