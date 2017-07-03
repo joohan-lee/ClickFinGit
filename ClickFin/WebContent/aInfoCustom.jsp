@@ -32,9 +32,10 @@
    		%>
 
 <body>
-	<br><br>
-   <table width="700" border="1"margin:auto; table style="margin-left: auto; margin-right: auto;">
-		<tr>
+
+<br><br>
+	<table width="700" border="1"margin:auto; table style="margin-left: auto; margin-right: auto;">
+
 			<td width="100"><div style="text-align: center">
 					<font size=3>¿Ã∏ß</font>
 				</div></td>

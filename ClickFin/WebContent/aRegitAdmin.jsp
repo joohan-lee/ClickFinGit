@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<title>클릭핀 - 관리자 접속</title>
+<title>Insert title here</title>
 </head>
 <body>
 

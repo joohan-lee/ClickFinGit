@@ -11,11 +11,11 @@
 <HEAD><TITLE>클릭핀 관리자 모드 </TITLE> 
 </HEAD> 
 <FRAMESET ROWS="17%, 1*" border="0"> 
-<FRAME SRC="admin_head.jsp" NAME="head" scrolling="no"
+<FRAME SRC="adminHead.jsp" NAME="head" scrolling="no"
  marginwidth="0" marginheight="0">
-<FRAMESET COLS="20%,80%"><FRAME SRC="admin_menu.jsp"NAME="menu"
+<FRAMESET COLS="20%,80%"><FRAME SRC="adminMenu.jsp"NAME="menu"
  scrolling="auto" marginwidth="0" marginheight="0">
-<FRAME SRC="admin_main.jsp" NAME="body" scrolling="auto" 
+<FRAME SRC="adminMain.jsp" NAME="body" scrolling="auto" 
 marginwidth="0" marginheight="0">
 </FRAMESET>
   <noframes>

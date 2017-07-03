@@ -33,21 +33,20 @@ while(rs.next()){
 	
 	if(identity.equals(id1)&& password.equals(pw1)){
 		if(role.equals("admin")){			
-				session.setAttribute("userID",id1);
 				response.sendRedirect("adminView.jsp");
 				session.setAttribute("userId", identity); 
 		        session.setAttribute("userPw", password);
 		        session.setAttribute("userRole", role);
 				 }
 		else if(role.equals("consultant")){
-			session.setAttribute("userID",id1);
+			
 			response.sendRedirect("consultView.jsp");
 			session.setAttribute("userId", identity); 
 	        session.setAttribute("userPw", password);
 	        session.setAttribute("userRole", role);
 				 }
 		else if(role.equals("customer")){
-			session.setAttribute("userID",id1);
+			
 			response.sendRedirect("customerView.jsp");
 			session.setAttribute("userId", identity); 
 	        session.setAttribute("userPw", password);
