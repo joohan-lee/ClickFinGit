@@ -7,7 +7,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
 
-<HTML> 
+<HTML> 	
 <HEAD><TITLE>클릭핀 관리자 모드 </TITLE> 
 </HEAD> 
 <FRAMESET ROWS="17%, 1*" border="0"> 
