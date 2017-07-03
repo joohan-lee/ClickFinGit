@@ -45,7 +45,7 @@ td, tr, th{
             <div class="title">고객관리</div>
             <ul class="sub">
                 <li><a href="consultShowAllCustom.jsp">고객 전체 현황</a></li>
-                <li><a href="consultCtmPsnInfo.jsp">고객별 개인정보</a></li>
+                <li><a href="consultCtmInfoView.jsp">고객별 개인정보</a></li>
                 <li><a href="#">고객별 가입상품현황</a></li>                   
             </ul>
         </li>
