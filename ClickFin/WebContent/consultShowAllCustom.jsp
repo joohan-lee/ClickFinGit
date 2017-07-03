@@ -1,14 +1,33 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
+<% String userId = "";
+	userId = (String)session.getAttribute("userID");
+	if(userId == null || userId.equals(""))
+	{
+		%><script>alert("잘못된 로그인");
+		location.href("login.html");
+		</script><%
+		
+	}%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<title>Insert title here</title>
+<title>고객 관리 - 고객 전체 현황</title>
+<link rel="stylesheet" href="navbar.css">
+
+
 </head>
+<font size = "20px" ,style = "text-align:center">Click Fin _ 컨설턴트모드</font>
+
+<style>
+td, tr, th{
+	border: 1px gray solid;
+	text-align: center;
+}
+</style>
+
 <body>
-<<<<<<< HEAD
-=======
 <br>
     <div style = "text-align:right" ><%=userId %>님 환영합니다.<br>
     <a href ="logout.jsp" >로그아웃</a></div>
@@ -81,7 +100,6 @@
     </div>
 </div>
 
->>>>>>> refs/remotes/origin/joohan
 
 </body>
 </html>
