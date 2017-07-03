@@ -4,7 +4,7 @@
 
     <%
 	String id = "";
-	id = (String)session.getAttribute("userID");%>
+	id = (String)session.getAttribute("userId");%>
     
     
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -47,7 +47,7 @@
 	</table>
 	<input type="submit" value="저장" ><!-- 확인 누를 때 저장했는지 물어보는거 추가 -->
 	<!--  -->
-	<input type="button" value="취소" onclick="location.href='http://localhost:8081/ClickFin/consultMyInfoView.jsp'">
+	<input type="button" value="취소" onclick="location.href='http://SaucK:8080/ClickFin/consultMyInfoView.jsp'">
 	
 	</form>
 	</div>

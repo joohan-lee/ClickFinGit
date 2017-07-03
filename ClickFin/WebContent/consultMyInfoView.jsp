@@ -3,7 +3,7 @@
 <% request.setCharacterEncoding("euc-kr"); %>
 <%
 	String id = "";
-	id = (String)session.getAttribute("userID");
+	id = (String)session.getAttribute("userId");
 	String consultMyName = request.getParameter("consultMyName");
 	%>
 	
@@ -13,53 +13,10 @@
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title>컨설턴트 내정보보기</title>
  <meta charset="UTF-8">
-
+<link rel="stylesheet" href="navbar.css">
 </head><font size = "20px" ,style = "text-align:center">Click Fin _ 컨설턴트모드</font>
 
 <style>
-    body {
-    	float:right
-        margin:20px auto;
-        padding: 0;
-        font-family:"맑은 고딕";
-        font-size:0.9em;
-	}
-	
-    ul#navi {
-        width: 200px;
-        text-indent: 10px;
-	}
-    ul#navi, ul#navi ul {
-        margin:0;
-        padding:0;
-        list-style:none;
-	}
-    li.group {
-        margin-bottom: 3px;
-	}
-    li.group div.title {
-        height: 35px;
-        line-height: 35px;
-        background:#f4f4f4;
-        cursor:pointer;
-	}
-    ul.sub li {
-        margin-bottom: 2px;
-        height:35px;
-        line-height:35px;
-        background:#ffffff;
-        cursor:pointer;
-	}
-    ul.sub li a {
-        display: block;
-        width: 100%;
-        height:100%;
-        text-decoration:none;
-        color:#000;
-	}
-    ul.sub li:hover {
-        background:#f4f4f4;
-	}
 </style>
 
 <body>
@@ -72,13 +29,13 @@
         <li class="group">
             <div class="title">컨설턴트</div>
             <ul class="sub">
-                <li><a href="#">개인정보</a></li>
+                <li><a href="consultMyInfoView.jsp">개인정보</a></li>
             </ul>
         </li>
         <li class="group">
             <div class="title">고객관리</div>
             <ul class="sub">
-                <li><a href="#">고객 전체 현황</a></li>
+                <li><a href="consultShowAllCustom.jsp">고객 전체 현황</a></li>
                 <li><a href="#">고객별 개인정보</a></li>
                 <li><a href="#">고객별 가입상품현황</a></li>                   
             </ul>
@@ -118,7 +75,7 @@
 </div>
 <form>
 	<input type="button" value="개인정보수정" 
-	onclick="location.href='http://localhost:8081/ClickFin/consultMyInfoModify.jsp'" >
+	onclick="location.href='http://SaucK:8080/ClickFin/consultMyInfoModify.jsp'" >
 </form>
 </body>
 </html>
