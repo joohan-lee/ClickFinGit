@@ -32,14 +32,10 @@
    		%>
 
 <body>
-<<<<<<< HEAD
+
 <br><br>
 	<table width="700" border="1"margin:auto; table style="margin-left: auto; margin-right: auto;">
-=======
-	<br><br>
-   <table width="700" border="1"margin:auto; table style="margin-left: auto; margin-right: auto;">
->>>>>>> refs/remotes/origin/master
-		<tr>
+
 			<td width="100"><div style="text-align: center">
 					<font size=3>¿Ã∏ß</font>
 				</div></td>
