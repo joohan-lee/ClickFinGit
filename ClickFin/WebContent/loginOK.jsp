@@ -41,7 +41,7 @@ while(rs.next()){
 				 }
 		else if(role.equals("consultant")){
 			session.setAttribute("userID",id1);
-			response.sendRedirect("consultantView.jsp");
+			response.sendRedirect("consultView.jsp");
 			session.setAttribute("userId", identity); 
 	        session.setAttribute("userPw", password);
 	        session.setAttribute("userRole", role);

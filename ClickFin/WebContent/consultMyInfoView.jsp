@@ -1,14 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
+<% request.setCharacterEncoding("euc-kr"); %>
 <%
 	String id = "";
-	id = (String)session.getAttribute("userID");%>
+	id = (String)session.getAttribute("userID");
+	String consultMyName = request.getParameter("consultMyName");
+	%>
 	
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<title>클릭핀 로그인.</title>
+<title>컨설턴트 내정보보기</title>
  <meta charset="UTF-8">
 
 </head><font size = "20px" ,style = "text-align:center">Click Fin _ 컨설턴트모드</font>
@@ -96,7 +99,7 @@
     	<table>
     	<tr>
     		<th>이름 : </th>
-    		<td>홍길동 </td>
+    		<td><%=consultMyName %><!-- DB에서 받아오기 --> </td>
     	</tr>
     	<tr>
     		<th>전화번호 : </th>
@@ -114,7 +117,8 @@
     </div>
 </div>
 <form>
-	<input type="button" value="개인정보수정" >
+	<input type="button" value="개인정보수정" 
+	onclick="location.href='http://SaucK:8080/ClickFin/consultMyInfoModify.jsp'" >
 </form>
 </body>
 </html>
