@@ -11,7 +11,6 @@
 <title>Å¬¸¯ÇÉ °í°´ ·Î±×ÀÎ.</title>
  <meta charset="UTF-8">
 
-    </div>
 </head><font size = "20px" ,style = "text-align:center">Click Fin _ °í°´¸ðµå</font>
 
 <style>
