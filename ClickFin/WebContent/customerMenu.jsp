@@ -71,7 +71,7 @@
         <li class="group">
             <div class="title">상품별 현황 보기</div>
             <ul class="sub">
-                <li><a href="#">가입상품 전체 현황</a></li>                
+                <li><a href="customerMyProductAll.jsp" target = "body">가입상품 전체 현황</a></li>                
                 <li><a href="#">상품별 상세 현황</a></li>
                 <li><a href="#">타상품 상세 현황</a></li>
             </ul>
