@@ -2,7 +2,7 @@
     pageEncoding="EUC-KR"%>
     
 <% String userId = "";
-	userId = (String)session.getAttribute("userID");
+	userId = (String)session.getAttribute("userId");
 	if(userId == null || userId.equals(""))
 	{
 		%><script>alert("잘못된 로그인");
