@@ -54,7 +54,7 @@ td,tr,th{
         <li class="group">
             <div class="title">상품별 현황</div>
             <ul class="sub">
-                <li><a href="#">투자</a></li>                
+                <li><a href="consultAllInvestView.jsp">투자</a></li>                
                 <li><a href="#">보험</a></li>
                 <li><a href="#">펀드</a></li>
                 <li><a href="#">적금 예금</a></li>

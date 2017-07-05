@@ -30,7 +30,7 @@
 <body>
 <br>
     <div style = "text-align:right" ><%=userId %>´Ô È¯¿µÇÕ´Ï´Ù.<br>
-    <a href ="logout.jsp" >·Î±×¾Æ¿ô</a></div>
+    <!-- <a href ="logout.jsp" >·Î±×¾Æ¿ô</a> --></div>
 
 <div id="container" style="width:1000px">
 	<div id="header" style="font-size: 30px;text-align: center;">
@@ -90,7 +90,7 @@
 	
 	
 	</div>
-	
+	<%session.removeAttribute(searchStr);%>
 </div>
 
 </body>

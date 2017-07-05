@@ -48,7 +48,7 @@
 				<li class="group">
 					<div class="title">상품별 현황</div>
 					<ul class="sub">
-						<li><a href="#">투자</a></li>
+						<li><a href="consultAllInvestView.jsp">투자</a></li>
 						<li><a href="#">보험</a></li>
 						<li><a href="#">펀드</a></li>
 						<li><a href="#">적금 예금</a></li>
@@ -57,7 +57,7 @@
 				</li>
 			</ul>
 
-			<%
+	<%
 	Connection conn = null;                                        // null로 초기화 한다.
 	ResultSet rs = null;
 	Statement stmt = null;
@@ -73,7 +73,7 @@
    	//ResultSet get_type = st.executeQuery(get_type_Query);
    		%>
 
-			<%
+		<%
    		while(rs.next())
    	   	{
    			String name = rs.getString("name");
@@ -88,10 +88,6 @@ session.setAttribute("consultantPhone",phone );
 session.setAttribute("consultantAddress", address);
 session.setAttribute("consultantEmail", email);
 %>
-
-
-
-
 		</div>
 		<div id="content"
 			style="text-align: left; width: 500px; float: left; margin-left: 30px;">

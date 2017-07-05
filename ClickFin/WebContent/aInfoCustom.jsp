@@ -1,3 +1,4 @@
+
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
 	pageEncoding="EUC-KR"%>
 
@@ -6,6 +7,13 @@
 <%@ page import="javax.naming.*"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
+<style>
+td, tr, th {
+	border: 1px gray solid;
+	text-align: center;
+}
+</style>
+
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title>클릭핀 - 관리자 접속</title>
@@ -33,9 +41,11 @@
 
 <body>
 
-<br><br>
-	<table width="700" border="1"margin:auto; table style="margin-left: auto; margin-right: auto;">
-
+	<br>
+	<br>
+	<table width="700" border="1"
+		style="border-collapse: collapse; border: 1px gray solid; margin-top: 20px; margin-left: auto; margin-right: auto;">
+		<tr>
 			<td width="100"><div style="text-align: center">
 					<font size=3>이름</font>
 				</div></td>

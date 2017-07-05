@@ -5,12 +5,30 @@
 <%@ page import="javax.naming.*" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <%
-String identity = request.getParameter("input_id");
+String identity = (String)request.getParameter("input_id");
 %>
 
 <html>
 
 <head>
+<script>
+	function clk_btn(val){
+		var en;
+		if(val == 1){
+			en = "<%=identity%>";
+		}
+		else if(val == 0){
+			en = "cancel";
+		}
+		else{
+			en = "disable";
+		}
+
+		window.returnValue = en;
+		window.close();
+	}
+
+</script>
 
 <title>id 중복 검사</title>
 </head>
@@ -20,7 +38,7 @@ String identity = request.getParameter("input_id");
 	ResultSet rs = null;
 	Statement stmt = null;
 	DataSource ds;
-	String idcheck = "t";
+	boolean chk_id = true;
 	try{
 		Context init = new InitialContext();
 		ds = (DataSource)init.lookup("java:comp/env/jdbc/oracle");
@@ -32,17 +50,32 @@ String identity = request.getParameter("input_id");
 			String id1 = rs.getString("id");
 			if(id1.equals(identity))
 			{
-				
-				idcheck = "f";
+				chk_id = false;
 				break;
 			}
-			else
-			{
-				idcheck ="t";
-			}
+
 		}
-		session.setAttribute("chkID", idcheck); 
+		String enableID = "enable";
+		if(chk_id == true){
+			enableID = "enable";
+			%><%=identity %> - 사용 가능.<br> 사용하시겠습니까? <br><br>
+			<form action = "aRegitConsultant.jsp" method = "post">
+			<input type = "button" value = "예" onclick = "clk_btn(1)">
+
+			
+			</form>
+			
+			<input type = "button" value = "아니오" onclick = "clk_btn(0)">
+			<%
+		}
+		else{
+			%><%=identity %> - 는 사용할 수 없는 ID 입니다. <br><br>
+			<input type = "button" value = "예" onclick = "clk_btn(2)">
+			<%
+			
+		}
 		
+		session.setAttribute("enableID",enableID);
 		rs.close();
 		stmt.close();
 		conn.close();

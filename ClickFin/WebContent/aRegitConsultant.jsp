@@ -4,27 +4,48 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <script>
+var click_chk = 0;
+
 function check_id()
-{
+{	  
       var input_id = document.consultantInput.ID.value;
+      
       if( input_id == '' )
       {
             alert('아이디를 입력하세요');
             return;
-      }   
-     
-      var url ="check_id.jsp?input_id=" + input_id; 
-      window.open(url, '',  'width=300, height=350, left=0, top=0');
-      
-      <%
-      String chk = (String)session.getAttribute("chkID");
-      if(chk == "t"){
-            %>alert("사용 가능한 ID 입니다!!");<%
       }
-      else if(chk == "f"){
-    	  %>alert("이미 가입된 ID 입니다");<%
-      }%>
+      else if(event.keyCode == 8 || event.keyCode == 9 || event.keyCode == 37 || event.keyCode == 39
+    	        || event.keyCode == 46 ) return;
+      else
+      { 
+    	 	var url = "check_id.jsp?input_id="+input_id;
+    		var ret = window.showModalDialog(url,input_id,"width = 150 , height = 100, resizable = no, scrollbars = no");
+
+    		if(ret =='cancel'){
+    			alert('ID 확인 취소');
+    			document.getElementById('ID').disabled = false;
+    			document.setElementById('checked_id').value = "true";
+    			click_chk = 0;
+    		}
+    		else if(ret != 'cancel' && ret!= 'disable'){ 			
+    			   			
+    			document.getElementById('ID').disabled = 'disabled';
+    			document.setElementById('ID').value = ret;
+    			click_chk = 1;
+    			document.setElementById('checked_id').value = "true";
+    			alert(click_chk);
+    		}
+      }
 }
+
+function numkeyCheck(e){ 
+	var keyValue = event.keyCode; 
+	if( ((keyValue >= 48) && (keyValue <= 57)) ) 
+		return true; 
+	else 
+		return false; 
+	}
 
 </script>
 <style>
@@ -43,8 +64,7 @@ td, tr, th {
 
 	<div style="text-align: center">
 		<font size="10em">컨설턴트 등록</font> <br> <br>
-		<form method="post" action="" name="consultantInput"
-			/
+		<form method="post" action = "aInsertConsultantInfo.jsp" name="consultantInput"
 			onSubmit="return checkIt()">
 			<table width="50%"
 				style="border-collapse: collapse; border: 1px gray solid; margin-top: 20px; margin-left: auto; margin-right: auto;"
@@ -53,44 +73,64 @@ td, tr, th {
 					<td width="30%"><div style="text-align: center">아이디</div></td>
 
 					<td width="70%"><div style="text-align: center">
-							<input type="text" size="13" name="ID"> <input
-								type="button" value="중복체크" onclick="check_id()">
+							<script></script>
+							<input type="text" size="13" name="ID" id = "ID" style='ime-mode:disabled'> <input
+								type="button" value="중복체크" onclick="check_id()" id = "chk_id">
 						</div></td>
 				</tr>
 				<tr>
+					<td width="30%"><div style="text-align: center">이름</div></td>
+					<td width="70%"><div style="text-align: center">
+							<input type="text" name="input_name" id = "input_name">
+						</div></td>
+				<tr>
+				<tr>
 					<td width="30%"><div style="text-align: center">패스워드</div></td>
 					<td width="70%"><div style="text-align: center">
-							<input type="password" name="pw1">
+							<input type="password" name="input_pw1" id = "input_pw1">
 						</div></td>
 				<tr>
 					<td width="30%"><div style="text-align: center">패스워드 확인</div></td>
 					<td width="70%"><div style="text-align: center">
-							<input type="password" name="pw2"> <input type="button"
-								value="비밀번호 체크" onclick="pw_check()">
+							<input type="password" name="input_pw2" id = "input_pw2"> 
 						</div></td>
 				</tr>
 				<tr>
 					<td width="30%"><div style="text-align: center">주민등록번호</div></td>
 					<td width="70%"><div style="text-align: center">
-							<input type="text" size="6" maxlength="6" name="rrn1"> -
-							<input type="text" size="7" maxlength="7" name="rrn2">
+							<input type="text" size="6" maxlength="6" name="input_rrn1" id = "input_rrn1"
+							style='ime-mode:disabled' onKeyPress="return numkeyCheck(event)"> -
+							<input type="text" size="7" maxlength="7" name="input_rrn2" id = "input_rrn2"
+							style='ime-mode:disabled' onKeyPress="return numkeyCheck(event)">
 						</div></td>
 
 				</tr>
 				<tr>
 					<td width="30%"><div style="text-align: center">주소</div></td>
 					<td width="70%"><div style="text-align: center">
-							<input type="text" size="50" name="addr">
+							<input type="text" size="50" name="input_addr" id = "input_addr">
+						</div></td>
+				</tr>
+				<tr>
+					<td width="30%"><div style="text-align: center">이메일</div></td>
+					<td width="70%"><div style="text-align: center">
+							<input type="text" size="15" maxlength = "15" name="input_main1" id = "input_mail1">
+							@ <input type = "text" size = "15" maxlength ="15" name = "input_mail2" id = "input_mail2"> 
 						</div></td>
 				</tr>
 				<tr>
 					<td width="30%"><div style="text-align: center">전화번호</div></td>
-					<td width="70%"><div style="text-align: center"
-							name="phone_num">
-							<input type="text" size="13" maxlength="13">
+					<td width="70%"><div style="text-align: center" name="phone_num">
+							<input type="text" size="4" maxlength="4" id = "input_phonenum1"
+							style='ime-mode:disabled' onKeyPress="return numkeyCheck(event)" name = "input_phonenum1"> -
+							<input type="text" size="4" maxlength="4" id = "input_phonenum2"
+							style='ime-mode:disabled' onKeyPress="return numkeyCheck(event)" name = "input_phonenum2"> -
+							<input type="text" size="4" maxlength="4" id = "input_phonenum3" name = "input_phonenum3"
+							style='ime-mode:disabled' onKeyPress="return numkeyCheck(event)">
 						</div></td>
 				</tr>
 			</table>
+			<input type = "hidden" value = "" id = "checked_id" name = "checked_id">
 			<br> <input type="submit" value="등록"
 				style="margin-left: auto; margin-right: auto;">
 		</form>
