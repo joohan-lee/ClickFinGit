@@ -1,12 +1,13 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<% request.setCharacterEncoding("UTF-8");%>
+
 
 <%
 	String user_id = (String)session.getAttribute("userId");
 	if(user_id == null || user_id.equals(""))
 	{
 		%><script>
-			alert("Àß¸øµÈ ·Î±×ÀÎ");
+			alert("ìž˜ëª»ëœ ë¡œê·¸ì¸");
 			parent.location.href("login.html");
 		</script>
 <%
@@ -21,7 +22,7 @@
 body {
 	float: right margin:20px auto;
 	padding: 0;
-	font-family: "¸¼Àº °íµñ";
+	font-family: "ë§‘ì€ ê³ ë”•";
 	font-size: 0.9em;
 }
 
@@ -71,41 +72,41 @@ ul.sub li:hover {
 	<div style = "text-align:center">
 		<ul id="navi">
 			<li>
-				<div style="text-align: center"><%=user_id %>´Ô È¯¿µÇÕ´Ï´Ù! <br>
+				<div style="text-align: center"><%=user_id %>ë‹˜ í™˜ì˜í•©ë‹ˆë‹¤! <br>
 					<br> <input type="button"
-						onClick="location.href = 'logout.jsp'" value="·Î±×¾Æ¿ô"><br>
+						onClick="location.href = 'logout.jsp'" value="ë¡œê·¸ì•„ì›ƒ"><br>
 					<br>
 				</div>
 			</li>
 			<li class="group">
-				<div class="title">È¸¿ø µî·Ï</div>
+				<div class="title">íšŒì› ë“±ë¡</div>
 				<ul class="sub">
-					<li><a href="#">°ü¸®ÀÚ µî·Ï</a></li>
-					<li><a href="aRegitConsultant.jsp" target="body">ÄÁ¼³ÅÏÆ® µî·Ï</a></li>
-					<li><a href="#">°í°´ µî·Ï</a></li>
+					<li><a href="aRegitAdmin.jsp" target="body">ê´€ë¦¬ìž ë“±ë¡</a></li>
+					<li><a href="aRegitConsultant.jsp" target="body">ì»¨ì„¤í„´íŠ¸ ë“±ë¡</a></li>
+					<li><a href="aRegitCustomer.jsp" target="body">ê³ ê° ë“±ë¡</a></li>
 				</ul>
 			</li>
 			<li class="group">
-				<div class="title">ÄÁ¼³ÅÏÆ® ÇöÈ²</div>
+				<div class="title">ì»¨ì„¤í„´íŠ¸ í˜„í™©</div>
 				<ul class="sub">
-					<li><a href="aInfoConsultant.jsp" target="body">ÀüÃ¼ ÇöÈ²</a></li>
-					<li><a href="#">°³ÀÎº° ÇöÈ²</a></li>
+					<li><a href="aInfoConsultant.jsp" target="body">ì „ì²´ í˜„í™©</a></li>
+					<li><a href="aInfoConsultantSearch.jsp" target = "body">ê°œì¸ë³„ í˜„í™©</a></li>
 				</ul>
 			</li>
 			<li class="group">
-				<div class="title">°í°´ ÇöÈ²</div>
+				<div class="title">ê³ ê° í˜„í™©</div>
 				<ul class="sub">
-					<li><a href="aInfoCustom.jsp" target="body">ÀüÃ¼ ÇöÈ²<%session.setAttribute("userID",user_id); %></a></li>
-					<li><a href="#">°³ÀÎº° ÇöÈ²</a></li>
+					<li><a href="aInfoCustom.jsp" target="body">ì „ì²´ í˜„í™©<%session.setAttribute("userID",user_id); %></a></li>
+					<li><a href="aInfoCustomerSearch.jsp" target = "body">ê°œì¸ë³„ í˜„í™©</a></li>
 				</ul>
 			</li>
 			<li class="group">
-				<div class="title">»óÇ°º° Åë°è</div>
+				<div class="title">ìƒí’ˆë³„ í†µê³„</div>
 				<ul class="sub">
-					<li><a href="#">ÄÁ¼³ÅÏÆ®º° Åë°è</a></li>
-					<li><a href="#">°í°´º° Åë°è</a></li>
-					<li><a href="#">ÀüÃ¼ °¡ÀÔ »óÇ° ¼ö</a></li>
-					<li><a href="#">ÀüÃ¼ °¡ÀÔ ±Ý¾×</a></li>
+					<li><a href="#">ì»¨ì„¤í„´íŠ¸ë³„ í†µê³„</a></li>
+					<li><a href="#">ê³ ê°ë³„ í†µê³„</a></li>
+					<li><a href="#">ì „ì²´ ê°€ìž… ìƒí’ˆ ìˆ˜</a></li>
+					<li><a href="#">ì „ì²´ ê°€ìž… ê¸ˆì•¡</a></li>
 				</ul>
 			</li>
 		</ul>

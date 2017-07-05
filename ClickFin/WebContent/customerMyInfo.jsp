@@ -10,6 +10,12 @@
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title>Insert title here</title>
 </head>
+<style>
+td, tr, th{
+   border: 1px gray solid;
+   text-align: center;
+}
+</style>
 <body>
 <%@ page import = "java.sql.*" %>
 <%@ page import="javax.sql.*" %>
@@ -28,8 +34,17 @@
 		//id varchar(15), pw varchar(15), name varchar(15), role varchar(15), rrn varchar(13)
 		//query = "ALTER TABLE users ADD (phone varchar(13))";
 		//query = "ALTER TABLE users ADD (address varchar(50), email varchar(30))";
-		out.print(id);
 		rs1 = stmt.executeQuery("SELECT id, name, rrn, phone, address, email FROM users WHERE ID = '"+ id  +"'");
+		%><table width=700px; style="border-collapse:collapse; border: 1px gray solid;">
+		<tr>
+		<td>ID</td>
+		<td>이름</td>
+		<td>생년월일</td>
+		<td>번호</td>
+		<td>주소</td>
+		<td>이메일주소</td>
+	    </tr>
+		<%
 	}
 	catch(Exception e){                                                    // 예외가 발생하면 예외 상황을 처리한다.
 		e.printStackTrace();
@@ -43,13 +58,15 @@
 			String birth = rs1.getString("rrn").substring(0, 5);	//rrn 앞에 6자리
 			String phone = rs1.getString("phone");
 			String address = rs1.getString("address");
-			String emain = rs1.getString("email");
+			String email = rs1.getString("email");
 			
 			out.println("<tr>");
+			out.println("<td>" + getID + "</td>");
 			out.println("<td>" + name + "</td>");
 			out.println("<td>" + birth + "</td>");
 			out.println("<td>" + phone + "</td>");
 			out.println("<td>" + address + "</td>");
+			out.println("<td>" + email + "</td>");
 			out.println("</tr>");
 		}
 		

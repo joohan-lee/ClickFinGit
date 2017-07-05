@@ -1,5 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<% request.setCharacterEncoding("UTF-8");%>
+
 <%
 	String id = "";
 	id = (String)session.getAttribute("userID");%>
@@ -8,7 +9,7 @@
 
 
 <HTML> 	
-<HEAD><TITLE>е╛╦╞ги ╟Э╦╝юз ╦П╣Е </TITLE> 
+<HEAD><TITLE>М│╢К╕╜М∙─ Й╢─К╕╛Л·░ К╙╗К⌠° </TITLE> 
 </HEAD> 
 <FRAMESET ROWS="17%, 1*" border="0"> 
 <FRAME SRC="adminHead.jsp" NAME="head" scrolling="no"

@@ -1,30 +1,50 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<% request.setCharacterEncoding("UTF-8");%>
+
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <script>
+var click_chk = 0;
+
 function check_id()
-{
-      var input_id = document.consultantInput.ID.value;
-      if( input_id == '' )
-      {
-            alert('¾ÆÀÌµğ¸¦ ÀÔ·ÂÇÏ¼¼¿ä');
-            return;
-      }   
-     
-      var url ="check_id.jsp?input_id=" + input_id; 
-      window.open(url, '',  'width=300, height=350, left=0, top=0');
+{	  
+      var get_id = document.consultantInput.input_id.value;
       
-      <%
-      String chk = (String)session.getAttribute("chkID");
-      if(chk == "t"){
-            %>alert("»ç¿ë °¡´ÉÇÑ ID ÀÔ´Ï´Ù!!");<%
+      if( get_id == '' )
+      {
+            alert('ì•„ì´ë””ë¥¼ ì…ë ¥í•˜ì„¸ìš”');
+            return;
       }
-      else if(chk == "f"){
-    	  %>alert("ÀÌ¹Ì °¡ÀÔµÈ ID ÀÔ´Ï´Ù");<%
-      }%>
+      else if(event.keyCode == 8 || event.keyCode == 9 || event.keyCode == 37 || event.keyCode == 39
+    	        || event.keyCode == 46 ) return;
+      else
+      { 
+    	 	var url = "check_id.jsp?get_id="+get_id;
+    		var ret = window.showModalDialog(url,get_id,"width = 150 , height = 100, resizable = no, scrollbars = no");
+
+    		if(ret =='cancel'){
+    			alert('ID í™•ì¸ ì·¨ì†Œ');
+    			document.getElementById('input_id').disabled = false;
+    			document.getElementById('checked_id').value = "false";
+    			click_chk = 0;
+    		}
+    		else if(ret != 'cancel' && ret!= 'disable'){ 			
+    			   			
+    			document.getElementById('input_id').disabled = 'disabled';
+    			document.getElementById('ID').value = get_id;
+    			document.getElementById('checked_id').value ="true";
+    		}
+      }
 }
+
+function numkeyCheck(e){ 
+	var keyValue = event.keyCode; 
+	if( ((keyValue >= 48) && (keyValue <= 57)) ) 
+		return true; 
+	else 
+		return false; 
+	}
 
 </script>
 <style>
@@ -35,63 +55,83 @@ td, tr, th {
 </style>
 
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<title>Å¬¸¯ÇÉ - °ü¸®ÀÚ Á¢¼Ó</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>í´ë¦­í•€ - ê´€ë¦¬ì ì ‘ì†</title>
 
 </head>
 <body>
 
 	<div style="text-align: center">
-		<font size="10em">ÄÁ¼³ÅÏÆ® µî·Ï</font> <br> <br>
-		<form method="post" action="" name="consultantInput"
-			/
+		<font size="10em">ì»¨ì„¤í„´íŠ¸ ë“±ë¡</font> <br> <br>
+		<form method="post" action = "aInsertConsultantInfo.jsp" name="consultantInput"
 			onSubmit="return checkIt()">
 			<table width="50%"
 				style="border-collapse: collapse; border: 1px gray solid; margin-top: 20px; margin-left: auto; margin-right: auto;"
 				cellpadding="5">
 				<tr>
-					<td width="30%"><div style="text-align: center">¾ÆÀÌµğ</div></td>
+					<td width="30%"><div style="text-align: center">ì•„ì´ë””</div></td>
 
 					<td width="70%"><div style="text-align: center">
-							<input type="text" size="13" name="ID"> <input
-								type="button" value="Áßº¹Ã¼Å©" onclick="check_id()">
+							<script></script>
+							<input type="text" size="13" name="input_id" id = "input_id" style='ime-mode:disabled'> <input
+								type="button" value="ì¤‘ë³µì²´í¬" onclick="check_id()" id = "chk_id">
 						</div></td>
 				</tr>
 				<tr>
-					<td width="30%"><div style="text-align: center">ÆĞ½º¿öµå</div></td>
+					<td width="30%"><div style="text-align: center">ì´ë¦„</div></td>
 					<td width="70%"><div style="text-align: center">
-							<input type="password" name="pw1">
+							<input type="text" name="input_name" id = "input_name">
 						</div></td>
 				<tr>
-					<td width="30%"><div style="text-align: center">ÆĞ½º¿öµå È®ÀÎ</div></td>
+				<tr>
+					<td width="30%"><div style="text-align: center">íŒ¨ìŠ¤ì›Œë“œ</div></td>
 					<td width="70%"><div style="text-align: center">
-							<input type="password" name="pw2"> <input type="button"
-								value="ºñ¹Ğ¹øÈ£ Ã¼Å©" onclick="pw_check()">
+							<input type="password" name="input_pw1" id = "input_pw1">
+						</div></td>
+				<tr>
+					<td width="30%"><div style="text-align: center">íŒ¨ìŠ¤ì›Œë“œ í™•ì¸</div></td>
+					<td width="70%"><div style="text-align: center">
+							<input type="password" name="input_pw2" id = "input_pw2"> 
 						</div></td>
 				</tr>
 				<tr>
-					<td width="30%"><div style="text-align: center">ÁÖ¹Îµî·Ï¹øÈ£</div></td>
+					<td width="30%"><div style="text-align: center">ì£¼ë¯¼ë“±ë¡ë²ˆí˜¸</div></td>
 					<td width="70%"><div style="text-align: center">
-							<input type="text" size="6" maxlength="6" name="rrn1"> -
-							<input type="text" size="7" maxlength="7" name="rrn2">
+							<input type="text" size="6" maxlength="6" name="input_rrn1" id = "input_rrn1"
+							style='ime-mode:disabled' onKeyPress="return numkeyCheck(event)"> -
+							<input type="text" size="7" maxlength="7" name="input_rrn2" id = "input_rrn2"
+							style='ime-mode:disabled' onKeyPress="return numkeyCheck(event)">
 						</div></td>
 
 				</tr>
 				<tr>
-					<td width="30%"><div style="text-align: center">ÁÖ¼Ò</div></td>
+					<td width="30%"><div style="text-align: center">ì£¼ì†Œ</div></td>
 					<td width="70%"><div style="text-align: center">
-							<input type="text" size="50" name="addr">
+							<input type="text" size="50" name="input_addr" id = "input_addr">
 						</div></td>
 				</tr>
 				<tr>
-					<td width="30%"><div style="text-align: center">ÀüÈ­¹øÈ£</div></td>
-					<td width="70%"><div style="text-align: center"
-							name="phone_num">
-							<input type="text" size="13" maxlength="13">
+					<td width="30%"><div style="text-align: center">ì´ë©”ì¼</div></td>
+					<td width="70%"><div style="text-align: center">
+							<input type="text" size="15" maxlength = "15" name="input_mail1" id = "input_mail1">
+							@ <input type = "text" size = "15" maxlength ="15" name = "input_mail2" id = "input_mail2"> 
+						</div></td>
+				</tr>
+				<tr>
+					<td width="30%"><div style="text-align: center">ì „í™”ë²ˆí˜¸</div></td>
+					<td width="70%"><div style="text-align: center" name="phone_num">
+							<input type="text" size="4" maxlength="4" id = "input_phonenum1"
+							style='ime-mode:disabled' onKeyPress="return numkeyCheck(event)" name = "input_phonenum1"> -
+							<input type="text" size="4" maxlength="4" id = "input_phonenum2"
+							style='ime-mode:disabled' onKeyPress="return numkeyCheck(event)" name = "input_phonenum2"> -
+							<input type="text" size="4" maxlength="4" id = "input_phonenum3" name = "input_phonenum3"
+							style='ime-mode:disabled' onKeyPress="return numkeyCheck(event)">
 						</div></td>
 				</tr>
 			</table>
-			<br> <input type="submit" value="µî·Ï"
+			<input type = "hidden" value = "" id = "checked_id" name = "checked_id">
+			<input type = "hidden" value = "" id = "ID" name = "ID">
+			<br> <input type="submit" value="ë“±ë¡"
 				style="margin-left: auto; margin-right: auto;">
 		</form>
 	</div>
