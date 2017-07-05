@@ -9,7 +9,7 @@ var click_chk = 0;
 
 function check_id()
 {	  
-      var get_id = document.consultantInput.input_id.value;
+      var get_id = document.admininput.input_id.value;
       
       if( get_id == '' )
       {
@@ -63,7 +63,7 @@ td, tr, th {
 
 	<div style="text-align: center">
 		<font size="10em">관리자 등록</font> <br> <br>
-		<form method="post" action = "aInsertAdminInfo.jsp" name="consultantInput"
+		<form method="post" action = "aInsertAdminInfo.jsp" name="admininput"
 			onSubmit="return checkIt()">
 			<table width="50%"
 				style="border-collapse: collapse; border: 1px gray solid; margin-top: 20px; margin-left: auto; margin-right: auto;"

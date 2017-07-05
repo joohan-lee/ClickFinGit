@@ -9,7 +9,7 @@ var click_chk = 0;
 
 function check_id()
 {	  
-      var get_id = document.consultantInput.input_id.value;
+      var get_id = document.customerinput.input_id.value;
       
       if( get_id == '' )
       {
