@@ -1,0 +1,79 @@
+td, tr, th{
+   border: 1px gray solid;
+   text-align: center;
+}
+table {
+	width:70%; 
+	border-collapse:collapse;
+	border:1px gray solid;
+	margin-top: 20px;
+}
+
+#topmenu
+ {
+ height: 50px;
+ width : 1213px;
+ }
+
+#topmenu ul
+{
+list-style-type: none;
+margin: 0px;
+padding: 0px;
+}
+
+#topmenu ul li
+ {
+  color : white;
+  float: left;
+  line-height : 70px;
+  vertical-align: middle; 
+  text-align: center;
+  position: relative;
+ }
+
+.menulink
+ {
+ color :#3D3D3D;
+ text-decoration  :none;
+ font-family : "³Ø½¼ Ç²º¼°íµñ B";
+ display: block;
+ width: 190px;
+ font-size: 18px;
+ font-weight: bold;
+ }
+
+.submenulink{
+color: #2d2d2d;
+text-decoration : none;
+font-family: "¸¼Àº°íµñ"
+display: block;
+width : 1213px;
+font-size: 14px;
+font-weight : bold;
+z-index : 2;
+}
+
+ .topmenuLi:hover .menulink
+ {
+ color : #FF3636;
+ }
+
+
+.submenu {
+position : absolute;
+height: 0px;
+overflow: hidden;
+transition: height .2s;
+-webkit-transition: height .2s;
+-moz-transition: height .2s;
+-o-transition: height .2s;
+}
+
+.topmenuLi:hover .submenu {
+height: 400px;
+background-color:#cccccc;
+}
+.submenulink:hover{
+color : red;
+}

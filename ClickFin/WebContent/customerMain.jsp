@@ -20,7 +20,33 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<title></title>
+<link rel="stylesheet" type="text/css" href="style.css" />
+<nav id ="topmenu"> 
+
+	<ul>
+	<li><img src="HSR logo.png"></li>
+		
+	  <li class="topmenuLi">
+	    <a class="menulink" href="#">개인정보</a>
+			<ul class="submenu">
+				<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="customerMyInfo.jsp" class="submenulink">내 정보</a></li>
+			</ul>
+		</li>
+			<li>|</li>
+	<li class="topmenuLi">
+		<a class="menulink" href="#">상품별 현황 보기</a>
+			<ul class="submenu">
+				<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="customerMyProductAll.jsp" class="submenulink">가입상품 전체 현황</a></li>
+				<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" class="submenulink">상품별 상세 현황</a></li>
+				<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" class="submenulink" >타상품 상세 현황</a></li>
+				
+			</ul>
+		</li>
+			<li>|</li>
+	</ul> 
+
+</nav>
+<title>클릭핀 고객 모드</title>
 </head>
 <body>
 

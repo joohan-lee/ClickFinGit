@@ -11,10 +11,9 @@
 <HEAD><TITLE>Å¬¸¯ÇÉ °í°´ ¸ðµå </TITLE> 
 </HEAD> 
 <FRAMESET ROWS="17%, 1*" border="0"> 
-<FRAME SRC="customerHead.jsp" NAME="head" scrolling="no"
+<FRAME SRC="customerMenu.jsp" NAME="menu" scrolling="no"
  marginwidth="0" marginheight="0">
-<FRAMESET COLS="20%,80%"><FRAME SRC="customerMenu.jsp"NAME="menu"
- scrolling="auto" marginwidth="0" marginheight="0">
+
 <FRAME SRC="customerMain.jsp" NAME="body" scrolling="auto" 
 marginwidth="0" marginheight="0">
 </FRAMESET>

@@ -47,7 +47,7 @@ try{
 			}
 			else if(role.equals("customer")){
 			
-				response.sendRedirect("customerView.jsp");
+				response.sendRedirect("customerMain.jsp");
 				session.setAttribute("userId", identity); 
 	       	 	session.setAttribute("userPw", password);
 	        	session.setAttribute("userRole", role);
