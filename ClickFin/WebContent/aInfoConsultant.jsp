@@ -5,21 +5,6 @@
 <%@ page import="java.sql.*"%>
 <%@ page import="javax.sql.*"%>
 <%@ page import="javax.naming.*"%>
-
-
-<%
-	String user_id = (String)session.getAttribute("userId");
-	if(user_id == null || user_id.equals(""))
-	{
-		%><script>
-			alert("잘못된 로그인");
-			parent.location.href("login.html");
-		</script>
-<%
-		
-	}
-	%>
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <style>
@@ -28,15 +13,14 @@ td, tr, th {
 	text-align: center;
 }
 </style>
+
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title>클릭핀 - 관리자 접속</title>
 </head>
 <body>
-
 	<div style="text-align: center">
-		<font size="15">컨설턴트 현황</font>
-
+		<font size="15">고객 현황</font>
 	</div>
 
 	<%
@@ -44,11 +28,18 @@ td, tr, th {
 	ResultSet rs = null;
 	Statement stmt = null;
 	DataSource ds;
+	
+	String id1 = null;
+	String name = null;
+	String rrn = null;
+	String show_rrn = null;
+	String num = null;
+		
 	try{
 		Context init = new InitialContext();
 		ds = (DataSource)init.lookup("java:comp/env/jdbc/oracle");
 		conn = ds.getConnection();
-		String sql = "select * from users";
+		String sql = "select * from users where role = 'consultant'";
 		stmt = conn.createStatement();
 		rs = stmt.executeQuery(sql);
    	
@@ -69,24 +60,37 @@ td, tr, th {
 					<font size=3>ID</font>
 				</div></td>
 			<td width="100"><div style="text-align: center">
-					<font size=3>관리 고객 수</font>
+					<font size=3>주민등록번호</font>
+				</div></td>
+			<td width="100"><div style="text-align: center">
+					<font size=3>   </font>
 				</div></td>
 		</tr>
 		<%
    		while(rs.next())
    	   	{
-   			String id1 = rs.getString("id");
-   			String name = rs.getString("name");
-   			String role = rs.getString("role");
-   	   		if(role.equals("consultant")){
-   	   		%>
+   			id1 = rs.getString("id");
+   			name = rs.getString("name");
+   			rrn = rs.getString("rrn");
+   			num = rs.getString("phone");
+   			
+   			if(rrn.length() != 13){
+				show_rrn = " ";
+			}
+			else{
+				show_rrn= rrn.substring(0,6) + "- *******";
+			}
+   	   		%> 	   		
 		<tr>
 
 			<td width="100"><div style="text-align: center"><%= name %></div></td>
 			<td width="100"><div style="text-align: center"><%= id1 %></div></td>
-			<td width="100"><div style="text-align: cente"></div>
+			<td width="100"><div style="text-align: cente"><%=show_rrn %></div></td>
+			<td width="100"><div style="text-align: cente">
+				<a href = "aInfoConsultantDetail.jsp?id=<%=id1%>">정보보기</a>
+			</div></td>
 		</tr>
-		<%}
+		<%
    	   	}
    	
    }catch(Exception e)
