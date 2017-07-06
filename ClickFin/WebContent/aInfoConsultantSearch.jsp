@@ -92,6 +92,10 @@ function search(){
 				<td width="100"><div style="text-align: center">
 						<font size=3>관리 고객 수</font>
 					</div></td>
+				<td width="100"><div style="text-align: center">
+						<font size=3>  </font>
+					</div></td>
+				
 			</tr>
 			<%
 	   		while(rs.next())
@@ -107,7 +111,8 @@ function search(){
 	   				<tr>
 	   					<td width="100"><div style="text-align: center"><%=name%></div></td>
 	   					<td width="100"><div style="text-align: center"><%=id1%></div></td>
-	   					<td width="100"><div style="text-align: cente"></div>
+	   					<td width="100"><div style="text-align: center"><%= %></div>
+	   					<td width="100"><div style="text-align: center"></div>
 	   				</tr>
 	   				<%	
 	   				}   	   		
