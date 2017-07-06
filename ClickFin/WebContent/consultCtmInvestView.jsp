@@ -34,6 +34,7 @@ th{
 
 <body>
 
+
 <div id="content" style="width:400px">
 	<table style="border-collapse:collapse;border:1px gray solid;
 		text-align: center;height:500px;width:400px;float:center;">
