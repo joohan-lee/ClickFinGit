@@ -174,6 +174,7 @@ th, td, tr{
 		</div>
 		
 		<script>
+		//표의 내용이 너무 많을 때 나누어 페이징해줌.
 		var $setRows = $('#setRows');
 
 		$setRows.submit(function (e) {

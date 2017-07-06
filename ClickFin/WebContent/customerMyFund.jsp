@@ -15,6 +15,12 @@ td, tr, th{
    border: 1px gray solid;
    text-align: center;
 }
+table {
+	width:70%; 
+	border-collapse:collapse;
+	border:1px gray solid;
+	margin-top: 20px;
+}
 </style>
 <body>
 <%@ page import = "java.sql.*" %>
@@ -32,17 +38,17 @@ td, tr, th{
 		Statement stmt = conn.createStatement();
 
 		rs1 = stmt.executeQuery("SELECT id, name, day, month, money, user_id FROM fund WHERE id = '"+ id  +"'");
-		%></table><br><table width=700px; style="border-collapse:collapse; border: 1px gray solid;">
-		<tr>
-		<td>펀드번호</td>
-		<td>상품이름</td>
-		<td>가입일</td>
-		<td>월적립</td>
-		<td>거치금액</td>
-		<td>회사</td>
-		<td>유형</td>
-		
-	    </tr>
+		%><table>
+    	<thead>
+			<th>펀드번호</th>
+			<th>상품이름</th>
+			<th>가입일</th>
+			<th>월적립</th>
+			<th>거치금액</th>
+			<th>회사</th>
+			<th>유형</th>
+    	</thead>
+		<tbody id="customTbody">
 		<%
 		rs1.next();
 
@@ -65,7 +71,7 @@ td, tr, th{
 		out.println("<td>" + company + "</td>");
 		out.println("<td>" + type + "</td>");
 		out.println("</tr>");
-
+		%></tbody></table><%
 	}
 	catch(Exception e){
 		e.printStackTrace();

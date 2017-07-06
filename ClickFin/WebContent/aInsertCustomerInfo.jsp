@@ -71,7 +71,7 @@ td, tr, th {
 		String new_num = new_num1 + new_num2 + new_num3;
 		String new_rrn = new_rrn1 + new_rrn2;
 		String new_mail = new_mail1 + "@" + new_mail2;
-		String new_role = "consultant";
+		String new_role = "customer";
 	
 		out.println(new_name+"\n");		
 		out.println(chk_id+"\n");
@@ -80,7 +80,6 @@ td, tr, th {
 		
 		String values = "'"+new_id+"','"+new_pw1+"','"+new_name+"','"+new_role+"','"+new_rrn+"','"+new_num+"','"+new_addr+"','"+new_mail+"'";
 		String insert = "insert into users values("+values+")";
-		//String insert ="insert into users values('hello','pw','hell','consultant','920121','01010','seoul','abc@mail.com')";
 		
 		
 		if(new_id.equals("")||new_id == null) {%>
@@ -146,7 +145,7 @@ td, tr, th {
 			 alert('등록되었습니다.');
 			</script>
 			<%
-			response.sendRedirect("aRegitConsultant.jsp");
+			response.sendRedirect("aRegitCustomer.jsp");
 		}
 		rs.close();
 		stmt.close();

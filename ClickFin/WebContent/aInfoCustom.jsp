@@ -1,6 +1,6 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<% request.setCharacterEncoding("UTF-8");%>
 
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
 
 <%@ page import="java.sql.*"%>
 <%@ page import="javax.sql.*"%>
@@ -16,15 +16,15 @@ td, tr, th {
 
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<title>Å¬¸¯ÇÉ - °ü¸®ÀÚ Á¢¼Ó</title>
+<title>í´ë¦­í•€ - ê´€ë¦¬ìž ì ‘ì†</title>
 </head>
 <body>
 	<div style="text-align: center">
-		<font size="15">°í°´ ÇöÈ²</font>
+		<font size="15">ê³ ê° í˜„í™©</font>
 	</div>
 
 	<%
-	Connection conn = null;                                        // null·Î ÃÊ±âÈ­ ÇÑ´Ù.
+	Connection conn = null;                                        // nullë¡œ ì´ˆê¸°í™” í•œë‹¤.
 	ResultSet rs = null;
 	Statement stmt = null;
 	DataSource ds;
@@ -47,13 +47,13 @@ td, tr, th {
 		style="border-collapse: collapse; border: 1px gray solid; margin-top: 20px; margin-left: auto; margin-right: auto;">
 		<tr>
 			<td width="100"><div style="text-align: center">
-					<font size=3>ÀÌ¸§</font>
+					<font size=3>ì´ë¦„</font>
 				</div></td>
 			<td width="100"><div style="text-align: center">
 					<font size=3>ID</font>
 				</div></td>
 			<td width="100"><div style="text-align: center">
-					<font size=3>´ã´ç ÄÁ¼³ÅÏÆ®</font>
+					<font size=3>ë‹´ë‹¹ ì»¨ì„¤í„´íŠ¸</font>
 				</div></td>
 		</tr>
 		<%

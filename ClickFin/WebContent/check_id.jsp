@@ -5,7 +5,7 @@
 <%@ page import="javax.naming.*" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <%
-String identity = (String)request.getParameter("input_id");
+String identity = (String)request.getParameter("get_id");
 %>
 
 <html>

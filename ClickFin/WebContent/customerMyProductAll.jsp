@@ -15,8 +15,15 @@ td, tr, th{
    border: 1px gray solid;
    text-align: center;
 }
+table {
+	width:70%; 
+	border-collapse:collapse;
+	border:1px gray solid;
+	margin-top: 20px;
+}
 </style>
 <body>
+<div id="content" style="width: 800px">
 <%@ page import = "java.sql.*" %>
 <%@ page import="javax.sql.*" %>
 <%@ page import="javax.naming.*" %>
@@ -31,6 +38,7 @@ td, tr, th{
 		ds = (DataSource)init.lookup("java:comp/env/jdbc/oracle");
 		conn = ds.getConnection();
 		Statement stmt = conn.createStatement();
+		Statement stmt2 = conn.createStatement();
 		//id varchar(15), pw varchar(15), name varchar(15), role varchar(15), rrn varchar(13)
 		//query = "ALTER TABLE users ADD (phone varchar(13))";
 		//query = "ALTER TABLE users ADD (address varchar(50), email varchar(30))";
@@ -39,15 +47,16 @@ td, tr, th{
 		//투자--------------------------------------
 		
 		rs1 = stmt.executeQuery("SELECT id, name, period, money, day, user_id FROM invest WHERE user_id = '"+ id  +"'");
-		%><table width=700px; style="border-collapse:collapse; border: 1px gray solid;">
-		<tr>
-		<td>투자번호</td>
-		<td>상품이름</td>
-		<td>투자기간</td>
-		<td>투자금액</td>
-		<td>투자수익률</td>
-		<td>배당금지급일</td>
-	    </tr>
+		%><table>
+    	<thead>
+			<th>투자번호</th>
+			<th>상품이름</th>
+			<th>투자기간</th>
+			<th>투자금액</th>
+			<th>투자수익률</th>
+			<th>배당금지급일</th>
+    	</thead>
+		<tbody id="customTbody">
 		<%
 		while(rs1.next()){
 			String getID = rs1.getString("user_id");
@@ -57,7 +66,6 @@ td, tr, th{
 				String period = rs1.getString("period");
 				String money = rs1.getString("money");
 				String day = rs1.getString("day");
-
 
 				rs2 = stmt.executeQuery("select rate from invest_product where name ='"+ name +"'");
 				rs2.next();
@@ -78,22 +86,22 @@ td, tr, th{
 			
 			
 		}
-		out.print(id);
+		%></tbody></table><br><%
 		
 		//보험------------------------------------------------------
 		
 		rs1 = stmt.executeQuery("SELECT id, name, period, user_id FROM insurance WHERE user_id = '"+ id  +"'");
-		%></table><br><table width=700px; style="border-collapse:collapse; border: 1px gray solid;">
-		<tr>
-		<td>보험번호</td>
-		<td>상품이름</td>
-		<td>납입기간</td>
-		<td>회사</td>
-		<td>보험료</td>
-		<td>보장기간</td>
-		<td>보장내역</td>
-		
-	    </tr>
+		%><table>
+		<thead>
+			<th>보험번호</th>
+			<th>상품이름</th>
+			<th>납입기간</th>
+			<th>회사</th>
+			<th>보험료</th>
+			<th>보장기간</th>
+			<th>보장내역</th>
+		</thead>
+		<tbody id="customTbody">
 		<%
 		while(rs1.next()){
 			
@@ -103,7 +111,7 @@ td, tr, th{
 				String name = rs1.getString("name");
 				String period = rs1.getString("period");
 
-				rs2 = stmt.executeQuery("select company, fee, period, ensure from insurance_product where name ='"+ name +"'");
+				rs2 = stmt2.executeQuery("select company, fee, period, ensure from insurance_product where name ='"+ name +"'");
 				rs2.next();
 				String company = rs2.getString("company");
 				String fee = rs2.getString("fee");
@@ -125,21 +133,22 @@ td, tr, th{
 				out.println("</tr>");
 			}
 		}
+		%></tbody></table><br><%
 		
 		//펀드---------------------------------------------------------------------
 		
 		rs1 = stmt.executeQuery("SELECT id, name, day, month, money, user_id FROM fund WHERE user_id = '"+ id  +"'");
-		%></table><br><table width=700px; style="border-collapse:collapse; border: 1px gray solid;">
-		<tr>
-		<td>펀드번호</td>
-		<td>상품이름</td>
-		<td>가입일</td>
-		<td>월적립</td>
-		<td>거치금액</td>
-		<td>회사</td>
-		<td>유형</td>
-		
-	    </tr>
+		%><table>
+	    <thead>
+			<th>펀드번호</th>
+			<th>상품이름</th>
+			<th>가입일</th>
+			<th>월적립</th>
+			<th>거치금액</th>
+			<th>회사</th>
+			<th>유형</th>
+		</thead>
+		<tbody id="customTbody">
 		<%
 		while(rs1.next()){
 			
@@ -151,7 +160,7 @@ td, tr, th{
 				String month = rs1.getString("month");
 				String money = rs1.getString("money");
 				
-				rs2 = stmt.executeQuery("select company, type from fund_product where name ='"+ name +"'");
+				rs2 = stmt2.executeQuery("select company, type from fund_product where name ='"+ name +"'");
 				rs2.next();
 				String company = rs2.getString("company");
 				String type = rs2.getString("type");
@@ -171,20 +180,21 @@ td, tr, th{
 				out.println("</tr>");
 			}
 		}
-		
+		%></tbody></table><br><%
+
 		//저축(적금/예금)---------------------------------------------------------------------
 		
 		rs1 = stmt.executeQuery("SELECT id, name, period, month, money, user_id FROM saving WHERE user_id = '"+ id  +"'");
-		%></table><br><table width=700px; style="border-collapse:collapse; border: 1px gray solid;">
-		<tr>
-		<td>저축번호</td>
-		<td>상품이름</td>
-		<td>납입기간</td>
-		<td>월납입</td>
-		<td>예금액</td>
-		<td>회사</td>
-		
-	    </tr>
+		%><table>
+	    <thead>
+			<th>저축번호</th>
+			<th>상품이름</th>
+			<th>납입기간</th>
+			<th>월납입</th>
+			<th>예금액</th>
+			<th>회사</th>
+		</thead>
+		<tbody id="customTbody">
 		<%
 		while(rs1.next()){
 			
@@ -196,7 +206,7 @@ td, tr, th{
 				String month = rs1.getString("month");
 				String money = rs1.getString("money");
 				
-				rs2 = stmt.executeQuery("select company from saving_product where name ='"+ name +"'");
+				rs2 = stmt2.executeQuery("select company from saving_product where name ='"+ name +"'");
 				rs2.next();
 				String company = rs2.getString("company");
 				
@@ -214,11 +224,14 @@ td, tr, th{
 				out.println("</tr>");
 			}
 		}
+		%></tbody></table><br><%
+		
 	}
 	catch(Exception e){
 		e.printStackTrace();
 		out.println("연결실패");
 	}
 %>
+</div>
 </body>
 </html>

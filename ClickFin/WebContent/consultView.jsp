@@ -44,7 +44,7 @@
             <ul class="sub">
                 <li><a href="consultShowAllCustom.jsp">고객 전체 현황</a></li>
                 <li><a href="consultCtmInfoView.jsp">고객별 개인정보</a></li>
-                <li><a href="#">고객별 가입상품현황</a></li>                   
+                <li><a href="consultCtmProductAll.jsp">고객별 가입상품현황</a></li>                   
             </ul>
         </li>
         <li class="group">
@@ -58,5 +58,6 @@
             </ul>
         </li>          
     </ul>
+    
 </body>
 </html>
