@@ -1,20 +1,26 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
-<%@ page import = "java.sql.*" %>
+    <%@ page import = "java.sql.*" %>
 <%@ page import="javax.sql.*" %>
 <%@ page import="javax.naming.*" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <%
 String id = (String)session.getAttribute("userId");
-String name = request.getParameter("consultMyName");
-String phone = request.getParameter("consultMyPhone");
-String address = request.getParameter("consultMyAddress");
-String email = request.getParameter("consultMyEmail");
+String searchStr = (String)session.getAttribute("searchStr");
+String name = request.getParameter("cusMyName");
+String rrn = request.getParameter("cusMyRrn");
+String phone = request.getParameter("cusMyPhone");
+String address = request.getParameter("cusMyAddress");
+String marry = request.getParameter("cusMyMarry");
+String child = request.getParameter("cusMyChild");
+String anniversary = request.getParameter("cusMyAnniversary");
+
 %>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<title>modify</title>
+<title>Insert title here</title>
+</head>
 <body>
 <% 
 Connection conn = null;                                        // null로 초기화 한다.
@@ -26,7 +32,7 @@ try{
 	ds = (DataSource)init.lookup("java:comp/env/jdbc/oracle");
 	conn = ds.getConnection();
 	stmt = conn.createStatement();
-	if(name.equals("")||phone.equals("")||address.equals("")||email.equals("")) {%>
+	if(name.equals("")||phone.equals("")||address.equals("")||rrn.equals("")||marry.equals("")||anniversary.equals("")||child.equals("")) {%>
 	<script>
 	alert('항목을 모두 채워주세요.');
 	history.go(-1);
@@ -34,14 +40,17 @@ try{
 	<%
 	}
 
-	String sql = "update users set name = '" +name +"' ,phone= '" +phone +"' ,address= '" +address+ "' ,email='"+email+"' where id = '"+id+"'";
-	int result = stmt.executeUpdate(sql);
+	String sql1 = "update users set name = '" +name +"' ,phone= '" +phone +"' ,address= '" +address+ "' ,rrn='"+rrn+"' where name = '"+searchStr+"'";
+	int result1 = stmt.executeUpdate(sql1);
 	
-	if( result > 0 )
+	String sql2 = "update customer set marry = '" +marry +"' ,child= '" +child +"' ,anniversary= '" +anniversary+ "' where consul_id = '"+id+"'";
+	int result2 = stmt.executeUpdate(sql2);
+
+	if( result1 > 0 && result2>0 )
 	{%>
 		<script>
 		alert('수정되었습니다.');
-		location.href("./consultMyInfoView.jsp");
+		location.href("./consultCtmInfoView.jsp");
 		</script>
 	<% }
 	else

@@ -97,22 +97,39 @@ td,tr,th{
    //if(!"".equals(searchStr))//검색하려는 문자열을 DB에서 검색하고 존재하면 출력
    //{
    Connection conn = null;                                        // null로 초기화 한다.
-   ResultSet rs = null;
-   Statement stmt = null;
+   ResultSet rs1 = null;
+   ResultSet rs2 = null;
+   Statement stmt1 = null;
+   Statement stmt2 = null;
    DataSource ds;
    try{
       Context init = new InitialContext();
       ds = (DataSource)init.lookup("java:comp/env/jdbc/oracle");
       conn = ds.getConnection();
-      stmt = conn.createStatement();
+      stmt1 = conn.createStatement();
+      stmt2 = conn.createStatement();
       String sql = "select * from users where name='" + searchStr + "'and id in( select id from customer where consul_id ='"+userId+"')";
-      rs = stmt.executeQuery(sql);
-while(rs.next()){
-   String name = rs.getString("name");
-   String rrn = rs.getString("rrn");
-   String phone = rs.getString("phone");
-   String address = rs.getString("address");
+      rs1 = stmt1.executeQuery(sql);
+while(rs1.next()){
+   String name = rs1.getString("name");
+   String rrn = rs1.getString("rrn");
+   String phone = rs1.getString("phone");
+   String address = rs1.getString("address");
+   rs2 = stmt2.executeQuery("select marry, child, anniversary from customer where consul_id = '" +userId +"'");
+   rs2.next();
+   String marry = rs2.getString("marry");
+   String child = rs2.getString("child");
+   String anniversary = rs2.getString("anniversary");
    %>
+   		<%
+session.setAttribute("cusName", name); 
+session.setAttribute("cusRrn",rrn );
+session.setAttribute("cusPhone", phone);
+session.setAttribute("cusAddress", address);
+session.setAttribute("cusMarry", marry); 
+session.setAttribute("cusChild",child );
+session.setAttribute("cusAnniversary", anniversary);
+%>
       <br>
       <table width="70%"style="border-collapse:collapse;
             border: 1px solid gray;">
@@ -134,24 +151,19 @@ while(rs.next()){
          </tr>
          <tr>
             <th>결혼유뮤</th>
-            <td>유</td>
+            <td><%= marry %></td>
          </tr>
          <tr>
             <th>자녀</th>
             <td>
-               <ol>
-                  <li>홍길순 : 970224</li>
-                  <li>홍민수 : 980725</li>
-               </ol>
+               <%= child %>
             </td>
          </tr>
          <tr>
             <th>기념일</th>
-            <td></td>
-         </tr>
-         <tr>
-            <th>기타</th>
-            <td></td>
+            <td>
+            	<%= anniversary %>
+            </td>
          </tr>
       </table>
      <%}

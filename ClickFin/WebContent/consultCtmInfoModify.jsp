@@ -11,6 +11,14 @@
 	}%>
     
     <%String searchStr = (String)session.getAttribute("searchStr");//검색하려는 문자열
+    //String id = (String)session.getAttribute("userId");
+	String name = (String)session.getAttribute("cusName");
+	String rrn = (String)session.getAttribute("cusRrn");
+	String phone = (String)session.getAttribute("cusPhone");
+	String address = (String)session.getAttribute("cusAddress");
+	String child = (String)session.getAttribute("cusChild");
+	String anniversary = (String)session.getAttribute("cusAnniversary");
+	String marry = (String)session.getAttribute("cusMarry");
     	%>
     
     
@@ -37,50 +45,36 @@
 	<%=searchStr %>고객님의 정보 수정
 	</div>
 	<div id="content">
-	<form action="consultCtmInfoView.jsp">
+	<form action="consultCtmInfoModifyOK.jsp">
 	<table width="70%">
     	<tr>
     		<th>이름 : </th>
-			<td><input type="text" name="consultMyName" value="<%//DB에서 불러온거로 SET %>"> </td>
+			<td><input type="text" value="<%=name%>" name="cusMyName" value="<%//DB에서 불러온거로 SET %>"> </td>
 		</tr>
     	<tr>
-    		<th>성별 : </th>
-    		<td><input type="text" value="<% %>"></td>
-    	</tr>
-    	<tr>
     		<th>주민번호 : </th>
-    		<td><input type="text" value="<% %>"></td>
+    		<td><input type="text" value="<%=rrn %>" name="cusMyRrn" ></td>
     	</tr>
     	<tr>
     		<th>연락처 : </th>
-    		<td><input type="text" value="<% %>"></td>
+    		<td><input type="text" value="<%=phone %>" name="cusMyPhone" ></td>
     	</tr>
     	<tr>
     		<th>주소 : </th>
-    		<td><input type="text" value=""></td>
+    		<td><input type="text" value="<%=address%>" name="cusMyAddress" ></td>
     	</tr>
     	<tr>
     		<th>결혼유뮤 : </th>
-    		<td><input type="text"></td>
+    		<td><input type="text" value="<%=marry%>" name="cusMyMarry" ></td>
     	</tr>
     	<tr>
-    		<th>자녀</th>
-    		<td>
-    			<ol>
-    				<li><input type="text"></li>
-    				<li><input type="text"></li>
-    			</ol>
-    		</td>
+    		<th>자녀: </th>
+    			<td><input type="text" value="<%=child%>" name="cusMyChild" ></td>
     	</tr>
     	<tr>
     		<th>기념일</th>
-    		<td></td>
+    		<td><input type="text" value="<%=anniversary%>" name="cusMyAnniversary" ></td>
     	</tr>
-    	<tr>
-    		<th>기타</th>
-    		<td><input type="text"></td>
-    	</tr>
-	
 	</table>
 	
 	<input type="submit" value="저장" ><!-- 확인 누를 때 저장했는지 물어보는거 추가 -->
