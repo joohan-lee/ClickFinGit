@@ -7,6 +7,7 @@
 <%
 	String get_id = null;
 	get_id = request.getParameter("id");
+	String bp = request.getParameter("back");
 %>
 
 <html>
@@ -112,7 +113,7 @@ try{
 		<div style = "text-align:center">
 		<input type = "button" value = "뒤로가기" onclick = "location.href = '#'">&nbsp;
 		<input type = "button" value = "수정" onclick = "location.href = '#'">&nbsp;
-		<input type = "button" value = "삭제" onclick = "location.href = 'aCustomerDelete.jsp?id=<%=d_id%>'"></div>
+		<input type = "button" value = "삭제" onclick = "location.href = 'aCustomerDelete.jsp?id=<%=d_id%>&bp=<%=bp%>'"></div>
 	<%}
 	rs.close();
 	stmt.close();

@@ -36,12 +36,6 @@ td, tr, th {
 <title>클릭핀 - 관리자 접속</title>
 </head>
 <body>
-
-	<div style="text-align: center">
-		<font size="15">컨설턴트 등록</font>
-
-	</div>
-
 	<%
 	Connection conn = null;                                        // null로 초기화 한다.
 	ResultSet rs = null;
@@ -72,11 +66,6 @@ td, tr, th {
 		String new_rrn = new_rrn1 + new_rrn2;
 		String new_mail = new_mail1 + "@" + new_mail2;
 		String new_role = "consultant";
-	
-		out.println(new_name+"\n");		
-		out.println(chk_id+"\n");
-
-	
 		
 		String values = "'"+new_id+"','"+new_pw1+"','"+new_name+"','"+new_role+"','"+new_rrn+"','"+new_num+"','"+new_addr+"','"+new_mail+"'";
 		String insert = "insert into users values("+values+")";
@@ -95,11 +84,24 @@ td, tr, th {
 		 alert('아이디 중복확인을 해주세요.');
 		 history.go(-1);
 		</script>
+		<%}
+		else if(new_id.length() < 5) {%>
+		 <script>
+		 alert('아이디는 5글자 이상이여야 합니다.');
+		 history.go(-1);
+		</script>
 		<%
 		}
 		else if(new_pw1.equals("") || new_pw2.equals("") || new_pw1 == null || new_pw2 == null) {%>
 		 <script>
 		 alert('비밀번호를 입력해주세요.');
+		 history.go(-1);
+		</script>
+		<%
+		}
+		else if(new_pw1.length() < 7 || new_pw2.length() < 7 ) {%>
+		 <script>
+		 alert('비밀번호는 7자리 이상이여야 합니다.');
 		 history.go(-1);
 		</script>
 		<%
@@ -125,6 +127,13 @@ td, tr, th {
 		</script>
 		<%
 		}
+		else if(new_rrn1.length() != 6 || new_rrn2.length()!=7) {%>
+		 <script>
+		 alert('주민등록번호를 정확히 입력해주세요.');
+		 history.go(-1);
+		</script>
+		<%
+		}
 		else if(!new_pw1.equals(new_pw2)) {%>
 		 <script>
 		 alert('비밀번호가 다릅니다.');
@@ -140,12 +149,8 @@ td, tr, th {
 		<%
 		}
 		else{
-			rs = stmt.executeQuery(insert);		
-			%>
-			 <script>
-			 alert('등록되었습니다.');
-			</script>
-			<%
+			rs = stmt.executeQuery(insert);	
+			%><script>alert('등록되었습니다!.'); </script><%	
 			response.sendRedirect("aRegitConsultant.jsp");
 		}
 		rs.close();

@@ -7,6 +7,7 @@
 <%
 	String del_id = null;
 	del_id = request.getParameter("id");
+	String bp = request.getParameter("bp");
 %>
 
 <html>
@@ -36,7 +37,13 @@ try{
 	rs = stmt.executeQuery(sql);
 	if(del_id != null){
 		rs = stmt.executeQuery(sql);
-		%><script>alert('삭제되었습니다!.'); location.href = "aInfoCustomerSearch.jsp"</script><%	
+		%><script>alert('삭제되었습니다!.'); </script><%
+		if(bp.equals("all")){
+			%><script>location.href = "aInfoCustom.jsp"</script><%
+		}
+		else{
+			%><script>location.href = "aInfoCustomerSearch.jsp"</script><%
+		}
 		
 	}
 	else{

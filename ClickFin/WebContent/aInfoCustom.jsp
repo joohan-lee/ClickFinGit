@@ -87,7 +87,7 @@ td, tr, th {
 			<td width="100"><div style="text-align: center"><%= id1 %></div></td>
 			<td width="100"><div style="text-align: cente"><%=show_rrn %></div></td>
 			<td width="100"><div style="text-align: cente">
-				<a href = "aInfoCustomer.jsp?id=<%=id1%>">정보보기</a>
+				<a href = "aInfoCustomerDetail.jsp?id=<%=id1%>&back=all">정보보기</a>
 			</div></td>
 		</tr>
 		<%

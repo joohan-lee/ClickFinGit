@@ -127,7 +127,7 @@ function search(){
 		   					<td width="100"><div style="text-align: center"><%=id1%></div></td>
 		   					<td width="100"><div style="text-align: center"><%=show_rrn %></div>
 		   					<td width="100"><div style="text-align: center">
-		   					<a href = "aInfoConsultantDetail.jsp?id=<%=id1%>">정보보기</a>
+		   					<a href = "aInfoConsultantDetail.jsp?id=<%=id1%>&back=search">정보보기</a>
 		   					</div>
 		   				</tr>
 		   				<%	
@@ -141,7 +141,7 @@ function search(){
 		   					<td width="100"><div style="text-align: center"><%=id1%></div></td>
 		   					<td width="100"><div style="text-align: center"><%=show_rrn %></div>
 		   					<td width="100"><div style="text-align: center">
-		   					<a href = "aInfoConsultantDetail.jsp?id=<%=id1%>">정보보기</a>
+		   					<a href = "aInfoConsultantDetail.jsp?id=<%=id1%>&back=search">정보보기</a>
 		   					</div>
 		   				</tr>
 		   				<%	
@@ -155,7 +155,7 @@ function search(){
 		   					<td width="100"><div style="text-align: center"><%=id1%></div></td>
 		   					<td width="100"><div style="text-align: center"><%=show_rrn %></div>
 		   					<td width="100"><div style="text-align: center">
-		   					<a href = "aInfoConsultantDetail.jsp?id=<%=id1%>">정보보기</a>
+		   					<a href = "aInfoConsultantDetail.jsp?id=<%=id1%>&back=search">정보보기</a>
 		   					</div>
 		   				</tr>
 		   				<%	

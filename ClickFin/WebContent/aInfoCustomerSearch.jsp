@@ -35,7 +35,7 @@ function search(){
 		alert('검색 내용을 입력해주세요.');
 	}
 	else{
-		new_url= "aInfoConsultantSearch.jsp?data="+get_data+"&type="+selected;
+		new_url= "aInfoCustomerSearch.jsp?data="+get_data+"&type="+selected;
 		window.location.href = encodeURI(new_url);
 	}
 }
@@ -58,7 +58,7 @@ function search(){
 <body>
 <br><br>
 <form name = "search_form">
-<div style = "text-align:center">컨설턴트 검색 : <input type = "text" maxlength = "15" id = "search_data" name = "search_data">
+<div style = "text-align:center">고객 검색 : <input type = "text" maxlength = "15" id = "search_data" name = "search_data">
 <input type = "button" value = "검색" name = "search_start" onclick = "search()">
 &nbsp; 아이디 검색<input type = "radio" name = "search_type" value = "search_by_id">
 &nbsp; 이름 검색<input type = "radio" name = "search_type" value = "search_by_name">
@@ -127,7 +127,7 @@ function search(){
 		   					<td width="100"><div style="text-align: center"><%=id1%></div></td>
 		   					<td width="100"><div style="text-align: center"><%=show_rrn %></div>
 		   					<td width="100"><div style="text-align: center">
-		   					<a href = "aInfoCustomer.jsp?id=<%=id1%>">정보보기</a>
+		   					<a href = "aInfoCustomerDetail.jsp?id=<%=id1%>&back=search">정보보기</a>
 		   					</div>
 		   				</tr>
 		   				<%	
@@ -141,7 +141,7 @@ function search(){
 		   					<td width="100"><div style="text-align: center"><%=id1%></div></td>
 		   					<td width="100"><div style="text-align: center"><%=show_rrn %></div>
 		   					<td width="100"><div style="text-align: center">
-		   					<a href = "aInfoCustomer.jsp?id=<%=id1%>">정보보기</a>
+		   					<a href = "aInfoCustomerDetail.jsp?id=<%=id1%>&back=search">정보보기</a>
 		   					</div>
 		   				</tr>
 		   				<%	
@@ -155,7 +155,7 @@ function search(){
 		   					<td width="100"><div style="text-align: center"><%=id1%></div></td>
 		   					<td width="100"><div style="text-align: center"><%=show_rrn %></div>
 		   					<td width="100"><div style="text-align: center">
-		   					<a href = "aInfoCustomer.jsp?id=<%=id1%>">정보보기</a>
+		   					<a href = "aInfoCustomerDetail.jsp?id=<%=id1%>&back=search">정보보기</a>
 		   					</div>
 		   				</tr>
 		   				<%	
