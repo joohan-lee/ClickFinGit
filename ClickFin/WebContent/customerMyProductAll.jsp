@@ -39,7 +39,7 @@
 	</ul> 
 
 </nav>
-<div id="content" style="width: 800px">
+<div id="content" >
 <%@ page import = "java.sql.*" %>
 <%@ page import="javax.sql.*" %>
 <%@ page import="javax.naming.*" %>
@@ -87,7 +87,7 @@
 				rs2.next();
 				String rate = rs2.getString("rate");
 				out.println("<tr>");
-				%><td><a href="customerMyInvest.jsp" target ="body"><%
+				%><td><a href="customerMyInvest.jsp"><%
 				//out.println("<td>" + insId + "</td>");
 				out.println(invId);
 				session.setAttribute("invId", invId);
@@ -135,7 +135,7 @@
 				String ensure = rs2.getString("ensure");
 				
 				out.println("<tr>");
-				%><td><a href="customerMyInsurance.jsp" target ="body"><%
+				%><td><a href="customerMyInsurance.jsp" ><%
 				//out.println("<td>" + insId + "</td>");
 				out.println(insId);
 				session.setAttribute("insId", insId);
@@ -182,7 +182,7 @@
 				String type = rs2.getString("type");
 				
 				out.println("<tr>");
-				%><td><a href="customerMyFund.jsp" target ="body"><%
+				%><td><a href="customerMyFund.jsp"><%
 				//out.println("<td>" + insId + "</td>");
 				out.println(funId);
 				session.setAttribute("funId", funId);
@@ -227,7 +227,7 @@
 				String company = rs2.getString("company");
 				
 				out.println("<tr>");
-				%><td><a href="customerMySaving.jsp" target ="body"><%
+				%><td><a href="customerMySaving.jsp"><%
 				//out.println("<td>" + insId + "</td>");
 				out.println(savId);
 				session.setAttribute("savId", savId);
