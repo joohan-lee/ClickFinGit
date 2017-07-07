@@ -85,7 +85,7 @@ html{
       <form action="">
       
          <select id="searchCond" style="width:100px;">
-            <option value="이름">이름</option>
+            <option value="고객 아이디">고객 아이디</option>
          </select>
       
          

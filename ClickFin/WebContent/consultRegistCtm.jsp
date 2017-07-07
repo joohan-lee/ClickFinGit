@@ -50,7 +50,7 @@ td input{
             border: 1px solid gray;">
          <tr>
          	<th>아이디</th>
-         	<td><input type="text" name=""></td>
+         	<td><input type="text" name="cusId"></td>
          	<!-- DB에 이 입력한 아이디 받아서 존재하는지 check_validId만들어 확인 -->
          	<td width="70px">
          	<input type="button" value="아이디확인"
@@ -67,48 +67,45 @@ td input{
          </script>
          <tr>
             <th>이름</th>
-            <td><input type="text" name=""></td>
+            <td><input type="text" name="cusName"></td>
          </tr>
          <tr>
             <th>주민번호</th>
             <td id="rrn">
-            <input type="text" name="rrn_first" width="40%"maxlength="6"
+            <input type="text" name="cusRrnFirst" width="40%"maxlength="6"
             	style="ime-mode:disabled;"onkeyPress="InputOnlyNumber(this);" >
             -
-            <input type="password" name="rrn_second" width="40%"maxlength="7"
+            <input type="password" name="cusRrnSecond" width="40%"maxlength="7"
             	style="ime-mode:disabled;"onkeyPress="InputOnlyNumber(this);" >
             </td>
          </tr>
          <tr>
             <th>연락처</th>
-            <td><input type="text" id="number_value"
+            <td><input type="text" id="number_value" name ="cusPhone"
             	style="ime-mode:disabled;" onkeyPress="InputOnlyNumber(this);" maxlength="11"></td>
          </tr>
          <tr>
             <th>주소</th>
-            <td><input type="text"></td>
+            <td><input type="text" name ="cusAddress"></td>
          </tr>
          <tr>
             <th>결혼유뮤</th>
-            <td><input type="text"></td>
+            <td><input type="text" name = "cusMarry"></td>
          </tr>
          <tr>
             <th>자녀</th>
             <td>
-               <ol>
-                  <li><input type="text" name="child1"></li>
-                  <li><input type="text" name="child2"></li>
-               </ol>
+                <input type="text" name="cusChild">
             </td>
          </tr>
          <tr>
             <th>기념일</th>
-            <td><input type="text"></td>
+            <td><input type="text" name ="cusAnniversary"></td>
          </tr>
          
          
     </table>
-	<input type="button" value="등록" onclick="askCtmRegister();">
+	<input type="button" value="등록" onclick="consulRegistCtmOK.jsp;">
 	<input type="button" value="취소" onclick="history.back();">
 	
 	<script type="text/javascript">
