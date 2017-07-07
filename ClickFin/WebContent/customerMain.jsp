@@ -13,9 +13,6 @@
 	%>
 
 
-<div style = "text-align:right" ><%=user_id %>님 환영합니다.<br>
-<a href ="logout.jsp">로그아웃</a>
-</div>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -29,7 +26,7 @@
 	  <li class="topmenuLi">
 	    <a class="menulink" href="#">개인정보</a>
 			<ul class="submenu">
-				<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="customerMyInfo.jsp" class="submenulink">내 정보</a></li>
+				<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="customerMyInfo.jsp" class="submenulink">내 정보&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
 			</ul>
 		</li>
 			<li>|</li>
@@ -49,6 +46,15 @@
 <title>클릭핀 고객 모드</title>
 </head>
 <body>
+<div class ="loginSquare"><br><br><%=user_id %></b> 님 환영합니다 ! <br>최근 접속 : 2017.07.06 <br> 접속회수 3 / 1111<br>
+    </div>
 
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<input type="button" onClick="location.href = 'logout.jsp'" value="로그아웃" >
+&nbsp;&nbsp;
+<input type="button" onClick="location.href = 'logout.jsp'" value="마이 페이지">         
+ 
+   <div class = "menuSquare"></div>
 </body>
 </html>
