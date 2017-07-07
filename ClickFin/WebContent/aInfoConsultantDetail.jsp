@@ -35,7 +35,7 @@ td, tr, th {
 <title>login</title>
 <body>
 <% 
-Connection conn = null;                                        // null로 초기화 한다.
+Connection conn = null;                                        // null濡� 珥�湲고�� ����.
 ResultSet rs = null;
 Statement stmt = null;
 DataSource ds;
@@ -71,7 +71,7 @@ try{
 				style="border-collapse: collapse; border: 1px gray solid; margin-top: 20px; margin-left: auto; margin-right: auto;">
 				<tr>
 					<td width="20%"><div style="text-align: center">
-							<font size=3>아이디</font>
+							<font size=3>���대��</font>
 						</div></td>
 					<td width="80%"><div style="text-align: center">
 							<font size=3><%=d_id %></font>
@@ -79,7 +79,7 @@ try{
 				</tr>
 				<tr>
 					<td width="20%"><div style="text-align: center">
-							<font size=3>이름</font>
+							<font size=3>�대�</font>
 						</div></td>
 					<td width="80%"><div style="text-align: center">
 							<font size=3><%=d_name %></font>
@@ -87,7 +87,7 @@ try{
 				</tr>
 				<tr>
 					<td width="20%"><div style="text-align: center">
-							<font size=3>주민등록번호</font>
+							<font size=3>二쇰�쇰�깅�踰���</font>
 						</div></td>
 					<td width="80%"><div style="text-align: center">
 							<font size=3><%=d_rrn %></font>
@@ -95,7 +95,7 @@ try{
 				</tr>
 				<tr>
 					<td width="20%"><div style="text-align: center">
-							<font size=3>이메일</font>
+							<font size=3>�대���</font>
 						</div></td>
 					<td width="80%"><div style="text-align: center">
 							<font size=3><%=d_email %></font>
@@ -103,7 +103,7 @@ try{
 				</tr>
 				<tr>
 					<td width="20%"><div style="text-align: center">
-							<font size=3>전화번호</font>
+							<font size=3>����踰���</font>
 						</div></td>
 					<td width="80%"><div style="text-align: center">
 							<font size=3><%=d_num %></font>
@@ -111,7 +111,7 @@ try{
 				</tr>
 				<tr>
 					<td width="20%"><div style="text-align: center">
-							<font size=3>주소</font>
+							<font size=3>二쇱��</font>
 						</div></td>
 					<td width="80%"><div style="text-align: center">
 							<font size=3><%=d_addr %></font>
@@ -123,16 +123,16 @@ try{
 		<br>
 		
 		<div style = "text-align:center">
-		<input type = "button" value = "뒤로가기" onclick = "move_backpage()">&nbsp;
-		<input type = "button" value = "수정" onclick = "location.href = 'aConsultantModify.jsp?id=<%=d_id%>&bp=<%=bp%>'">&nbsp;
-		<input type = "button" value = "삭제" onclick = "location.href = 'aConsultantDelete.jsp?id=<%=d_id%>&bp=<%=bp%>'"></div>
+		<input type = "button" value = "�ㅻ�媛�湲�" onclick = "move_backpage()">&nbsp;
+		<input type = "button" value = "����" onclick = "location.href = 'aConsultantModify.jsp?id=<%=d_id%>&bp=<%=bp%>'">&nbsp;
+		<input type = "button" value = "����" onclick = "location.href = 'aConsultantDelete.jsp?id=<%=d_id%>&bp=<%=bp%>'"></div>
 	<%}
 	rs.close();
 	stmt.close();
 	conn.close();
-	}catch(Exception e){                                                    // 예외가 발생하면 예외 상황을 처리한다.
+	}catch(Exception e){                                                    // ���멸� 諛�����硫� ���� ���⑹�� 泥�由ы����.
 		e.printStackTrace();
-		out.println("연결실패");
+		out.println("�곌껐�ㅽ��");
 	}
 	%>
 	
