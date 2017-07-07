@@ -51,7 +51,7 @@ td,tr,th{
             <ul class="sub">
                 <li><a href="consultShowAllCustom.jsp">고객 전체 현황</a></li>
                 <li><a href="consultCtmInfoView.jsp">고객별 개인정보</a></li>
-                <li><a href="#">고객별 가입상품현황</a></li>                   
+                <li><a href="consultCtmProductAll.jsp">고객별 가입상품현황</a></li>                   
             </ul>
         </li>
         <li class="group">
@@ -175,7 +175,7 @@ session.setAttribute("cusAnniversary", anniversary);
 <!-- Button for modifying Customers' personal Info -->
    <div width="70%">
       <br>
-      <form action="consultCtmInfoModify.jsp">
+      <form action="consultCtmInfoModify.jsp" method="post">
       <%session.setAttribute("searchStr",searchStr);
       //response.sendRedirect("consultCtmInfoModify.jsp");%>
       <input type="button" value="검색한 고객정보수정" style="float:right;"

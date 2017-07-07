@@ -5,8 +5,8 @@
 	userId = (String)session.getAttribute("userId");
 	if(userId == null || userId.equals(""))
 	{
-		%><script>//alert("잘못된 로그인");
-		//location.href("login.html");
+		%><script>alert("잘못된 로그인");
+		location.href("login.html");
 		</script><%
 		
 	}%>
@@ -72,7 +72,7 @@ td input{
          <tr>
             <th>주민번호</th>
             <td id="rrn">
-            <input type="text" name="rrn_first" width="40%"maxlength="6"
+            <input type="text" name="rrn" width="40%"maxlength="6"
             	style="ime-mode:disabled;"onkeyPress="InputOnlyNumber(this);" >
             -
             <input type="password" name="rrn_second" width="40%"maxlength="7"
@@ -123,7 +123,7 @@ td input{
 	}
 	</script>
 	
-	<script>
+	<script type="text/javascript">
          		function InputOnlyNumber(obj){
          			if(event.keyCode>=48&&event.keyCode<=57){
          				//숫자키만입력

@@ -45,7 +45,7 @@
 	<%=searchStr %>고객님의 정보 수정
 	</div>
 	<div id="content">
-	<form action="consultCtmInfoModifyOK.jsp">
+	<form action="consultCtmInfoModifyOK.jsp" method="post">
 	<table width="70%">
     	<tr>
     		<th>이름 : </th>

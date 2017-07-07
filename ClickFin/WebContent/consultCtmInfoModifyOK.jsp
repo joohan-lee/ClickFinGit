@@ -50,7 +50,7 @@ try{
 	{%>
 		<script>
 		alert('수정되었습니다.');
-		location.href("./consultCtmInfoView.jsp");
+		location.href='consultCtmInfoView.jsp';
 		</script>
 	<% }
 	else

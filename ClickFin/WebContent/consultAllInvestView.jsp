@@ -9,9 +9,7 @@
 		</script><%
 		
 	}%>
-	
-<%!int numOfProduct=1;%>
-	
+	<%String searchStr = request.getParameter("searchStr");%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -82,7 +80,7 @@ th, td, tr{
             <ul class="sub">
                 <li><a href="consultShowAllCustom.jsp">고객 전체 현황</a></li>
                 <li><a href="consultCtmInfoView.jsp">고객별 개인정보</a></li>
-                <li><a href="#">고객별 가입상품현황</a></li>                   
+                <li><a href="consultCtmProductAll.jsp">고객별 가입상품현황</a></li>                   
             </ul>
         </li>
         <li class="group">
@@ -119,14 +117,14 @@ th, td, tr{
             		//window.alert("당신의 관심사항 : " + ctrlSelect.value );
        			 }
    			 }
- 		 </script>
+ 		</script>
 		
 		<input type="text" name="searchStr" style="width:300px">
 		<input type="submit" value="검색" onclick="CheckSelect();")>
 		
 		</form>
 		
-		<div id="currentState">
+		<div>
 			<caption style="float:left">
 					<form action="consultAllInvestView.jsp" id="setRows">
 						<br>
@@ -138,6 +136,7 @@ th, td, tr{
 					</form>
 			</caption>
 			
+			<%if(!"".equals(searchStr)&&searchStr!=null){ %>
 			<table class="paginated" width="600px">
 				<thead></thead>
 				<tbody>
@@ -146,11 +145,13 @@ th, td, tr{
 				  		<thead>
 							<tr>
    			     		    	<th>순번</th>
-								<th>상품명</th>
-								<th>투자기간</th>
-								<th>투자금액</th>
-								<th>투자수익률</th>
-								<th>가입자</th>
+   			     		    	<th>고객명</th>
+								<th>투자번호</th>
+            					<th>상품이름</th>
+         					    <th>투자기간</th>
+            					<th>투자금액</th>
+            					<th>투자수익률</th>
+            					<th>배당금지급일</th>
 							</tr>
   		 				</thead>
    				
@@ -158,19 +159,20 @@ th, td, tr{
 							<%for(int i=1;i<=200;i++){%>
 							<tr>
 								<td><%= i %></td>
-								<td>무배당 라이프</td>
-								<td>170704-180704</td>
+								<td><%=searchStr%></td>
+								<td>170704</td>
+								<td>180704</td>
 								<td>100,000,000</td>
 								<td>7%</td>
 								<td>김동현</td>
+								<td></td>
 							</tr>
 							<%
 							}
-							//원래 그리드생성해서 하는게 맞는듯.
 							%>
 						</tbody>
 					</table>
-		
+			<%} %>
 		</div>
 		
 		<script>

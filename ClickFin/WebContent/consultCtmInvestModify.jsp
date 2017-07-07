@@ -40,7 +40,7 @@ td input{
 <body>
 
 <div id="content" style="width:400px">
-	<form action="//고객 상품정보, 증서 보낼 jsp로 전송" method="post" enctype="multipart/form-data">
+	<form action="//고객 상품정보, 증서 보낼 jsp로 전송" method="post">
 	<table style="border-collapse:collapse;border:1px gray solid;
 		text-align: center;float:center;">
 		<tr>
@@ -86,6 +86,5 @@ td input{
 	</form>
 	
 </div>
-
 </body>
 </html>

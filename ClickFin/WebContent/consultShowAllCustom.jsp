@@ -46,7 +46,7 @@ td, tr, th{
             <ul class="sub">
                 <li><a href="consultShowAllCustom.jsp">고객 전체 현황</a></li>
                 <li><a href="consultCtmInfoView.jsp">고객별 개인정보</a></li>
-                <li><a href="#">고객별 가입상품현황</a></li>                   
+                <li><a href="consultCtmProductAll.jsp">고객별 가입상품현황</a></li>                   
             </ul>
         </li>
         <li class="group">
@@ -135,7 +135,11 @@ td, tr, th{
       out.println("연결실패");
    }
     %>
-       
+    
+    <input type="button" value="고객 상품등록" style="margin:10px;float:right"
+    onclick="location.href='consultRegistWhichProduct.jsp'">
+    <input type="button" value="고객 등록하기" style="margin:10px;float:right"
+   	onclick="location.href='consultRegistCtm.jsp'")>
     
     </div>
 </div>

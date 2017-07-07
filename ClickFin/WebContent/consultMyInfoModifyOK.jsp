@@ -41,7 +41,7 @@ try{
 	{%>
 		<script>
 		alert('수정되었습니다.');
-		location.href("./consultMyInfoView.jsp");
+		location.href='consultMyInfoView.jsp';
 		</script>
 	<% }
 	else

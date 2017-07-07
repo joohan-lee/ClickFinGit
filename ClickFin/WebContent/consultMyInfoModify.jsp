@@ -29,7 +29,7 @@
 	내 정보 수정
 	</div>
 	<div id="content">
-	<form action="consultMyInfoModifyOK.jsp">
+	<form action="consultMyInfoModifyOK.jsp" method="post">
 	<table>
     	<tr>
     		<th>이름 : </th>

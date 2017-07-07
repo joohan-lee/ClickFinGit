@@ -51,7 +51,7 @@ th{
 			<td></td>
 		</tr>
 		<tr>
-			<th>투자수익률</th>
+			<th>투자 수익률</th>
 			<td></td>
 		</tr>
 		<tr>

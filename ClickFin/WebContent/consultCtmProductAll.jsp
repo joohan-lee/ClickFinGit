@@ -128,7 +128,7 @@ html{
        <h4>- 투자</h4>
        <table id="productCtmAll">
           <tr>
-             <th>투자번호</th>
+            <th>투자번호</th>
             <th>상품이름</th>
             <th>투자기간</th>
             <th>투자금액</th>
@@ -174,7 +174,7 @@ html{
        <h4>- 보험</h4>
        <table id="productCtmAll">
           <tr>
-             <th>보험번호</th>
+            <th>보험번호</th>
             <th>상품이름</th>
             <th>납입기간</th>
             <th>회사</th>
@@ -200,7 +200,7 @@ html{
 				String ensure = rs2.getString("ensure");
 				
 				out.println("<tr>");
-				%><td><a href="onsultCtmInsuranceView.jsp" target ="body"><%
+				%><td><a href="consultCtmInsuranceView.jsp" target ="body"><%
 				//out.println("<td>" + insId + "</td>");
 				out.println(insId);
 				session.setAttribute("insId", insId);
@@ -270,7 +270,6 @@ html{
 		%>
 		<h4>- 저축</h4>
        <table id="productCtmAll">
-       <table>
 	    <thead>
 			<th>저축번호</th>
 			<th>상품이름</th>
@@ -296,7 +295,7 @@ html{
 				String company = rs2.getString("company");
 				
 				out.println("<tr>");
-				%><td><a href="onsultCtmSavingView.jsp" target ="body"><%
+				%><td><a href="consultCtmSavingView.jsp" target ="body"><%
 				//out.println("<td>" + insId + "</td>");
 				out.println(savId);
 				session.setAttribute("savId", savId);
