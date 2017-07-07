@@ -1,9 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+ pageEncoding="UTF-8"%>
+<% request.setCharacterEncoding("UTF-8");%>
+
 <%@ page import="java.sql.*"%>
 <%@ page import="javax.sql.*"%>
 <%@ page import="javax.naming.*"%>
-<% request.setCharacterEncoding("euc-kr"); %>
 <%
 	String id = "";
 	id = (String)session.getAttribute("userId");
@@ -14,51 +15,51 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<title>ÄÁ¼³ÅÏÆ® ³»Á¤º¸º¸±â</title>
+<title>ì»¨ì„¤í„´íŠ¸ ë‚´ì •ë³´ë³´ê¸°</title>
 <meta charset="UTF-8">
 <link rel="stylesheet" href="navbar.css">
 </head>
-<font size="20px" ,style="text-align: center">Click Fin _ ÄÁ¼³ÅÏÆ®¸ðµå</font>
+<font size="20px" ,style="text-align: center">Click Fin _ ì»¨ì„¤í„´íŠ¸ëª¨ë“œ</font>
 
 <style>
 </style>
 
 <body>
 	<br>
-	<div style="text-align: right"><%=id %>´Ô È¯¿µÇÕ´Ï´Ù.<br> <a
-			href="logout.jsp">·Î±×¾Æ¿ô</a>
+	<div style="text-align: right"><%=id %>ë‹˜ í™˜ì˜í•©ë‹ˆë‹¤.<br> <a
+			href="logout.jsp">ë¡œê·¸ì•„ì›ƒ</a>
 	</div>
 	<div id="container" style="width: 1000px;">
 		<div id="menu" style="width: 200px; float: left;">
 			<ul id="navi">
 				<li class="group">
-					<div class="title">ÄÁ¼³ÅÏÆ®</div>
+					<div class="title">ì»¨ì„¤í„´íŠ¸</div>
 					<ul class="sub">
-						<li><a href="consultMyInfoView.jsp">°³ÀÎÁ¤º¸</a></li>
+						<li><a href="consultMyInfoView.jsp">ê°œì¸ì •ë³´</a></li>
 					</ul>
 				</li>
 				<li class="group">
-					<div class="title">°í°´°ü¸®</div>
+					<div class="title">ê³ ê°ê´€ë¦¬</div>
 					<ul class="sub">
-						<li><a href="consultShowAllCustom.jsp">°í°´ ÀüÃ¼ ÇöÈ²</a></li>
-						<li><a href="consultCtmInfoView.jsp">°í°´º° °³ÀÎÁ¤º¸</a></li>
-						<li><a href="#">°í°´º° °¡ÀÔ»óÇ°ÇöÈ²</a></li>
+						<li><a href="consultShowAllCustom.jsp">ê³ ê° ì „ì²´ í˜„í™©</a></li>
+						<li><a href="consultCtmInfoView.jsp">ê³ ê°ë³„ ê°œì¸ì •ë³´</a></li>
+						<li><a href="consultCtmProductAll.jsp">ê³ ê°ë³„ ê°€ìž…ìƒí’ˆí˜„í™©</a></li>
 					</ul>
 				</li>
 				<li class="group">
-					<div class="title">»óÇ°º° ÇöÈ²</div>
+					<div class="title">ìƒí’ˆë³„ í˜„í™©</div>
 					<ul class="sub">
-						<li><a href="consultAllInvestView.jsp">ÅõÀÚ</a></li>
-						<li><a href="#">º¸Çè</a></li>
-						<li><a href="#">ÆÝµå</a></li>
-						<li><a href="#">Àû±Ý ¿¹±Ý</a></li>
-						<li><a href="#">±âÅ¸</a></li>
+						<li><a href="consultAllInvestView.jsp">íˆ¬ìž</a></li>
+						<li><a href="#">ë³´í—˜</a></li>
+						<li><a href="#">íŽ€ë“œ</a></li>
+						<li><a href="#">ì ê¸ˆ ì˜ˆê¸ˆ</a></li>
+						<li><a href="#">ê¸°íƒ€</a></li>
 					</ul>
 				</li>
 			</ul>
 
 	<%
-	Connection conn = null;                                        // null·Î ÃÊ±âÈ­ ÇÑ´Ù.
+	Connection conn = null;                                        // nullë¡œ ì´ˆê¸°í™” í•œë‹¤.
 	ResultSet rs = null;
 	Statement stmt = null;
 	DataSource ds;
@@ -91,22 +92,22 @@ session.setAttribute("consultantEmail", email);
 		</div>
 		<div id="content"
 			style="text-align: left; width: 500px; float: left; margin-left: 30px;">
-			<h2>³» Á¤º¸</h2>
+			<h2>ë‚´ ì •ë³´</h2>
 			<table>
 				<tr>
-					<th>ÀÌ¸§ :</th>
-					<td><%=name %><!-- DB¿¡¼­ ¹Þ¾Æ¿À±â --></td>
+					<th>ì´ë¦„ :</th>
+					<td><%=name %><!-- DBì—ì„œ ë°›ì•„ì˜¤ê¸° --></td>
 				</tr>
 				<tr>
-					<th>ÀüÈ­¹øÈ£ :</th>
+					<th>ì „í™”ë²ˆí˜¸ :</th>
 					<td><%=phone %></td>
 				</tr>
 				<tr>
-					<th>ÁÖ¼Ò :</th>
+					<th>ì£¼ì†Œ :</th>
 					<td><%=address %></td>
 				</tr>
 				<tr>
-					<th>ÀÌ¸ÞÀÏ :</th>
+					<th>ì´ë©”ì¼ :</th>
 					<td><%=email %></td>
 				</tr>
 			</table>
@@ -123,7 +124,7 @@ session.setAttribute("consultantEmail", email);
    }
 %>
 	<form>
-		<input type="button" value="°³ÀÎÁ¤º¸¼öÁ¤"
+		<input type="button" value="ê°œì¸ì •ë³´ìˆ˜ì •"
 			onclick="location.href='consultMyInfoModify.jsp'">
 	</form>
 </body>

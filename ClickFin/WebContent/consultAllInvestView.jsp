@@ -1,150 +1,149 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+ pageEncoding="UTF-8"%>
+<% request.setCharacterEncoding("UTF-8");%>
+
 <%@ page import="java.sql.*"%>
 <%@ page import="javax.sql.*"%>
 <%@ page import="javax.naming.*"%>
 <% String userId = "";
-	userId = (String)session.getAttribute("userId");
-	if(userId == null || userId.equals(""))
-	{
-		%><script>alert("Àß¸øµÈ ·Î±×ÀÎ");
-		location.href("login.html");
-		</script>
+   userId = (String)session.getAttribute("userId");
+   if(userId == null || userId.equals(""))
+   {
+      %><script>alert("ì˜ëª»ëœ ë¡œê·¸ì¸");
+      location.href("login.html");
+      </script>
 <%
-		
-	}%>
-
-<%!int numOfProduct=1;%>
-
+      
+   }%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<title>»óÇ°º° ÇöÈ² - ÅõÀÚ</title>
+<title>ìƒí’ˆë³„ í˜„í™© - íˆ¬ì</title>
 <link rel="stylesheet" href="navbar.css">
 
 <script src="scripts/jquery-1.6.2.min.js"></script>
 <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
 
 </head>
-<font size="20px" ,style="text-align: center">Click Fin _ ÄÁ¼³ÅÏÆ®¸ğµå</font>
+<font size="20px" ,style="text-align: center">Click Fin _ ì»¨ì„¤í„´íŠ¸ëª¨ë“œ</font>
 
 <style>
 #current form {
-	width: 500px;
+   width: 500px;
 }
 
 table {
-	border-collapse: collapse;
-	border: 1px gray solid;
-	margin-bottom: 10px;
+   border-collapse: collapse;
+   border: 1px gray solid;
+   margin-bottom: 10px;
 }
 
 th, td, tr {
-	border: 1px gray solid;
-	padding: 3px 10px;
+   border: 1px gray solid;
+   padding: 3px 10px;
 }
 
 .off-screen {
-	display: none;
+   display: none;
 }
 
 #nav {
-	width: 500px;
-	text-align: center;
+   width: 500px;
+   text-align: center;
 }
 
 #nav a {
-	display: inline-block;
-	padding: 3px 5px;
-	margin-right: 10px;
-	font-family: Tahoma;
-	background: #ccc;
-	color: #000;
-	text-decoration: none;
+   display: inline-block;
+   padding: 3px 5px;
+   margin-right: 10px;
+   font-family: Tahoma;
+   background: #ccc;
+   color: #000;
+   text-decoration: none;
 }
 
 #nav a.active {
-	background: #333;
-	color: #fff;
+   background: #333;
+   color: #fff;
 }
 </style>
 
 
 <body>
-	<br>
-	<div style="text-align: right"><%=userId %>´Ô È¯¿µÇÕ´Ï´Ù.<br> <a
-			href="logout.jsp">·Î±×¾Æ¿ô</a>
-	</div>
-	<!-- navigator -->
-	<div id="container" style="width: 1000px;">
-		<div id="menu" style="width: 200px; float: left;">
-			<ul id="navi">
-				<li class="group">
-					<div class="title">ÄÁ¼³ÅÏÆ®</div>
-					<ul class="sub">
-						<li><a href="consultMyInfoView.jsp">°³ÀÎÁ¤º¸</a></li>
-					</ul>
-				</li>
-				<li class="group">
-					<div class="title">°í°´°ü¸®</div>
-					<ul class="sub">
-						<li><a href="consultShowAllCustom.jsp">°í°´ ÀüÃ¼ ÇöÈ²</a></li>
-						<li><a href="consultCtmInfoView.jsp">°í°´º° °³ÀÎÁ¤º¸</a></li>
-						<li><a href="#">°í°´º° °¡ÀÔ»óÇ°ÇöÈ²</a></li>
-					</ul>
-				</li>
-				<li class="group">
-					<div class="title">»óÇ°º° ÇöÈ²</div>
-					<ul class="sub">
-						<li><a href="consultAllInvestView.jsp">ÅõÀÚ</a></li>
-						<li><a href="#">º¸Çè</a></li>
-						<li><a href="#">Æİµå</a></li>
-						<li><a href="#">Àû±İ ¿¹±İ</a></li>
-						<li><a href="#">±âÅ¸</a></li>
-					</ul>
-				</li>
-			</ul>
-		</div>
+   <br>
+   <div style="text-align: right"><%=userId %>ë‹˜ í™˜ì˜í•©ë‹ˆë‹¤.<br> <a
+         href="logout.jsp">ë¡œê·¸ì•„ì›ƒ</a>
+   </div>
+   <!-- navigator -->
+   <div id="container" style="width: 1000px;">
+      <div id="menu" style="width: 200px; float: left;">
+         <ul id="navi">
+            <li class="group">
+               <div class="title">ì»¨ì„¤í„´íŠ¸</div>
+               <ul class="sub">
+                  <li><a href="consultMyInfoView.jsp">ê°œì¸ì •ë³´</a></li>
+               </ul>
+            </li>
+            <li class="group">
+               <div class="title">ê³ ê°ê´€ë¦¬</div>
+               <ul class="sub">
+                  <li><a href="consultShowAllCustom.jsp">ê³ ê° ì „ì²´ í˜„í™©</a></li>
+                  <li><a href="consultCtmInfoView.jsp">ê³ ê°ë³„ ê°œì¸ì •ë³´</a></li>
+                  <li><a href="consultCtmProductAll.jsp">ê³ ê°ë³„ ê°€ì…ìƒí’ˆí˜„í™©</a></li>
+               </ul>
+            </li>
+            <li class="group">
+               <div class="title">ìƒí’ˆë³„ í˜„í™©</div>
+               <ul class="sub">
+                  <li><a href="consultAllInvestView.jsp">íˆ¬ì</a></li>
+                  <li><a href="#">ë³´í—˜</a></li>
+                  <li><a href="#">í€ë“œ</a></li>
+                  <li><a href="#">ì ê¸ˆ ì˜ˆê¸ˆ</a></li>
+                  <li><a href="#">ê¸°íƒ€</a></li>
+               </ul>
+            </li>
+         </ul>
+      </div>
 
-		<!-- Investing Items' current state View -->
-		<div id="content" style="width: 800px;">
-			<h2>»óÇ°º° ÇöÈ² - ÅõÀÚ</h2>
-			<form action="consultAllInvestView.jsp">
-				<select id="searchCond" width="100px">
-					<option value="ÀüÃ¼">-ÀüÃ¼-</option>
-					<option value="ÀÌ¸§">ÀÌ¸§</option>
-					<option value="¿¬¶ôÃ³">¿¬¶ôÃ³</option>
-				</select>
+      <!-- Investing Items' current state View -->
+      <div id="content" style="width: 800px;">
+         <h2>ìƒí’ˆë³„ í˜„í™© - íˆ¬ì</h2>
+         <form action="consultAllInvestView.jsp">
+            <select id="searchCond" width="100px">
+               <option value="ì „ì²´">-ì „ì²´-</option>
+               <option value="ì´ë¦„">ì´ë¦„</option>
+               <option value="ì—°ë½ì²˜">ì—°ë½ì²˜</option>
+            </select>
 
-				<!-- ¼±ÅÃµÈ select¸Ş´º -->
-				<script type="text/javascript">
-   			 function CheckSelect(){
-       		 	var ctrlSelect = document.getElementById("searchCond");
-        		if( ctrlSelect.selectedIndex == 0){
-            	//alert("°ü½É»çÇ×À» ¼±ÅÃÇÏ½Ã¿À.");
-        		    ctrlSelect.focus();
-       			 }else{
-            		//window.alert("´ç½ÅÀÇ °ü½É»çÇ× : " + ctrlSelect.value );
-       			 }
-   			 }
- 		 </script>
+            <!-- ì„ íƒëœ selectë©”ë‰´ -->
+            <script type="text/javascript">
+             function CheckSelect(){
+                 var ctrlSelect = document.getElementById("searchCond");
+              if( ctrlSelect.selectedIndex == 0){
+               //alert("ê´€ì‹¬ì‚¬í•­ì„ ì„ íƒí•˜ì‹œì˜¤.");
+                  ctrlSelect.focus();
+                 }else{
+                  //window.alert("ë‹¹ì‹ ì˜ ê´€ì‹¬ì‚¬í•­ : " + ctrlSelect.value );
+                 }
+             }
+        </script>
 
-				<input type="text" name="searchStr" style="width: 300px"> <input
-					type="submit" value="°Ë»ö" onclick="CheckSelect();")>
+            <input type="text" name="searchStr" style="width: 300px"> <input
+               type="submit" value="ê²€ìƒ‰" onclick="CheckSelect();")>
 
-			</form>
+         </form>
 
-			<div id="currentState">
-				<caption style="float: left">
-					<form action="consultAllInvestView.jsp" id="setRows">
-						<br> <select>
-							<option value="10" name="rowPerPage">10ÁÙº¸±â</option>
-							<option value="20" name="rowPerPage">20ÁÙº¸±â</option>
-							<option value="100" name="rowPerPage">100ÁÙº¸±â</option>
-						</select>
-					</form>
-				</caption>
+         <div id="currentState">
+            <caption style="float: left">
+               <form action="consultAllInvestView.jsp" id="setRows">
+                  <br> <select>
+                     <option value="10" name="rowPerPage">10ì¤„ë³´ê¸°</option>
+                     <option value="20" name="rowPerPage">20ì¤„ë³´ê¸°</option>
+                     <option value="100" name="rowPerPage">100ì¤„ë³´ê¸°</option>
+                  </select>
+               </form>
+            </caption>
 
 <%
    Connection conn = null;                                      
@@ -160,24 +159,24 @@ th, td, tr {
       Statement stmt2 = conn.createStatement();
       Statement stmt3 = conn.createStatement();
       %>
-				<table class="paginated" width="600px">
-					<thead></thead>
-					<tbody>
-						<table id="products" border="1" style="text-align: center;">
+            <table class="paginated" width="600px">
+               <thead></thead>
+               <tbody>
+                  <table id="products" border="1" style="text-align: center;">
 
-							<thead>
-								<tr>
-									<th>¼ø¹ø</th>
-									<th>»óÇ°¸í</th>
-									<th>ÅõÀÚ±â°£</th>
-									<th>ÅõÀÚ±İ¾×</th>
-									<th>ÅõÀÚ¼öÀÍ·ü</th>
-									<th>°¡ÀÔÀÚ</th>
-								</tr>
-							</thead>
+                     <thead>
+                        <tr>
+                           <th>ìˆœë²ˆ</th>
+                           <th>ìƒí’ˆëª…</th>
+                           <th>íˆ¬ìê¸°ê°„</th>
+                           <th>íˆ¬ìê¸ˆì•¡</th>
+                           <th>íˆ¬ììˆ˜ìµë¥ </th>
+                           <th>ê°€ì…ì</th>
+                        </tr>
+                     </thead>
 
-							<tbody id="investTbody">
-								<%
+                     <tbody id="investTbody">
+                        <%
          rs1 = stmt1.executeQuery("SELECT id, name FROM users WHERE id IN ("+
                  "SELECT id FROM customer WHERE consul_id = '"+ userId  +"')");
          int i=0;
@@ -209,108 +208,108 @@ th, td, tr {
             }
          }
            %>
-							</tbody>
-						</table>
+                     </tbody>
+                  </table>
 <%
    } catch(Exception e){
       e.printStackTrace();
-      out.println("¿¬°á½ÇÆĞ");
+      out.println("ì—°ê²°ì‹¤íŒ¨");
    }
     %>
-						</div>
 
-						<script>
-		//Ç¥ÀÇ ³»¿ëÀÌ ³Ê¹« ¸¹À» ¶§ ³ª´©¾î ÆäÀÌÂ¡ÇØÁÜ.
-		var $setRows = $('#setRows');
+               </tbody>
+            </table>
+         </div>
 
-		$setRows.submit(function (e) {
-		    e.preventDefault();
-		    var rowPerPage = $('[name="rowPerPage"]').val() * 1;// 1 À»  °öÇÏ¿© ¹®ÀÚ¿­À» ¼ıÀÚÇü·Î º¯È¯
+      </div>
 
-//		      console.log(typeof rowPerPage);
-
-		    var zeroWarning = 'Sorry, but we can\'t display "0" rows page. + \nPlease try again.'
-		    if (!rowPerPage) {
-		        alert(zeroWarning);
-		        return;
-		    }
-		    $('#nav').remove();
-		    var $products = $('#products');
-			
-		    $products.after('<div id="nav" style="float:center;width:700px">');
-
-
-		    var $tr = $($products).find('tbody tr');
-		    var rowTotals = $tr.length;
-		//  console.log(rowTotals);
-
-		    var pageTotal = Math.ceil(rowTotals/ rowPerPage);
-		    var i = 0;
-		    var j = 0;
-		    
-		    $('<a href="#"></a>')
-		   			.attr('rel', j-1)
-		   			.html('back')
-		   			.appendTo('#nav')
-		    for (; i < pageTotal/10 + 1; i++) {
-		    	for(;j<10;j++){
-		        $('<a href="#"></a>')
-		                .attr('rel', j)
-		                .html(j + 1 + i*10)
-		                .appendTo('#nav');
-		    	}
-		    }
-		    $('<a href="#"></a>')
-				.attr('rel', j+1)
-				.html('front')
-				.appendTo('#nav')
-			
-		    $tr.addClass('off-screen')
-		            .slice(0, rowPerPage)
-		            .removeClass('off-screen');
-
-		    var $pagingLink = $('#nav a');
-		    $pagingLink.on('click', function (evt) {
-		        evt.preventDefault();
-		        var $this = $(this);
-		        if ($this.hasClass('active')) {
-		            return;
-		        }
-		        $pagingLink.removeClass('active');
-		        $this.addClass('active');
-
-		        // 0 => 0(0*4), 4(0*4+4)
-		        // 1 => 4(1*4), 8(1*4+4)
-		        // 2 => 8(2*4), 12(2*4+4)
-		        // ½ÃÀÛ Çà = ÆäÀÌÁö ¹øÈ£ * ÆäÀÌÁö´ç Çà¼ö
-		        // ³¡ Çà = ½ÃÀÛ Çà + ÆäÀÌÁö´ç Çà¼ö
-
-		        var currPage = $this.attr('rel');
-		        var startItem = currPage * rowPerPage;
-		        var endItem = startItem + rowPerPage;
-
-		        $tr.css('opacity', '0.0')
-		                .addClass('off-screen')
-		                .slice(startItem, endItem)
-		                .removeClass('off-screen')
-		                .animate({opacity: 1}, 300);
-
-		    });
-
-		    $pagingLink.filter(':first').addClass('active');
-
-		});
-
-
-		$setRows.submit();
-		
-		</script>
-					</tbody>
-				</table>
-			</div>
-
-		</div>
-
-	</div>
+   </div>
 </body>
+      <script>
+      //í‘œì˜ ë‚´ìš©ì´ ë„ˆë¬´ ë§ì„ ë•Œ ë‚˜ëˆ„ì–´ í˜ì´ì§•í•´ì¤Œ.
+      var $setRows = $('#setRows');
+
+      $setRows.submit(function (e) {
+          e.preventDefault();
+          var rowPerPage = $('[name="rowPerPage"]').val() * 1;// 1 ì„  ê³±í•˜ì—¬ ë¬¸ìì—´ì„ ìˆ«ìí˜•ë¡œ ë³€í™˜
+
+//            console.log(typeof rowPerPage);
+
+          var zeroWarning = 'Sorry, but we can\'t display "0" rows page. + \nPlease try again.'
+          if (!rowPerPage) {
+              alert(zeroWarning);
+              return;
+          }
+          $('#nav').remove();
+          var $products = $('#products');
+         
+          $products.after('<div id="nav" style="float:center;width:700px">');
+
+
+          var $tr = $($products).find('tbody tr');
+          var rowTotals = $tr.length;
+      //  console.log(rowTotals);
+
+          var pageTotal = Math.ceil(rowTotals/ rowPerPage);
+          var i = 0;
+          var j = 0;
+          
+          $('<a href="#"></a>')
+                  .attr('rel', j-1)
+                  .html('back')
+                  .appendTo('#nav')
+          for (; i < pageTotal/10 + 1; i++) {
+             for(;j<10;j++){
+              $('<a href="#"></a>')
+                      .attr('rel', j)
+                      .html(j + 1 + i*10)
+                      .appendTo('#nav');
+             }
+          }
+          $('<a href="#"></a>')
+            .attr('rel', j+1)
+            .html('front')
+            .appendTo('#nav')
+         
+          $tr.addClass('off-screen')
+                  .slice(0, rowPerPage)
+                  .removeClass('off-screen');
+
+          var $pagingLink = $('#nav a');
+          $pagingLink.on('click', function (evt) {
+              evt.preventDefault();
+              var $this = $(this);
+              if ($this.hasClass('active')) {
+                  return;
+              }
+              $pagingLink.removeClass('active');
+              $this.addClass('active');
+
+              // 0 => 0(0*4), 4(0*4+4)
+              // 1 => 4(1*4), 8(1*4+4)
+              // 2 => 8(2*4), 12(2*4+4)
+              // ì‹œì‘ í–‰ = í˜ì´ì§€ ë²ˆí˜¸ * í˜ì´ì§€ë‹¹ í–‰ìˆ˜
+              // ë í–‰ = ì‹œì‘ í–‰ + í˜ì´ì§€ë‹¹ í–‰ìˆ˜
+
+              var currPage = $this.attr('rel');
+              var startItem = currPage * rowPerPage;
+              var endItem = startItem + rowPerPage;
+
+              $tr.css('opacity', '0.0')
+                      .addClass('off-screen')
+                      .slice(startItem, endItem)
+                      .removeClass('off-screen')
+                      .animate({opacity: 1}, 300);
+
+          });
+
+          $pagingLink.filter(':first').addClass('active');
+
+      });
+
+
+      $setRows.submit();
+      
+      </script>
+      
 </html>

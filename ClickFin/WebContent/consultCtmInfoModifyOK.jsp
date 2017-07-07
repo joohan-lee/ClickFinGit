@@ -1,8 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
-    <%@ page import = "java.sql.*" %>
-<%@ page import="javax.sql.*" %>
-<%@ page import="javax.naming.*" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+ pageEncoding="UTF-8"%>
+<% request.setCharacterEncoding("UTF-8");%>
+
+<%@ page import="java.sql.*"%>
+<%@ page import="javax.sql.*"%>
+<%@ page import="javax.naming.*"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <%
 String id = (String)session.getAttribute("userId");
@@ -23,53 +25,53 @@ String anniversary = request.getParameter("cusMyAnniversary");
 </head>
 <body>
 <% 
-Connection conn = null;                                        // null·Î ÃÊ±âÈ­ ÇÑ´Ù.
+Connection conn = null;                                        // nullë¡œ ì´ˆê¸°í™” í•œë‹¤.
 ResultSet rs = null;
 Statement stmt = null;
 DataSource ds;
 try{
-	Context init = new InitialContext();
-	ds = (DataSource)init.lookup("java:comp/env/jdbc/oracle");
-	conn = ds.getConnection();
-	stmt = conn.createStatement();
-	if(name.equals("")||phone.equals("")||address.equals("")||rrn.equals("")||marry.equals("")||anniversary.equals("")||child.equals("")) {%>
-	<script>
-	alert('Ç×¸ñÀ» ¸ğµÎ Ã¤¿öÁÖ¼¼¿ä.');
-	history.go(-1);
-	</script>
-	<%
-	}
+   Context init = new InitialContext();
+   ds = (DataSource)init.lookup("java:comp/env/jdbc/oracle");
+   conn = ds.getConnection();
+   stmt = conn.createStatement();
+   if(name.equals("")||phone.equals("")||address.equals("")||rrn.equals("")||marry.equals("")||anniversary.equals("")||child.equals("")) {%>
+   <script>
+   alert('í•­ëª©ì„ ëª¨ë‘ ì±„ì›Œì£¼ì„¸ìš”.');
+   history.go(-1);
+   </script>
+   <%
+   }
 
-	String sql1 = "update users set name = '" +name +"' ,phone= '" +phone +"' ,address= '" +address+ "' ,rrn='"+rrn+"' where name = '"+searchStr+"'";
-	int result1 = stmt.executeUpdate(sql1);
-	
-	String sql2 = "update customer set marry = '" +marry +"' ,child= '" +child +"' ,anniversary= '" +anniversary+ "' where consul_id = '"+id+"'";
-	int result2 = stmt.executeUpdate(sql2);
+   String sql1 = "update users set name = '" +name +"' ,phone= '" +phone +"' ,address= '" +address+ "' ,rrn='"+rrn+"' where name = '"+searchStr+"'";
+   int result1 = stmt.executeUpdate(sql1);
+   
+   String sql2 = "update customer set marry = '" +marry +"' ,child= '" +child +"' ,anniversary= '" +anniversary+ "' where consul_id = '"+id+"'";
+   int result2 = stmt.executeUpdate(sql2);
 
-	if( result1 > 0 && result2>0 )
-	{%>
-		<script>
-		alert('¼öÁ¤µÇ¾ú½À´Ï´Ù.');
-		location.href("./consultCtmInfoView.jsp");
-		</script>
-	<% }
-	else
-	{
-		%>
-		<script>
-		alert('¼öÁ¤¿¡ ½ÇÆĞÇÏ¿´½À´Ï´Ù.');
-		history.go(-1);
-		</script>
-	<%
-	}
+   if( result1 > 0 && result2>0 )
+   {%>
+      <script>
+      alert('ìˆ˜ì •ë˜ì—ˆìŠµë‹ˆë‹¤.');
+      location.href("./consultCtmInfoView.jsp");
+      </script>
+   <% }
+   else
+   {
+      %>
+      <script>
+      alert('ìˆ˜ì •ì— ì‹¤íŒ¨í•˜ì˜€ìŠµë‹ˆë‹¤.');
+      history.go(-1);
+      </script>
+   <%
+   }
 
-}catch(Exception e){                                                    // ¿¹¿Ü°¡ ¹ß»ıÇÏ¸é ¿¹¿Ü »óÈ²À» Ã³¸®ÇÑ´Ù.
-	%>
-	<script>
-	alert('´Ù½Ã ÀÔ·ÂÇØ ÁÖ¼¼¿ä.');
-	history.go(-1);
-	</script>
-	 <%
+}catch(Exception e){                                                    // ì˜ˆì™¸ê°€ ë°œìƒí•˜ë©´ ì˜ˆì™¸ ìƒí™©ì„ ì²˜ë¦¬í•œë‹¤.
+   %>
+   <script>
+   alert('ë‹¤ì‹œ ì…ë ¥í•´ ì£¼ì„¸ìš”.');
+   history.go(-1);
+   </script>
+    <%
 }
 %>
 

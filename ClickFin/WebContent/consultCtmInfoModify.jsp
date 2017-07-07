@@ -1,90 +1,95 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+ pageEncoding="UTF-8"%>
+<% request.setCharacterEncoding("UTF-8");%>
+
+<%@ page import="java.sql.*"%>
+<%@ page import="javax.sql.*"%>
+<%@ page import="javax.naming.*"%>
     <% String userId = "";
-	userId = (String)session.getAttribute("userId");
-	if(userId == null || userId.equals(""))
-	{
-		%><script>alert("Àß¸øµÈ ·Î±×ÀÎ");
-		location.href("login.html");
-		</script><%
-		
-	}%>
+   userId = (String)session.getAttribute("userId");
+   if(userId == null || userId.equals(""))
+   {
+      %><script>alert("ìž˜ëª»ëœ ë¡œê·¸ì¸");
+      location.href("login.html");
+      </script><%
+      
+   }%>
     
-    <%String searchStr = (String)session.getAttribute("searchStr");//°Ë»öÇÏ·Á´Â ¹®ÀÚ¿­
+    <%String searchStr = (String)session.getAttribute("searchStr");//ê²€ìƒ‰í•˜ë ¤ëŠ” ë¬¸ìžì—´
     //String id = (String)session.getAttribute("userId");
-	String name = (String)session.getAttribute("cusName");
-	String rrn = (String)session.getAttribute("cusRrn");
-	String phone = (String)session.getAttribute("cusPhone");
-	String address = (String)session.getAttribute("cusAddress");
-	String child = (String)session.getAttribute("cusChild");
-	String anniversary = (String)session.getAttribute("cusAnniversary");
-	String marry = (String)session.getAttribute("cusMarry");
-    	%>
+   String name = (String)session.getAttribute("cusName");
+   String rrn = (String)session.getAttribute("cusRrn");
+   String phone = (String)session.getAttribute("cusPhone");
+   String address = (String)session.getAttribute("cusAddress");
+   String child = (String)session.getAttribute("cusChild");
+   String anniversary = (String)session.getAttribute("cusAnniversary");
+   String marry = (String)session.getAttribute("cusMarry");
+       %>
     
     
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<title>°í°´°ü¸® - °í°´ °³ÀÎÁ¤º¸¼öÁ¤</title>
+<title>ê³ ê°ê´€ë¦¬ - ê³ ê° ê°œì¸ì •ë³´ìˆ˜ì •</title>
 <link rel="stylesheet" href="navbar.css">
 
 </head>
-<font size = "20px" ,style = "text-align:center">Click Fin _ ÄÁ¼³ÅÏÆ®¸ðµå</font>
+<font size = "20px" ,style = "text-align:center">Click Fin _ ì»¨ì„¤í„´íŠ¸ëª¨ë“œ</font>
 
 <style>
 </style>
 
 <body>
 <br>
-    <div style = "text-align:right" ><%=userId %>´Ô È¯¿µÇÕ´Ï´Ù.<br>
-    <!-- <a href ="logout.jsp" >·Î±×¾Æ¿ô</a> --></div>
+    <div style = "text-align:right" ><%=userId %>ë‹˜ í™˜ì˜í•©ë‹ˆë‹¤.<br>
+    <!-- <a href ="logout.jsp" >ë¡œê·¸ì•„ì›ƒ</a> --></div>
 
 <div id="container" style="width:1000px">
-	<div id="header" style="font-size: 30px;text-align: center;">
-	<%=searchStr %>°í°´´ÔÀÇ Á¤º¸ ¼öÁ¤
-	</div>
-	<div id="content">
-	<form action="consultCtmInfoModifyOK.jsp">
-	<table width="70%">
-    	<tr>
-    		<th>ÀÌ¸§ : </th>
-			<td><input type="text" value="<%=name%>" name="cusMyName" value="<%//DB¿¡¼­ ºÒ·¯¿Â°Å·Î SET %>"> </td>
-		</tr>
-    	<tr>
-    		<th>ÁÖ¹Î¹øÈ£ : </th>
-    		<td><input type="text" value="<%=rrn %>" name="cusMyRrn" ></td>
-    	</tr>
-    	<tr>
-    		<th>¿¬¶ôÃ³ : </th>
-    		<td><input type="text" value="<%=phone %>" name="cusMyPhone" ></td>
-    	</tr>
-    	<tr>
-    		<th>ÁÖ¼Ò : </th>
-    		<td><input type="text" value="<%=address%>" name="cusMyAddress" ></td>
-    	</tr>
-    	<tr>
-    		<th>°áÈ¥À¯¹Â : </th>
-    		<td><input type="text" value="<%=marry%>" name="cusMyMarry" ></td>
-    	</tr>
-    	<tr>
-    		<th>ÀÚ³à: </th>
-    			<td><input type="text" value="<%=child%>" name="cusMyChild" ></td>
-    	</tr>
-    	<tr>
-    		<th>±â³äÀÏ</th>
-    		<td><input type="text" value="<%=anniversary%>" name="cusMyAnniversary" ></td>
-    	</tr>
-	</table>
-	
-	<input type="submit" value="ÀúÀå" ><!-- È®ÀÎ ´©¸¦ ¶§ ÀúÀåÇß´ÂÁö ¹°¾îº¸´Â°Å Ãß°¡ -->
-	<input type="button" value="Ãë¼Ò" 
-		onclick="location.href='consultCtmInfoView.jsp'">
-	</form>
-	
-	
-	</div>
-	<%session.removeAttribute(searchStr);%>
+   <div id="header" style="font-size: 30px;text-align: center;">
+   <%=searchStr %>ê³ ê°ë‹˜ì˜ ì •ë³´ ìˆ˜ì •
+   </div>
+   <div id="content">
+   <form action="consultCtmInfoModifyOK.jsp">
+   <table width="70%">
+       <tr>
+          <th>ì´ë¦„ : </th>
+         <td><input type="text" value="<%=name%>" name="cusMyName" value="<%//DBì—ì„œ ë¶ˆëŸ¬ì˜¨ê±°ë¡œ SET %>"> </td>
+      </tr>
+       <tr>
+          <th>ì£¼ë¯¼ë²ˆí˜¸ : </th>
+          <td><input type="text" value="<%=rrn %>" name="cusMyRrn" ></td>
+       </tr>
+       <tr>
+          <th>ì—°ë½ì²˜ : </th>
+          <td><input type="text" value="<%=phone %>" name="cusMyPhone" ></td>
+       </tr>
+       <tr>
+          <th>ì£¼ì†Œ : </th>
+          <td><input type="text" value="<%=address%>" name="cusMyAddress" ></td>
+       </tr>
+       <tr>
+          <th>ê²°í˜¼ìœ ë®¤ : </th>
+          <td><input type="text" value="<%=marry%>" name="cusMyMarry" ></td>
+       </tr>
+       <tr>
+          <th>ìžë…€: </th>
+             <td><input type="text" value="<%=child%>" name="cusMyChild" ></td>
+       </tr>
+       <tr>
+          <th>ê¸°ë…ì¼</th>
+          <td><input type="text" value="<%=anniversary%>" name="cusMyAnniversary" ></td>
+       </tr>
+   </table>
+   
+   <input type="submit" value="ì €ìž¥" ><!-- í™•ì¸ ëˆ„ë¥¼ ë•Œ ì €ìž¥í–ˆëŠ”ì§€ ë¬¼ì–´ë³´ëŠ”ê±° ì¶”ê°€ -->
+   <input type="button" value="ì·¨ì†Œ" 
+      onclick="location.href='consultCtmInfoView.jsp'">
+   </form>
+   
+   
+   </div>
+   <%session.removeAttribute(searchStr);%>
 </div>
 
 </body>

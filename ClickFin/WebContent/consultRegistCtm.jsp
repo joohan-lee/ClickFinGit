@@ -1,143 +1,148 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+ pageEncoding="UTF-8"%>
+<% request.setCharacterEncoding("UTF-8");%>
+
+<%@ page import="java.sql.*"%>
+<%@ page import="javax.sql.*"%>
+<%@ page import="javax.naming.*"%>
     <%
-	String userId = "";
-	userId = (String)session.getAttribute("userId");
-	if(userId == null || userId.equals(""))
-	{
-		%><script>//alert("Àß¸øµÈ ·Î±×ÀÎ");
-		//location.href("login.html");
-		</script><%
-		
-	}%>
+   String userId = "";
+   userId = (String)session.getAttribute("userId");
+   if(userId == null || userId.equals(""))
+   {
+      %><script>//alert("ì˜ëª»ëœ ë¡œê·¸ì¸");
+      //location.href("login.html");
+      </script><%
+      
+   }%>
     
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<title>ÄÁ¼³ÅÏÆ® - °í°´µî·ÏÇÏ±â</title>
+<title>ì»¨ì„¤í„´íŠ¸ - ê³ ê°ë“±ë¡í•˜ê¸°</title>
 
 
 </head>
 
 <style>
 table{
-	border-collapse:collapse;
-	border:1px gray solid;
+   border-collapse:collapse;
+   border:1px gray solid;
 }
 tr, td, th{
-	border: 1px gray solid;
+   border: 1px gray solid;
 }
 th{
-	background:#E9E6E6;
-	width:100px;
+   background:#E9E6E6;
+   width:100px;
 }
 td input{
-	width:100%;
-	height:100%;
-	border:0;
+   width:100%;
+   height:100%;
+   border:0;
 }
 #rrn input{
-	width:45%;
+   width:45%;
 }
 </style>
 
 <body>
 <div id="content">
-	<h1>°í°´ µî·ÏÇÏ±â</h1>
-	<form method="post" action="//DBÀúÀåÇÒ ÆÄÀÏ·Î" id="frm">
-	<table width="500px"style="border-collapse:collapse;
+   <h1>ê³ ê° ë“±ë¡í•˜ê¸°</h1>
+   <form method="post" action="//DBì €ì¥í•  íŒŒì¼ë¡œ" id="frm">
+   <table width="500px"style="border-collapse:collapse;
             border: 1px solid gray;">
          <tr>
-         	<th>¾ÆÀÌµğ</th>
-         	<td><input type="text" name="cusId"></td>
-         	<!-- DB¿¡ ÀÌ ÀÔ·ÂÇÑ ¾ÆÀÌµğ ¹Ş¾Æ¼­ Á¸ÀçÇÏ´ÂÁö check_validId¸¸µé¾î È®ÀÎ -->
-         	<td width="70px">
-         	<input type="button" value="¾ÆÀÌµğÈ®ÀÎ"
-         	title="½ÂÀÎ¹ŞÀº ¾ÆÀÌµğÀÎÁö È®ÀÎ"	onclick="check_vaildId();">
-         	</td>
+            <th>ì•„ì´ë””</th>
+            <td><input type="text" name="cusId"></td>
+            <!-- DBì— ì´ ì…ë ¥í•œ ì•„ì´ë”” ë°›ì•„ì„œ ì¡´ì¬í•˜ëŠ”ì§€ check_validIdë§Œë“¤ì–´ í™•ì¸ -->
+            <td width="70px">
+            <input type="button" value="ì•„ì´ë””í™•ì¸"
+            title="ìŠ¹ì¸ë°›ì€ ì•„ì´ë””ì¸ì§€ í™•ì¸"   onclick="check_vaildId();">
+            </td>
          </tr>
 
          <script>
-         	function check_validId(){
-         		var check_permittedId;//DBÁ¸Àç¿©ºÎÈ®ÀÎÇÑ jspÀÇ check_permittedId°ªÀ» ´ëÀÔ
-         		if(permitted_id==false)
-         			alert('½ÂÀÎµÇÁö ¾ÊÀº ¾ÆÀÌµğÀÔ´Ï´Ù.');
-         	}
+            function check_validId(){
+               var check_permittedId;//DBì¡´ì¬ì—¬ë¶€í™•ì¸í•œ jspì˜ check_permittedIdê°’ì„ ëŒ€ì…
+               if(permitted_id==false)
+                  alert('ìŠ¹ì¸ë˜ì§€ ì•Šì€ ì•„ì´ë””ì…ë‹ˆë‹¤.');
+            }
          </script>
          <tr>
-            <th>ÀÌ¸§</th>
+            <th>ì´ë¦„</th>
             <td><input type="text" name="cusName"></td>
          </tr>
          <tr>
-            <th>ÁÖ¹Î¹øÈ£</th>
+            <th>ì£¼ë¯¼ë²ˆí˜¸</th>
             <td id="rrn">
             <input type="text" name="cusRrnFirst" width="40%"maxlength="6"
-            	style="ime-mode:disabled;"onkeyPress="InputOnlyNumber(this);" >
+               style="ime-mode:disabled;"onkeyPress="InputOnlyNumber(this);" >
             -
             <input type="password" name="cusRrnSecond" width="40%"maxlength="7"
-            	style="ime-mode:disabled;"onkeyPress="InputOnlyNumber(this);" >
+               style="ime-mode:disabled;"onkeyPress="InputOnlyNumber(this);" >
             </td>
          </tr>
          <tr>
-            <th>¿¬¶ôÃ³</th>
+            <th>ì—°ë½ì²˜</th>
             <td><input type="text" id="number_value" name ="cusPhone"
-            	style="ime-mode:disabled;" onkeyPress="InputOnlyNumber(this);" maxlength="11"></td>
+               style="ime-mode:disabled;" onkeyPress="InputOnlyNumber(this);" maxlength="11"></td>
          </tr>
          <tr>
-            <th>ÁÖ¼Ò</th>
+            <th>ì£¼ì†Œ</th>
             <td><input type="text" name ="cusAddress"></td>
          </tr>
          <tr>
-            <th>°áÈ¥À¯¹Â</th>
+            <th>ê²°í˜¼ìœ ë®¤</th>
             <td><input type="text" name = "cusMarry"></td>
          </tr>
          <tr>
-            <th>ÀÚ³à</th>
+            <th>ìë…€</th>
             <td>
                 <input type="text" name="cusChild">
             </td>
          </tr>
          <tr>
-            <th>±â³äÀÏ</th>
+            <th>ê¸°ë…ì¼</th>
             <td><input type="text" name ="cusAnniversary"></td>
          </tr>
          
          
     </table>
-	<input type="button" value="µî·Ï" onclick="consulRegistCtmOK.jsp;">
-	<input type="button" value="Ãë¼Ò" onclick="history.back();">
-	
-	<script type="text/javascript">
-	function askCtmRegister(){
-		if(confirm("µî·Ï ¿Ï·áÇÏ½Ã°Ú½À´Ï±î?")==true){
-			document.getElementById("frm").submit();
-			//Á¦ÃâÇÏ¸é actionÀÇ jsp½ÇÇàµÇ¹Ç·Î °Å±â¼­ ¼öÇà ÈÄ  history.back()
-		}
-		else{
-			return;
-		}
-	}
-	</script>
-	
-	<script>
-         		function InputOnlyNumber(obj){
-         			if(event.keyCode>=48&&event.keyCode<=57){
-         				//¼ıÀÚÅ°¸¸ÀÔ·Â
-         				return true;
-         			}
-         			else{
-        				event.returnValue=false;
-         			}
-         			
-         		}
-         		
-   	</script>
-	
-	
-	
-	</form>
-	
+   <input type="button" value="ë“±ë¡" onclick="consulRegistCtmOK.jsp;">
+   <input type="button" value="ì·¨ì†Œ" onclick="history.back();">
+   
+   <script type="text/javascript">
+   function askCtmRegister(){
+      if(confirm("ë“±ë¡ ì™„ë£Œí•˜ì‹œê² ìŠµë‹ˆê¹Œ?")==true){
+         document.getElementById("frm").submit();
+         //ì œì¶œí•˜ë©´ actionì˜ jspì‹¤í–‰ë˜ë¯€ë¡œ ê±°ê¸°ì„œ ìˆ˜í–‰ í›„  history.back()
+      }
+      else{
+         return;
+      }
+   }
+   </script>
+   
+   <script>
+               function InputOnlyNumber(obj){
+                  if(event.keyCode>=48&&event.keyCode<=57){
+                     //ìˆ«ìí‚¤ë§Œì…ë ¥
+                     return true;
+                  }
+                  else{
+                    event.returnValue=false;
+                  }
+                  
+               }
+               
+      </script>
+   
+   
+   
+   </form>
+   
 </div>
 
 </body>

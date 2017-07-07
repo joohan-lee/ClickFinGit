@@ -23,7 +23,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<title>고객관리 - 고객 투자 상품 상세정보수정</title>
+<title>고객 저축상품 등록</title>
 
 
 </head>
@@ -46,7 +46,7 @@ td input{
 <body>
 
 <div id="content" style="width:400px">
-	<h1><%=searchStr%>고객 펀드상품 수정</h1>
+	<h1><%=searchStr%>고객 저축상품 등록</h1>
 	<form action="//고객 상품정보, 증서 보낼 jsp로 전송" method="post">
 	<table style="border-collapse:collapse;border:1px gray solid;
 		text-align: center;float:center;">
@@ -68,9 +68,10 @@ td input{
 			<td><input type="file" name="//파일 받아올 jsp에서 이용할 name"></td>
 		</tr>
 	</table>
-	<input type="submit" value="저장" onclick="history.back();"
-		style="float:right;margin-top:10px">
-	
+	<input type="button" value="취소" onclick="history.back();"
+		style="float:right;margin:10px">
+	<input type="submit" value="등록" onclick="history.back();"
+		style="float:right;margin:10px">
 	</form>
 	
 </div>
