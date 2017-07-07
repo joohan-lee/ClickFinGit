@@ -47,7 +47,7 @@ try{
 			}
 			else if(role.equals("customer")){
 			
-				response.sendRedirect("customerMain.jsp");
+				response.sendRedirect("customerView.jsp");
 				session.setAttribute("userId", identity); 
 	       	 	session.setAttribute("userPw", password);
 	        	session.setAttribute("userRole", role);
@@ -56,14 +56,14 @@ try{
 		else if(identity.equals("")||password.equals("")) {%>
 	 	<script>
 	 		alert('아이디 혹은 비밀번호를 입력해주세요.');
-	 		location.href("login.html");
+	 		history.go(-1);
 		</script>
 		<%
 		}
 		else { %>
 		<script>
 			alert('아이디 혹은 비밀번호가 틀렸습니다.');
-			location.href("login.html");
+			history.go(-1);
 		</script>
 	 	<%} 
 	}

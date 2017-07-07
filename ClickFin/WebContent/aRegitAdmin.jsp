@@ -62,7 +62,7 @@ td, tr, th {
 <body>
 
 	<div style="text-align: center">
-		<font size="8">관리자 등록</font> <br> <br>
+		<font size="5em">관리자 등록</font> <br> <br>
 		<form method="post" action = "aInsertAdminInfo.jsp" name="admininput"
 			onSubmit="return checkIt()">
 			<table width="50%"

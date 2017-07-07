@@ -42,8 +42,6 @@ td, tr, th {
 		String sql = "select * from users where role = 'consultant'";
 		stmt = conn.createStatement();
 		rs = stmt.executeQuery(sql);
-   	
-   	//ResultSet get_type = st.executeQuery(get_type_Query);
    		%>
 
 <body>
@@ -93,10 +91,9 @@ td, tr, th {
 		<%
    	   	}
    	
-   }catch(Exception e)
-   {
-   	out.println("ERROR");
-   	e.printStackTrace();
+   }catch(Exception e){
+   		out.println("ERROR");
+   		e.printStackTrace();
    }
 %>
 	</table>

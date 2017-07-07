@@ -1,5 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<% request.setCharacterEncoding("UTF-8");%>
+
 <%@ page import="java.sql.*"%>
 <%@ page import="javax.sql.*"%>
 <%@ page import="javax.naming.*"%>
@@ -11,19 +12,30 @@
 %>
 
 <html>
-
+<script>
+	function move_backpage(){
+		var back_location = "<%=bp%>";
+		if(back_location == "all"){
+			location.href = "aInfoConsultant.jsp?id=<%=get_id%>";
+		}
+		else{
+			location.href = "aInfoConsultantSearch.jsp?id=<%=get_id%>";
+		}
+	}
+</script>
 <style>
 td, tr, th {
 	border: 1px gray solid;
 	text-align: center;
 }
+
 </style>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title>login</title>
 <body>
 <% 
-Connection conn = null;                                        // null·Î ÃÊ±âÈ­ ÇÑ´Ù.
+Connection conn = null;                                        // nullë¡œ ì´ˆê¸°í™” í•œë‹¤.
 ResultSet rs = null;
 Statement stmt = null;
 DataSource ds;
@@ -59,7 +71,7 @@ try{
 				style="border-collapse: collapse; border: 1px gray solid; margin-top: 20px; margin-left: auto; margin-right: auto;">
 				<tr>
 					<td width="20%"><div style="text-align: center">
-							<font size=3>¾ÆÀÌµğ</font>
+							<font size=3>ì•„ì´ë””</font>
 						</div></td>
 					<td width="80%"><div style="text-align: center">
 							<font size=3><%=d_id %></font>
@@ -67,7 +79,7 @@ try{
 				</tr>
 				<tr>
 					<td width="20%"><div style="text-align: center">
-							<font size=3>ÀÌ¸§</font>
+							<font size=3>ì´ë¦„</font>
 						</div></td>
 					<td width="80%"><div style="text-align: center">
 							<font size=3><%=d_name %></font>
@@ -75,7 +87,7 @@ try{
 				</tr>
 				<tr>
 					<td width="20%"><div style="text-align: center">
-							<font size=3>ÁÖ¹Îµî·Ï¹øÈ£</font>
+							<font size=3>ì£¼ë¯¼ë“±ë¡ë²ˆí˜¸</font>
 						</div></td>
 					<td width="80%"><div style="text-align: center">
 							<font size=3><%=d_rrn %></font>
@@ -83,7 +95,7 @@ try{
 				</tr>
 				<tr>
 					<td width="20%"><div style="text-align: center">
-							<font size=3>ÀÌ¸ŞÀÏ</font>
+							<font size=3>ì´ë©”ì¼</font>
 						</div></td>
 					<td width="80%"><div style="text-align: center">
 							<font size=3><%=d_email %></font>
@@ -91,7 +103,7 @@ try{
 				</tr>
 				<tr>
 					<td width="20%"><div style="text-align: center">
-							<font size=3>ÀüÈ­¹øÈ£</font>
+							<font size=3>ì „í™”ë²ˆí˜¸</font>
 						</div></td>
 					<td width="80%"><div style="text-align: center">
 							<font size=3><%=d_num %></font>
@@ -99,7 +111,7 @@ try{
 				</tr>
 				<tr>
 					<td width="20%"><div style="text-align: center">
-							<font size=3>ÁÖ¼Ò</font>
+							<font size=3>ì£¼ì†Œ</font>
 						</div></td>
 					<td width="80%"><div style="text-align: center">
 							<font size=3><%=d_addr %></font>
@@ -111,16 +123,16 @@ try{
 		<br>
 		
 		<div style = "text-align:center">
-		<input type = "button" value = "µÚ·Î°¡±â" onclick = "javascript:history.back()">&nbsp;
-		<input type = "button" value = "¼öÁ¤" onclick = "location.href = '#'">&nbsp;
-		<input type = "button" value = "»èÁ¦" onclick = "location.href = 'aCustomerDelete.jsp?id=<%=d_id%>&bp=<%=bp%>'"></div>
+		<input type = "button" value = "ë’¤ë¡œê°€ê¸°" onclick = "move_backpage()">&nbsp;
+		<input type = "button" value = "ìˆ˜ì •" onclick = "location.href = 'aConsultantModify.jsp?id=<%=d_id%>&bp=<%=bp%>'">&nbsp;
+		<input type = "button" value = "ì‚­ì œ" onclick = "location.href = 'aConsultantDelete.jsp?id=<%=d_id%>&bp=<%=bp%>'"></div>
 	<%}
 	rs.close();
 	stmt.close();
 	conn.close();
-	}catch(Exception e){                                                    // ¿¹¿Ü°¡ ¹ß»ıÇÏ¸é ¿¹¿Ü »óÈ²À» Ã³¸®ÇÑ´Ù.
+	}catch(Exception e){                                                    // ì˜ˆì™¸ê°€ ë°œìƒí•˜ë©´ ì˜ˆì™¸ ìƒí™©ì„ ì²˜ë¦¬í•œë‹¤.
 		e.printStackTrace();
-		out.println("¿¬°á½ÇÆĞ");
+		out.println("ì—°ê²°ì‹¤íŒ¨");
 	}
 	%>
 	

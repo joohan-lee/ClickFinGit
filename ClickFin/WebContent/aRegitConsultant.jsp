@@ -62,7 +62,7 @@ td, tr, th {
 <body>
 
 	<div style="text-align: center">
-		<font size="10em">컨설턴트 등록</font> <br> <br>
+		<font size="5em">컨설턴트 등록</font> <br> <br>
 		<form method="post" action = "aInsertConsultantInfo.jsp" name="consultantInput"
 			onSubmit="return checkIt()">
 			<table width="50%"
