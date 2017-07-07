@@ -56,14 +56,14 @@ try{
 		else if(identity.equals("")||password.equals("")) {%>
 	 	<script>
 	 		alert('아이디 혹은 비밀번호를 입력해주세요.');
-	 		history.go(-1);
+	 		location.href("login.html");
 		</script>
 		<%
 		}
 		else { %>
 		<script>
 			alert('아이디 혹은 비밀번호가 틀렸습니다.');
-			history.go(-1);
+			location.href("login.html");
 		</script>
 	 	<%} 
 	}
