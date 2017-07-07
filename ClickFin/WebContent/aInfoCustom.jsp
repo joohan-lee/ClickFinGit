@@ -20,7 +20,7 @@ td, tr, th {
 </head>
 <body>
 	<div style="text-align: center">
-		<font size="15">고객 현황</font>
+		<font size="6em">고객 현황</font>
 	</div>
 
 	<%
