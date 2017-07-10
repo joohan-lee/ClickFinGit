@@ -26,7 +26,8 @@
 	  <li class="topmenuLi">
 	    <a class="menulink" href="#">개인정보</a>
 			<ul class="submenu">
-				<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="customerMyInfo.jsp" class="submenulink">내 정보&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
+				<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="customerMyInfo.jsp" class="submenulink">내 정보&nbsp;&nbsp;&nbsp;</a></li>
+				<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="customerMyInfoModify.jsp" class="submenulink">내 정보 수정&nbsp;&nbsp;</a></li>
 			</ul>
 		</li>
 			<li>|</li>
