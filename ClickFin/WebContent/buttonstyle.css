@@ -1,0 +1,53 @@
+
+.buttonstyle {
+	font-weight:bold;
+	text-decoration:none;
+	font-family:Arial;
+	box-shadow:inset #ffffff 0px 5px 8px -1px,#d6d6d6 1px 3px 2px;
+	o-box-shadow:inset #ffffff 0px 5px 8px -1px,#d6d6d6 1px 3px 2px;
+	-moz-box-shadow:inset #ffffff 0px 5px 8px -1px,#d6d6d6 1px 3px 2px;
+	-webkit-box-shadow:inset #ffffff 0px 5px 8px -1px,#d6d6d6 1px 3px 2px;
+	background:#e81e1e;
+	background:-o-linear-gradient(90deg, #e81e1e, #f0c388);
+	background:-moz-linear-gradient( center top, #e81e1e 5%, #f0c388 100% );
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #e81e1e), color-stop(1, #f0c388) );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#e81e1e', endColorstr='#f0c388');
+	background:-webkit-linear-gradient(#e81e1e, #f0c388);
+	background:-ms-linear-gradient(#e81e1e, #f0c388);
+	background:linear-gradient(#e81e1e, #f0c388);
+	text-indent:0px;
+	line-height:35px;
+	text-align:center;
+	vertical-align:middle;
+	display:inline-block;
+	font-size:11px;
+	color:#ffffff;
+	width:90px;
+	height:30px;
+	text-shadow:#c26e6e 2px 2px 0px;
+	border-color:#ffffff;
+	border-width:1px;
+	border-style:solid;
+	margin-right: 3px;
+
+}
+
+.buttonstyle:active {
+	box-shadow:inset #ffffff 0px 5px 8px -1px,#d6d6d6 1px 0 2px;
+	o-box-shadow:inset #ffffff 0px 5px 8px -1px,#d6d6d6 1px 0 2px;
+	-moz-box-shadow:inset #ffffff 0px 5px 8px -1px,#d6d6d6 1px 0 2px;
+	-webkit-box-shadow:inset #ffffff 0px 5px 8px -1px,#d6d6d6 1px 0 2px;
+	position:relative;
+	top:3px
+}
+
+.buttonstyle:hover {
+	background:#f0c388;
+	background:-o-linear-gradient(90deg, #f0c388, #e81e1e);
+	background:-moz-linear-gradient( center top, #f0c388 5%, #e81e1e 100% );
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #f0c388), color-stop(1, #e81e1e) );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#f0c388', endColorstr='#e81e1e');
+	background:-webkit-linear-gradient(#f0c388, #e81e1e);
+	background:-ms-linear-gradient(#f0c388, #e81e1e);
+	background:linear-gradient(#f0c388, #e81e1e);
+}

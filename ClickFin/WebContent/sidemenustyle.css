@@ -1,0 +1,48 @@
+ #sideMenu ul{
+  list-style-type : none;
+  margin: 0px;
+  padding: 5px;
+  }
+  
+  #sideMenu ul li{
+  color : white;
+  float : left;
+    line-height : 40px;
+  vertical-align: middle; 
+  text-align: center;
+  }
+  .sideMenulink
+ {
+ float:left; 
+ color :#F6F6F6;
+ text-decoration  : none;
+ font-family : "³Ø½¼ Ç²º¼°íµñ B";
+ display: block;
+ width: 250px;
+ font-size: 15px;
+ font-weight: bold;
+ background-color:#C90000;
+ margin-top:1px;
+ border-radius : 0 5px 5px 0px;
+ }
+
+ .sideMenulink:hover
+ {
+ color : white;
+ background-color: #DB0000;
+ }
+
+input[type="button"]{
+height: 30px;
+width: 100px;
+border: 1;
+border-radius:7px;
+background-color: #DB0000;
+font-family:"¸¼Àº°íµñ";
+font-size: 11px;
+color:#FFFFFF;
+text-align: center;
+margin-top:4px;
+margin-bottom:14px;
+margin-left:4px;
+}

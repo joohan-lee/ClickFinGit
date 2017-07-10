@@ -1,149 +1,175 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
- pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <% request.setCharacterEncoding("UTF-8");%>
 
-<%@ page import="java.sql.*"%>
-<%@ page import="javax.sql.*"%>
-<%@ page import="javax.naming.*"%>
-    <%
-   String userId = "";
-   userId = (String)session.getAttribute("userId");
-   if(userId == null || userId.equals(""))
-   {
-      %><script>//alert("잘못된 로그인");
-      //location.href("login.html");
-      </script><%
-      
-   }%>
-    
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<title>컨설턴트 - 고객등록하기</title>
+<script>
+var click_chk = 0;
 
+function check_id()
+{	  
+      var get_id = document.admininput.input_id.value;
+      
+      if( get_id == '' )
+      {
+            alert('아이디를 입력하세요');
+            return;
+      }
+      else if(event.keyCode == 8 || event.keyCode == 9 || event.keyCode == 37 || event.keyCode == 39
+    	        || event.keyCode == 46 ) return;
+      else
+      { 
+    	 	var url = "check_id.jsp?get_id="+get_id;
+    		var ret = window.showModalDialog(url,get_id,"width = 150 , height = 100, resizable = no, scrollbars = no");
 
-</head>
+    		if(ret =='cancel'){
+    			alert('ID 확인 취소');
+    			document.getElementById('input_id').disabled = false;
+    			document.setElementById('checked_id').value = "false";
+    			click_chk = 0;
+    		}
+    		else if(ret != 'cancel' && ret!= 'disable'){ 			
+    			   			
+    			document.getElementById('input_id').disabled = 'disabled';
+    			document.getElementById('ID').value = get_id;
+    			document.getElementById('checked_id').value ="true";
+    		}
+      }
+}
 
+function numkeyCheck(e){ 
+	var keyValue = event.keyCode; 
+	if( ((keyValue >= 48) && (keyValue <= 57)) ) 
+		return true; 
+	else 
+		return false; 
+	}
+
+</script>
 <style>
-table{
-   border-collapse:collapse;
-   border:1px gray solid;
-}
-tr, td, th{
-   border: 1px gray solid;
-}
-th{
-   background:#E9E6E6;
-   width:100px;
-}
-td input{
-   width:100%;
-   height:100%;
-   border:0;
-}
-#rrn input{
-   width:45%;
+td, tr, th {
+	border: 1px gray solid;
+	text-align: center;
 }
 </style>
 
-<body>
-<div id="content">
-   <h1>고객 등록하기</h1>
-   <form method="post" action="//DB저장할 파일로" id="frm">
-   <table width="500px"style="border-collapse:collapse;
-            border: 1px solid gray;">
-         <tr>
-            <th>아이디</th>
-            <td><input type="text" name="cusId"></td>
-            <!-- DB에 이 입력한 아이디 받아서 존재하는지 check_validId만들어 확인 -->
-            <td width="70px">
-            <input type="button" value="아이디확인"
-            title="승인받은 아이디인지 확인"   onclick="check_vaildId();">
-            </td>
-         </tr>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>클릭핀 - 컨설턴트 접속</title>
 
-         <script>
-            function check_validId(){
-               var check_permittedId;//DB존재여부확인한 jsp의 check_permittedId값을 대입
-               if(permitted_id==false)
-                  alert('승인되지 않은 아이디입니다.');
-            }
-         </script>
-         <tr>
-            <th>이름</th>
-            <td><input type="text" name="cusName"></td>
-         </tr>
-         <tr>
-            <th>주민번호</th>
-            <td id="rrn">
-            <input type="text" name="cusRrnFirst" width="40%"maxlength="6"
-               style="ime-mode:disabled;"onkeyPress="InputOnlyNumber(this);" >
-            -
-            <input type="password" name="cusRrnSecond" width="40%"maxlength="7"
-               style="ime-mode:disabled;"onkeyPress="InputOnlyNumber(this);" >
-            </td>
-         </tr>
-         <tr>
-            <th>연락처</th>
-            <td><input type="text" id="number_value" name ="cusPhone"
-               style="ime-mode:disabled;" onkeyPress="InputOnlyNumber(this);" maxlength="11"></td>
-         </tr>
-         <tr>
-            <th>주소</th>
-            <td><input type="text" name ="cusAddress"></td>
-         </tr>
-         <tr>
-            <th>결혼유뮤</th>
-            <td><input type="text" name = "cusMarry"></td>
-         </tr>
-         <tr>
-            <th>자녀</th>
-            <td>
-                <input type="text" name="cusChild">
-            </td>
-         </tr>
-         <tr>
-            <th>기념일</th>
-            <td><input type="text" name ="cusAnniversary"></td>
-         </tr>
-         
-         
-    </table>
-   <input type="button" value="등록" onclick="consulRegistCtmOK.jsp;">
-   <input type="button" value="취소" onclick="history.back();">
-   
-   <script type="text/javascript">
-   function askCtmRegister(){
-      if(confirm("등록 완료하시겠습니까?")==true){
-         document.getElementById("frm").submit();
-         //제출하면 action의 jsp실행되므로 거기서 수행 후  history.back()
-      }
-      else{
-         return;
-      }
-   }
-   </script>
-   
-   <script>
-               function InputOnlyNumber(obj){
-                  if(event.keyCode>=48&&event.keyCode<=57){
-                     //숫자키만입력
-                     return true;
-                  }
-                  else{
-                    event.returnValue=false;
-                  }
-                  
-               }
-               
-      </script>
-   
-   
-   
-   </form>
-   
-</div>
+</head>
+<body>
+
+	<div style="text-align: center">
+		<font size="5em">고객 등록</font> <br> <br>
+		<form method="post" action = "consultRegistCtmOK.jsp" name="admininput"
+			onSubmit="return checkIt()">
+			<table width="50%"
+				style="border-collapse: collapse; border: 1px gray solid; margin-top: 20px; margin-left: auto; margin-right: auto;"
+				cellpadding="5">
+				<tr>
+					<td width="30%"><div style="text-align: center">아이디</div></td>
+
+					<td width="70%"><div style="text-align: center">
+							<script></script>
+							<input type="text" size="13" name="input_id" id = "input_id" style='ime-mode:disabled'> <input
+								type="button" value="중복체크" onclick="check_id()" id = "chk_id">
+						</div></td>
+				</tr>
+					<tr>
+					<td width="30%"><div style="text-align: center">이름</div></td>
+					<td width="70%"><div style="text-align: center">
+							<input type="text" name="input_name" id = "input_name">
+						</div></td>
+				<tr>
+				<tr>
+					<td width="30%"><div style="text-align: center">패스워드</div></td>
+					<td width="70%"><div style="text-align: center">
+							<input type="password" name="input_pw1" id = "input_pw1">
+						</div></td>
+				<tr>
+					<td width="30%"><div style="text-align: center">패스워드 확인</div></td>
+					<td width="70%"><div style="text-align: center">
+							<input type="password" name="input_pw2" id = "input_pw2"> 
+						</div></td>
+				</tr>
+				<tr>
+					<td width="30%"><div style="text-align: center">주민등록번호</div></td>
+					<td width="70%"><div style="text-align: center">
+							<input type="text" size="6" maxlength="6" name="input_rrn1" id = "input_rrn1"
+							style='ime-mode:disabled' onKeyPress="return numkeyCheck(event)"> -
+							<input type="text" size="7" maxlength="7" name="input_rrn2" id = "input_rrn2"
+							style='ime-mode:disabled' onKeyPress="return numkeyCheck(event)">
+						</div></td>
+
+				</tr>
+				<tr>
+					<td width="30%"><div style="text-align: center">주소</div></td>
+					<td width="70%"><div style="text-align: center">
+							<input type="text" size="50" name="input_addr" id = "input_addr">
+						</div></td>
+				</tr>
+				<tr>
+					<td width="30%"><div style="text-align: center">이메일</div></td>
+					<td width="70%"><div style="text-align: center">
+							<input type="text" size="15" maxlength = "15" name="input_mail1" id = "input_mail1">
+							@ <input type = "text" size = "15" maxlength ="15" name = "input_mail2" id = "input_mail2"> 
+						</div></td>
+				</tr>
+				<tr>
+					<td width="30%"><div style="text-align: center">전화번호</div></td>
+					<td width="70%"><div style="text-align: center" name="phone_num">
+							<input type="text" size="4" maxlength="4" id = "input_phonenum1"
+							style='ime-mode:disabled' onKeyPress="return numkeyCheck(event)" name = "input_phonenum1"> -
+							<input type="text" size="4" maxlength="4" id = "input_phonenum2"
+							style='ime-mode:disabled' onKeyPress="return numkeyCheck(event)" name = "input_phonenum2"> -
+							<input type="text" size="4" maxlength="4" id = "input_phonenum3" name = "input_phonenum3"
+							style='ime-mode:disabled' onKeyPress="return numkeyCheck(event)">
+						</div></td>
+				</tr>
+				<tr>
+					<td width="30%"><div style="text-align: center">별칭</div></td>
+					<td width="70%"><div style="text-align: center">
+							<input type="text" size="50" name="input_nick" id = "input_nick">
+						</div></td>
+				</tr>
+				
+				<tr>
+					<td width="30%"><div style="text-align: center">직장</div></td>
+					<td width="70%"><div style="text-align: center">
+							<input type="text" size="50" name="input_company" id = "input_company">
+						</div></td>
+				</tr>
+				<tr>
+					<td width="30%"><div style="text-align: center">결혼유무</div></td>
+					<td width="70%"><div style="text-align: center">
+							<input type="text" size="50" name="input_marry" id = "input_marry">
+						</div></td>
+				</tr>
+				<tr>
+					<td width="30%"><div style="text-align: center">자녀</div></td>
+					<td width="70%"><div style="text-align: center">
+							<input type="text" size="50" name="input_child" id = "input_child">
+						</div></td>
+				</tr>
+				<tr>
+					<td width="30%"><div style="text-align: center">기념일</div></td>
+					<td width="70%"><div style="text-align: center">
+							<input type="text" size="50" name="input_anniversary" id = "input_anniversary">
+						</div></td>
+				</tr>
+			</table>
+			<input type = "hidden" value = "" id = "checked_id" name = "checked_id">
+			<input type = "hidden" value = "" id = "ID" name = "ID">
+			<br> <input type="submit" value="등록"
+				style="margin-left: auto; margin-right: auto;">
+		</form>
+		<form action="consultView.jsp" method="post">
+ 				<input type="submit" value="취소" />
+ 				</form>
+	</div>
+
 
 </body>
 </html>
