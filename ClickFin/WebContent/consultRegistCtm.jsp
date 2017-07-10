@@ -1,147 +1,175 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
-    <%
-	String userId = "";
-	userId = (String)session.getAttribute("userId");
-	if(userId == null || userId.equals(""))
-	{
-		%><script>alert("Àß¸øµÈ ·Î±×ÀÎ");
-		location.href("login.html");
-		</script><%
-		
-	}%>
-    
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<% request.setCharacterEncoding("UTF-8");%>
+
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<title>ÄÁ¼³ÅÏÆ® - °í°´µî·ÏÇÏ±â</title>
+<script>
+var click_chk = 0;
 
+function check_id()
+{     
+      var get_id = document.admininput.input_id.value;
+      
+      if( get_id == '' )
+      {
+            alert('ì•„ì´ë””ë¥¼ ì…ë ¥í•˜ì„¸ìš”');
+            return;
+      }
+      else if(event.keyCode == 8 || event.keyCode == 9 || event.keyCode == 37 || event.keyCode == 39
+               || event.keyCode == 46 ) return;
+      else
+      { 
+           var url = "check_id.jsp?get_id="+get_id;
+          var ret = window.showModalDialog(url,get_id,"width = 150 , height = 100, resizable = no, scrollbars = no");
 
-</head>
+          if(ret =='cancel'){
+             alert('ID í™•ì¸ ì·¨ì†Œ');
+             document.getElementById('input_id').disabled = false;
+             document.setElementById('checked_id').value = "false";
+             click_chk = 0;
+          }
+          else if(ret != 'cancel' && ret!= 'disable'){          
+                         
+             document.getElementById('input_id').disabled = 'disabled';
+             document.getElementById('ID').value = get_id;
+             document.getElementById('checked_id').value ="true";
+          }
+      }
+}
 
+function numkeyCheck(e){ 
+   var keyValue = event.keyCode; 
+   if( ((keyValue >= 48) && (keyValue <= 57)) ) 
+      return true; 
+   else 
+      return false; 
+   }
+
+</script>
 <style>
-table{
-	border-collapse:collapse;
-	border:1px gray solid;
-}
-tr, td, th{
-	border: 1px gray solid;
-}
-th{
-	background:#E9E6E6;
-	width:100px;
-}
-td input{
-	width:100%;
-	height:100%;
-	border:0;
-}
-#rrn input{
-	width:45%;
+td, tr, th {
+   border: 1px gray solid;
+   text-align: center;
 }
 </style>
 
-<body>
-<div id="content">
-	<h1>°í°´ µî·ÏÇÏ±â</h1>
-	<form method="post" action="//DBÀúÀåÇÒ ÆÄÀÏ·Î" id="frm">
-	<table width="500px"style="border-collapse:collapse;
-            border: 1px solid gray;">
-         <tr>
-         	<th>¾ÆÀÌµğ</th>
-         	<td><input type="text" name=""></td>
-         	<!-- DB¿¡ ÀÌ ÀÔ·ÂÇÑ ¾ÆÀÌµğ ¹Ş¾Æ¼­ Á¸ÀçÇÏ´ÂÁö check_validId¸¸µé¾î È®ÀÎ -->
-         	<td width="70px">
-         	<input type="button" value="¾ÆÀÌµğÈ®ÀÎ"
-         	title="½ÂÀÎ¹ŞÀº ¾ÆÀÌµğÀÎÁö È®ÀÎ"	onclick="check_vaildId();">
-         	</td>
-         </tr>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>í´ë¦­í•€ - ì»¨ì„¤í„´íŠ¸ ì ‘ì†</title>
 
-         <script>
-         	function check_validId(){
-         		var check_permittedId;//DBÁ¸Àç¿©ºÎÈ®ÀÎÇÑ jspÀÇ check_permittedId°ªÀ» ´ëÀÔ
-         		if(permitted_id==false)
-         			alert('½ÂÀÎµÇÁö ¾ÊÀº ¾ÆÀÌµğÀÔ´Ï´Ù.');
-         	}
-         </script>
-         <tr>
-            <th>ÀÌ¸§</th>
-            <td><input type="text" name=""></td>
-         </tr>
-         <tr>
-            <th>ÁÖ¹Î¹øÈ£</th>
-            <td id="rrn">
-            <input type="text" name="rrn" width="40%"maxlength="6"
-            	style="ime-mode:disabled;"onkeyPress="InputOnlyNumber(this);" >
-            -
-            <input type="password" name="rrn_second" width="40%"maxlength="7"
-            	style="ime-mode:disabled;"onkeyPress="InputOnlyNumber(this);" >
-            </td>
-         </tr>
-         <tr>
-            <th>¿¬¶ôÃ³</th>
-            <td><input type="text" id="number_value"
-            	style="ime-mode:disabled;" onkeyPress="InputOnlyNumber(this);" maxlength="11"></td>
-         </tr>
-         <tr>
-            <th>ÁÖ¼Ò</th>
-            <td><input type="text"></td>
-         </tr>
-         <tr>
-            <th>°áÈ¥À¯¹Â</th>
-            <td><input type="text"></td>
-         </tr>
-         <tr>
-            <th>ÀÚ³à</th>
-            <td>
-               <ol>
-                  <li><input type="text" name="child1"></li>
-                  <li><input type="text" name="child2"></li>
-               </ol>
-            </td>
-         </tr>
-         <tr>
-            <th>±â³äÀÏ</th>
-            <td><input type="text"></td>
-         </tr>
-         
-         
-    </table>
-	<input type="button" value="µî·Ï" onclick="askCtmRegister();">
-	<input type="button" value="Ãë¼Ò" onclick="history.back();">
-	
-	<script type="text/javascript">
-	function askCtmRegister(){
-		if(confirm("µî·Ï ¿Ï·áÇÏ½Ã°Ú½À´Ï±î?")==true){
-			document.getElementById("frm").submit();
-			//Á¦ÃâÇÏ¸é actionÀÇ jsp½ÇÇàµÇ¹Ç·Î °Å±â¼­ ¼öÇà ÈÄ  history.back()
-		}
-		else{
-			return;
-		}
-	}
-	</script>
-	
-	<script type="text/javascript">
-         		function InputOnlyNumber(obj){
-         			if(event.keyCode>=48&&event.keyCode<=57){
-         				//¼ıÀÚÅ°¸¸ÀÔ·Â
-         				return true;
-         			}
-         			else{
-        				event.returnValue=false;
-         			}
-         			
-         		}
-         		
-   	</script>
-	
-	
-	
-	</form>
-	
-</div>
+</head>
+<body>
+
+   <div style="text-align: center">
+      <font size="5em">ê³ ê° ë“±ë¡</font> <br> <br>
+      <form method="post" action = "consultRegistCtmOK.jsp" name="admininput"
+         onSubmit="return checkIt()">
+         <table width="50%"
+            style="border-collapse: collapse; border: 1px gray solid; margin-top: 20px; margin-left: auto; margin-right: auto;"
+            cellpadding="5">
+            <tr>
+               <td width="30%"><div style="text-align: center">ì•„ì´ë””</div></td>
+
+               <td width="70%"><div style="text-align: center">
+                     <script></script>
+                     <input type="text" size="13" name="input_id" id = "input_id" style='ime-mode:disabled'> <input
+                        type="button" value="ì¤‘ë³µì²´í¬" onclick="check_id()" id = "chk_id">
+                  </div></td>
+            </tr>
+               <tr>
+               <td width="30%"><div style="text-align: center">ì´ë¦„</div></td>
+               <td width="70%"><div style="text-align: center">
+                     <input type="text" name="input_name" id = "input_name">
+                  </div></td>
+            <tr>
+            <tr>
+               <td width="30%"><div style="text-align: center">íŒ¨ìŠ¤ì›Œë“œ</div></td>
+               <td width="70%"><div style="text-align: center">
+                     <input type="password" name="input_pw1" id = "input_pw1">
+                  </div></td>
+            <tr>
+               <td width="30%"><div style="text-align: center">íŒ¨ìŠ¤ì›Œë“œ í™•ì¸</div></td>
+               <td width="70%"><div style="text-align: center">
+                     <input type="password" name="input_pw2" id = "input_pw2"> 
+                  </div></td>
+            </tr>
+            <tr>
+               <td width="30%"><div style="text-align: center">ì£¼ë¯¼ë“±ë¡ë²ˆí˜¸</div></td>
+               <td width="70%"><div style="text-align: center">
+                     <input type="text" size="6" maxlength="6" name="input_rrn1" id = "input_rrn1"
+                     style='ime-mode:disabled' onKeyPress="return numkeyCheck(event)"> -
+                     <input type="text" size="7" maxlength="7" name="input_rrn2" id = "input_rrn2"
+                     style='ime-mode:disabled' onKeyPress="return numkeyCheck(event)">
+                  </div></td>
+
+            </tr>
+            <tr>
+               <td width="30%"><div style="text-align: center">ì£¼ì†Œ</div></td>
+               <td width="70%"><div style="text-align: center">
+                     <input type="text" size="50" name="input_addr" id = "input_addr">
+                  </div></td>
+            </tr>
+            <tr>
+               <td width="30%"><div style="text-align: center">ì´ë©”ì¼</div></td>
+               <td width="70%"><div style="text-align: center">
+                     <input type="text" size="15" maxlength = "15" name="input_mail1" id = "input_mail1">
+                     @ <input type = "text" size = "15" maxlength ="15" name = "input_mail2" id = "input_mail2"> 
+                  </div></td>
+            </tr>
+            <tr>
+               <td width="30%"><div style="text-align: center">ì „í™”ë²ˆí˜¸</div></td>
+               <td width="70%"><div style="text-align: center" name="phone_num">
+                     <input type="text" size="4" maxlength="4" id = "input_phonenum1"
+                     style='ime-mode:disabled' onKeyPress="return numkeyCheck(event)" name = "input_phonenum1"> -
+                     <input type="text" size="4" maxlength="4" id = "input_phonenum2"
+                     style='ime-mode:disabled' onKeyPress="return numkeyCheck(event)" name = "input_phonenum2"> -
+                     <input type="text" size="4" maxlength="4" id = "input_phonenum3" name = "input_phonenum3"
+                     style='ime-mode:disabled' onKeyPress="return numkeyCheck(event)">
+                  </div></td>
+            </tr>
+            <tr>
+               <td width="30%"><div style="text-align: center">ë³„ì¹­</div></td>
+               <td width="70%"><div style="text-align: center">
+                     <input type="text" size="50" name="input_nick" id = "input_nick">
+                  </div></td>
+            </tr>
+            
+            <tr>
+               <td width="30%"><div style="text-align: center">ì§ì¥</div></td>
+               <td width="70%"><div style="text-align: center">
+                     <input type="text" size="50" name="input_company" id = "input_company">
+                  </div></td>
+            </tr>
+            <tr>
+               <td width="30%"><div style="text-align: center">ê²°í˜¼ìœ ë¬´</div></td>
+               <td width="70%"><div style="text-align: center">
+                     <input type="text" size="50" name="input_marry" id = "input_marry">
+                  </div></td>
+            </tr>
+            <tr>
+               <td width="30%"><div style="text-align: center">ìë…€</div></td>
+               <td width="70%"><div style="text-align: center">
+                     <input type="text" size="50" name="input_child" id = "input_child">
+                  </div></td>
+            </tr>
+            <tr>
+               <td width="30%"><div style="text-align: center">ê¸°ë…ì¼</div></td>
+               <td width="70%"><div style="text-align: center">
+                     <input type="text" size="50" name="input_anniversary" id = "input_anniversary">
+                  </div></td>
+            </tr>
+         </table>
+         <input type = "hidden" value = "" id = "checked_id" name = "checked_id">
+         <input type = "hidden" value = "" id = "ID" name = "ID">
+         <br> <input type="submit" value="ë“±ë¡"
+            style="margin-left: auto; margin-right: auto;">
+      </form>
+      <form action="consultView.jsp" method="post">
+             <input type="submit" value="ì·¨ì†Œ" />
+             </form>
+   </div>
+
 
 </body>
 </html>

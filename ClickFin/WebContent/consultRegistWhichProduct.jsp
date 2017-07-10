@@ -1,6 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
-    
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+ pageEncoding="UTF-8"%>
+<% request.setCharacterEncoding("UTF-8");%>
+
+<%@ page import="java.sql.*"%>
+<%@ page import="javax.sql.*"%>
+<%@ page import="javax.naming.*"%>
     <%String searchStr = request.getParameter("searchStr"); 
     session.setAttribute("searchStr",searchStr);%>
     
@@ -8,7 +12,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<title>°í°´ »óÇ° µî·Ï</title>
+<title>ê³ ê° ìƒí’ˆ ë“±ë¡</title>
 
 
 </head>
@@ -24,12 +28,12 @@ li{
 }
 
 .button {
-border:1x solid #ff0080;    /*---Å×µÎ¸® Á¤ÀÇ---*/
-background-Color:#14D3FF;   /*--¹é±×¶ó¿îµå Á¤ÀÇ---*/
-font:12px ±¼¸²;      /*--ÆùÆ® Á¤ÀÇ---*/
-font-weight:bold;   /*--ÆùÆ® ±½±â---*/
-color:#000010;    /*--ÆùÆ® »ö±ò---*/
-width:130;height:30;  /*--¹öÆ° Å©±â---*/
+border:1x solid #ff0080;    /*---í…Œë‘ë¦¬ ì •ì˜---*/
+background-Color:#14D3FF;   /*--ë°±ê·¸ë¼ìš´ë“œ ì •ì˜---*/
+font:12px êµ´ë¦¼;      /*--í°íŠ¸ ì •ì˜---*/
+font-weight:bold;   /*--í°íŠ¸ êµµê¸°---*/
+color:#000010;    /*--í°íŠ¸ ìƒ‰ê¹”---*/
+width:130;height:30;  /*--ë²„íŠ¼ í¬ê¸°---*/
 }
 </style>
 
@@ -37,30 +41,30 @@ width:130;height:30;  /*--¹öÆ° Å©±â---*/
 <div id="container" style="width:1000px">
 	
 	<div id="content">
-		<h2>»óÇ° µî·ÏÇÏ½Ã°íÀÚ ÇÏ´Â °í°´´ÔÀÇ ¾ÆÀÌµð¸¦ ÀÔ·ÂÇØÁÖ½Ê½Ã¿À.</h2>
+		<h2>ìƒí’ˆ ë“±ë¡í•˜ì‹œê³ ìž í•˜ëŠ” ê³ ê°ë‹˜ì˜ ì•„ì´ë””ë¥¼ ìž…ë ¥í•´ì£¼ì‹­ì‹œì˜¤.</h2>
 		<form action="" method="post">
 			<input type="text" name="searchStr">
-			<input type="submit" value="¾ÆÀÌµðÈ®ÀÎ" title="°í°´ idÁ¸ÀçÇÏ´ÂÁö È®ÀÎ"
-				onclick="//DBÁ¸ÀçÈ®ÀÎ, Á¸ÀçÇÏ¸é existCtm=true;">
+			<input type="submit" value="ì•„ì´ë””í™•ì¸" title="ê³ ê° idì¡´ìž¬í•˜ëŠ”ì§€ í™•ì¸"
+				onclick="//DBì¡´ìž¬í™•ì¸, ì¡´ìž¬í•˜ë©´ existCtm=true;">
 		</form>
 		
-		<%if(!"".equals(searchStr)&&searchStr!=null){//+ ÇØ´ç ¾ÆÀÌµð°¡ DB¿¡ Á¸ÀçÇÏ¸é %>
-			<h2><%=searchStr%>°í°´´ÔÀÇ µî·ÏÇÏ½Ã°íÀÚ ÇÏ´Â »óÇ°À» ¼±ÅÃÇÏ½Ê½Ã¿À. </h2>
+		<%if(!"".equals(searchStr)&&searchStr!=null){//+ í•´ë‹¹ ì•„ì´ë””ê°€ DBì— ì¡´ìž¬í•˜ë©´ %>
+			<h2><%=searchStr%>ê³ ê°ë‹˜ì˜ ë“±ë¡í•˜ì‹œê³ ìž í•˜ëŠ” ìƒí’ˆì„ ì„ íƒí•˜ì‹­ì‹œì˜¤. </h2>
 			<ul>
 				<li>
-					<input type="button" value="ÅõÀÚµî·Ï" class="button"
+					<input type="button" value="íˆ¬ìžë“±ë¡" class="button"
 						onclick="location.href='consultCtmInvestRegist.jsp'">
 				</li>
 				<li>
-					<input type="button" value="º¸Çèµî·Ï" class="button"
+					<input type="button" value="ë³´í—˜ë“±ë¡" class="button"
 						onclick="location.href='consultCtmInsuranceRegist.jsp'">
 				</li>
 				<li>
-					<input type="button" value="ÆÝµåµî·Ï" class="button"
+					<input type="button" value="íŽ€ë“œë“±ë¡" class="button"
 						onclick="location.href='consultCtmFundRegist.jsp'">
 				</li>
 				<li>
-					<input type="button" value="ÀúÃàµî·Ï" class="button"
+					<input type="button" value="ì €ì¶•ë“±ë¡" class="button"
 						onclick="location.href='consultCtmSavingRegist.jsp'">
 				</li>
 			</ul>
@@ -69,7 +73,7 @@ width:130;height:30;  /*--¹öÆ° Å©±â---*/
 	
 	</div>
 	<div style="width:300px">
-		<input type="button" value="Ãë¼Ò" style="margin:10px;float:right"
+		<input type="button" value="ì·¨ì†Œ" style="margin:10px;float:right"
 		onclick="location.href='consultShowAllCustom.jsp'">
 	</div>
 </div>

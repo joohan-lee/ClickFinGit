@@ -43,6 +43,12 @@ function search(){
 <%
 	String input_data = request.getParameter("data");
 	String input_type = request.getParameter("type");
+	String id1 = null;
+	String rrn = null;
+	String show_rrn = null;
+	String name = null;
+	String num = null;
+	int count = 0;
 %>
 
 </script>
@@ -53,7 +59,7 @@ function search(){
 <body>
 <br><br>
 <form name = "search_form">
-<div style = "text-align:center">검색 : <input type = "text" maxlength = "15" id = "search_data" name = "search_data">
+<div style = "text-align:center">컨설턴트 검색 : <input type = "text" maxlength = "15" id = "search_data" name = "search_data">
 <input type = "button" value = "검색" name = "search_start" onclick = "search()">
 &nbsp; 아이디 검색<input type = "radio" name = "search_type" value = "search_by_id">
 &nbsp; 이름 검색<input type = "radio" name = "search_type" value = "search_by_name">
@@ -72,7 +78,7 @@ function search(){
 			Context init = new InitialContext();
 			ds = (DataSource)init.lookup("java:comp/env/jdbc/oracle");
 			conn = ds.getConnection();
-			String sql = "select * from users";
+			String sql = "select * from users where role = 'consultant'";
 			stmt = conn.createStatement();
 			rs = stmt.executeQuery(sql);
 	   	
@@ -90,54 +96,88 @@ function search(){
 						<font size=3>ID</font>
 					</div></td>
 				<td width="100"><div style="text-align: center">
-						<font size=3>관리 고객 수</font>
+						<font size=3>주민등록번호</font>
 					</div></td>
+				<td width="100"><div style="text-align: center">
+						<font size=3>  </font>
+					</div></td>
+				
 			</tr>
 			<%
 	   		while(rs.next())
 	   	   	{
-	   			String id1 = rs.getString("id");
-	   			String name = rs.getString("name");
-	   			String role = rs.getString("role");
-	   			String num = rs.getString("phone");
-	   			String get_data = request.getParameter("data");
-	   			if(input_type.equals("search_by_id")){
-	   				if(role.equals("consultant") && id1.contains(input_data)){	
-	   		   	   		%>
-	   				<tr>
-	   					<td width="100"><div style="text-align: center"><%=name%></div></td>
-	   					<td width="100"><div style="text-align: center"><%=id1%></div></td>
-	   					<td width="100"><div style="text-align: cente"></div>
-	   				</tr>
-	   				<%	
-	   				}   	   		
+	   			id1 = rs.getString("id");
+	   			name = rs.getString("name");
+				rrn = rs.getString("rrn");
+				num = rs.getString("phone");
+				if(rrn.length() != 13){
+					show_rrn = " ";
 				}
-	   			else if(input_type.equals("search_by_name")){
-	   				if(role.equals("consultant") && name.contains(input_data)){	
-	   		   	   		%>
-
-	   				<tr>
-	   					<td width="100"><div style="text-align: center"><%=name%></div></td>
-	   					<td width="100"><div style="text-align: center"><%=id1%></div></td>
-	   					<td width="100"><div style="text-align: cente"></div>
-	   				</tr>
-	   				<%	
-	   				}   
-	   			}
-	   			else if(input_type.equals("search_by_num")){
-	   				if(role.equals("consultant") && num.contains(input_data)){	
-	   		   	   		%>
-
-	   				<tr>
-	   					<td width="100"><div style="text-align: center"><%=name%></div></td>
-	   					<td width="100"><div style="text-align: center"><%=id1%></div></td>
-	   					<td width="100"><div style="text-align: cente"></div>
-	   				</tr>
-	   				<%	
-	   				}
-	   	   		}
+				else{
+					show_rrn= rrn.substring(0,6) + "- *******";
+				}
+				
+	   			
+	   			if(input_type != null && input_data != null){
+	   				
+	   				if(input_type.equals("search_by_id")){
+		   				if(id1.contains(input_data)){	
+		   					count ++;
+		   		   	   		%>
+		   				<tr>
+		   					<td width="100"><div style="text-align: center"><%=name%></div></td>
+		   					<td width="100"><div style="text-align: center"><%=id1%></div></td>
+		   					<td width="100"><div style="text-align: center"><%=show_rrn %></div>
+		   					<td width="100"><div style="text-align: center">
+		   					<a href = "aInfoConsultantDetail.jsp?id=<%=id1%>&back=search">정보보기</a>
+		   					</div>
+		   				</tr>
+		   				<%	
+		   				}   	   		
+					}
+		   			else if(input_type.equals("search_by_name")){
+		   				if(name.contains(input_data)){	
+		   					count ++;
+		   		   	   		%>
+		   				<tr>
+		   					<td width="100"><div style="text-align: center"><%=name%></div></td>
+		   					<td width="100"><div style="text-align: center"><%=id1%></div></td>
+		   					<td width="100"><div style="text-align: center"><%=show_rrn %></div>
+		   					<td width="100"><div style="text-align: center">
+		   					<a href = "aInfoConsultantDetail.jsp?id=<%=id1%>&back=search">정보보기</a>
+		   					</div>
+		   				</tr>
+		   				<%	
+		   				}   
+		   			}
+		   			else if(input_type.equals("search_by_num")&&num!=null){
+		   				if(num.contains(input_data)){	
+		   					count ++;
+		   		   	   		%>
+						<tr>
+		   					<td width="100"><div style="text-align: center"><%=name%></div></td>
+		   					<td width="100"><div style="text-align: center"><%=id1%></div></td>
+		   					<td width="100"><div style="text-align: center"><%=show_rrn %></div>
+		   					<td width="100"><div style="text-align: center">
+		   					<a href = "aInfoConsultantDetail.jsp?id=<%=id1%>&back=search">정보보기</a>
+		   					
+		   					</div>
+		   				</tr>
+		   				<%	
+		   				}
+		   	   		}
+	   			}	   			
 	   	   	}
+			if(input_data != null && input_type != null){
+				if(count == 0){
+	   				%><script>alert('검색결과가 없습니다.');</script><%
+	   				count = 0;
+	   			}
+			}
 			%></table><%
+			rs.close();
+			stmt.close();
+			conn.close();
 	   }catch(Exception e)
 	   {
 	   	//out.println("ERROR");

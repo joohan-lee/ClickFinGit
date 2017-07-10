@@ -1,12 +1,17 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+ pageEncoding="UTF-8"%>
+<% request.setCharacterEncoding("UTF-8");%>
+
+<%@ page import="java.sql.*"%>
+<%@ page import="javax.sql.*"%>
+<%@ page import="javax.naming.*"%>
 <%
 	String userId = "";
 	userId = (String)session.getAttribute("userId");
 	if(userId == null || userId.equals(""))
 	{
-		%><script>alert("Àß¸øµÈ ·Î±×ÀÎ");
-		location.href("login.html");
+		%><script>//alert("ì˜ëª»ëœ ë¡œê·¸ì¸");f
+		//location.href("login.html");
 		</script><%
 		
 	}
@@ -16,48 +21,98 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<title>Å¬¸¯ÇÉ ÄÁ¼³ÅÏÆ® È¨</title>
+<title>í´ë¦­í•€ ì»¨ì„¤í„´íŠ¸ í™ˆ</title>
 <meta charset="UTF-8">
 <link rel="stylesheet" href="navbar.css">
+<link rel="stylesheet" type="text/css" href="style.css">
+
 </head>
 
 <style>
 </style>
 
+<nav id ="topmenu"> 
+
+	<ul>
+	<li><img src="HSR logo.png"></li>
+		
+	  <li class="topmenuLi"> <!-- ìƒë‹¨ ë©”ë‰´ -->
+	    <a class="menulink" href="#">ì»¨ì„¤í„´íŠ¸</a>
+			<ul class="submenu">
+				<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" class="submenulink">ê°œì¸ì •ë³´</a></li>
+			</ul>
+		</li>
+			<li>|</li>
+	<li class="topmenuLi">
+		<a class="menulink" href="#">ê³ ê°ê´€ë¦¬</a>
+			<ul class="submenu">
+				<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" class="submenulink">ê³ ê° ì „ì²´ í˜„í™©</a></li>
+				<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" class="submenulink">ê³ ê°ë³„ ê°œì¸ì •ë³´</a></li>
+				<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" class="submenulink" >ê³ ê°ë³„ ê°€ì…ìƒí’ˆí˜„í™©</a></li>
+				
+			</ul>
+		</li>
+			<li>|</li>
+	<li class="topmenuLi">
+		<a class="menulink" href="#">ìƒí’ˆë³„ ì „ì²´ í˜„í™©</a>
+		<ul class="submenu">
+				<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" class="submenulink">íˆ¬ì</a></li>
+				<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" class="submenulink">ë³´í—˜</a></li>
+				<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" class="submenulink">í€ë“œ</a></li>
+				<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" class="submenulink">ì €ì¶•</a></li>
+				
+			</ul>
+		</li>
+			<li>|</li>
+	</ul> 
+
+</nav> 
+
+
 <body>
 	<br>
 	<div id="header" style="width: 1000px;text-allign:center;">
-		<h1 style = "size: 20px">Click Fin _ ÄÁ¼³ÅÏÆ®¸ğµå</h1>
+		<h1 style = "size: 20px">Click Fin _ ì»¨ì„¤í„´íŠ¸ëª¨ë“œ</h1>
 	</div>
-    <div style = "text-align:right"><%=userId %>´Ô È¯¿µÇÕ´Ï´Ù.<br>
-    <a href ="logout.jsp">·Î±×¾Æ¿ô</a>
+    <div style = "text-align:right"><%=userId %>ë‹˜ í™˜ì˜í•©ë‹ˆë‹¤.<br>
+    <a href ="logout.jsp">ë¡œê·¸ì•„ì›ƒ</a></div>
+    <div id="container" style="width:1000px">
 <!-- navigator -->
+	<div id="menu" style="width:200px">
     <ul id="navi">
         <li class="group">
-            <div class="title">ÄÁ¼³ÅÏÆ®</div>
+            <div class="title">ì»¨ì„¤í„´íŠ¸</div>
             <ul class="sub">
-                <li><a href="consultMyInfoView.jsp">°³ÀÎÁ¤º¸</a></li>
+                <li><a href="consultMyInfoView.jsp">ê°œì¸ì •ë³´</a></li>
             </ul>
         </li>
         <li class="group">
-            <div class="title">°í°´°ü¸®</div>
+            <div class="title">ê³ ê°ê´€ë¦¬</div>
             <ul class="sub">
-                <li><a href="consultShowAllCustom.jsp">°í°´ ÀüÃ¼ ÇöÈ²</a></li>
-                <li><a href="consultCtmInfoView.jsp">°í°´º° °³ÀÎÁ¤º¸</a></li>
-                <li><a href="consultCtmProductAll.jsp">°í°´º° °¡ÀÔ»óÇ°ÇöÈ²</a></li>                   
+                <li><a href="consultShowAllCustom.jsp">ê³ ê° ì „ì²´ í˜„í™©</a></li>
+                <li><a href="consultCtmInfoView.jsp">ê³ ê°ë³„ ê°œì¸ì •ë³´</a></li>
+                <li><a href="consultCtmProductAll.jsp">ê³ ê°ë³„ ê°€ì…ìƒí’ˆí˜„í™©</a></li>                   
             </ul>
         </li>
         <li class="group">
-            <div class="title">»óÇ°º° ÇöÈ²</div>
+            <div class="title">ìƒí’ˆë³„ í˜„í™©</div>
             <ul class="sub">
-                <li><a href="consultAllInvestView.jsp">ÅõÀÚ</a></li>                
-                <li><a href="#">º¸Çè</a></li>
-                <li><a href="#">Æİµå</a></li>
-                <li><a href="#">Àû±İ ¿¹±İ</a></li>
-                <li><a href="#">±âÅ¸</a></li> 
+                <li><a href="consultAllInvestView.jsp">íˆ¬ì</a></li>                
+                <li><a href="consultAllInsuranceView.jsp">ë³´í—˜</a></li>
+                <li><a href="consultAllFundView.jsp">í€ë“œ</a></li>
+                <li><a href="consultAllSavingView.jsp">ì ê¸ˆ ì˜ˆê¸ˆ</a></li>
             </ul>
         </li>          
     </ul>
+    </div>
+    <div id="content" style="width:500px">
+    	<input type="button" value="íˆ¬ììƒí’ˆë“±ë¡" onclick="location.href='consultInvestRegist.jsp'">
+    	<input type="button" value="ë³´í—˜ìƒí’ˆë“±ë¡" onclick="location.href='consultInsuranceRegist.jsp'">
+    	<input type="button" value="í€ë“œìƒí’ˆë“±ë¡" onclick="location.href='consultFundRegist.jsp'">
+    	<input type="button" value="ì €ì¶•ìƒí’ˆë“±ë¡" onclick="location.href='consultSavingRegist.jsp'">    	
+    </div>
     
+    
+    </div>
 </body>
 </html>

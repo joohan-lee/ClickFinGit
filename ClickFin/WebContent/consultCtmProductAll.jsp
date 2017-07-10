@@ -1,14 +1,16 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
- <%@ page import = "java.sql.*" %>
-<%@ page import="javax.sql.*" %>
-<%@ page import="javax.naming.*" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+ pageEncoding="UTF-8"%>
+<% request.setCharacterEncoding("UTF-8");%>
+
+<%@ page import="java.sql.*"%>
+<%@ page import="javax.sql.*"%>
+<%@ page import="javax.naming.*"%>
 <%
    String userId = "";
    userId = (String)session.getAttribute("userId");
    if(userId == null || userId.equals(""))
    {
-      %><script>alert("Àß¸øµÈ ·Î±×ÀÎ");
+      %><script>alert("ìž˜ëª»ëœ ë¡œê·¸ì¸");
       location.href("login.html");
       </script><%
       
@@ -18,11 +20,11 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<title>°í°´°ü¸® - °í°´º° °¡ÀÔ»óÇ° ÇöÈ²</title>
+<title>ê³ ê°ê´€ë¦¬ - ê³ ê°ë³„ ê°€ìž…ìƒí’ˆ í˜„í™©</title>
 <link rel="stylesheet" href="navbar.css">
 
 </head>
-<font size = "20px" ,style = "text-align:center">Click Fin _ ÄÁ¼³ÅÏÆ®¸ðµå</font>
+<font size = "20px" ,style = "text-align:center">Click Fin _ ì»¨ì„¤í„´íŠ¸ëª¨ë“œ</font>
 
 <style>
 table{
@@ -43,8 +45,8 @@ html{
 
 <body>
 <br>
-    <div style = "text-align:right" ><%=userId %>´Ô È¯¿µÇÕ´Ï´Ù.<br>
-    <a href ="logout.jsp" >·Î±×¾Æ¿ô</a></div>
+    <div style = "text-align:right" ><%=userId %>ë‹˜ í™˜ì˜í•©ë‹ˆë‹¤.<br>
+    <a href ="logout.jsp" >ë¡œê·¸ì•„ì›ƒ</a></div>
     
     
     <!-- navigator -->
@@ -52,45 +54,44 @@ html{
     <div id="menu" style="width: 200px;height:1000px;float:left;">
     <ul id="navi">
         <li class="group">
-            <div class="title">ÄÁ¼³ÅÏÆ®</div>
+            <div class="title">ì»¨ì„¤í„´íŠ¸</div>
             <ul class="sub">
-                <li><a href="consultMyInfoView.jsp">°³ÀÎÁ¤º¸</a></li>
+                <li><a href="consultMyInfoView.jsp">ê°œì¸ì •ë³´</a></li>
             </ul>
         </li>
         <li class="group">
-            <div class="title">°í°´°ü¸®</div>
+            <div class="title">ê³ ê°ê´€ë¦¬</div>
             <ul class="sub">
-                <li><a href="consultShowAllCustom.jsp">°í°´ ÀüÃ¼ ÇöÈ²</a></li>
-                <li><a href="consultCtmInfoView.jsp">°í°´º° °³ÀÎÁ¤º¸</a></li>
-                <li><a href="consultCtmProductAll.jsp">°í°´º° °¡ÀÔ»óÇ°ÇöÈ²</a></li>                   
+                <li><a href="consultShowAllCustom.jsp">ê³ ê° ì „ì²´ í˜„í™©</a></li>
+                <li><a href="consultCtmInfoView.jsp">ê³ ê°ë³„ ê°œì¸ì •ë³´</a></li>
+                <li><a href="consultCtmProductAll.jsp">ê³ ê°ë³„ ê°€ìž…ìƒí’ˆí˜„í™©</a></li>                   
             </ul>
         </li>
         <li class="group">
-            <div class="title">»óÇ°º° ÀüÃ¼ ÇöÈ²</div>
+            <div class="title">ìƒí’ˆë³„ í˜„í™©</div>
             <ul class="sub">
-                <li><a href="consultAllInvestView.jsp">ÅõÀÚ</a></li>                
-                <li><a href="#">º¸Çè</a></li>
-                <li><a href="#">ÆÝµå</a></li>
-                <li><a href="#">Àû±Ý ¿¹±Ý</a></li>
-                <li><a href="#">±âÅ¸</a></li> 
+                <li><a href="consultAllInvestView.jsp">íˆ¬ìž</a></li>                
+                <li><a href="consultAllInsuranceView.jsp">ë³´í—˜</a></li>
+                <li><a href="consultAllFundView.jsp">íŽ€ë“œ</a></li>
+                <li><a href="consultAllSavingView.jsp">ì ê¸ˆ ì˜ˆê¸ˆ</a></li>
             </ul>
         </li>          
     </ul>
     </div>
     
-<!-- ³»¿ë -->
+<!-- ë‚´ìš© -->
     <div id="content" style="width: 800px">
-       <h2>°í°´°ü¸® - °í°´º° °¡ÀÔ»óÇ°ÇöÈ²</h2>
-   <!-- °Ë»ö -->
+       <h2>ê³ ê°ê´€ë¦¬ - ê³ ê°ë³„ ê°€ìž…ìƒí’ˆí˜„í™©</h2>
+   <!-- ê²€ìƒ‰ -->
       <form action="">
       
          <select id="searchCond" style="width:100px;">
-            <option value="ÀÌ¸§">ÀÌ¸§</option>
+            <option value="ì´ë¦„">ì´ë¦„</option>
          </select>
       
          
          <input type="text" name="searchStr" style="width:300px">
-         <input type="submit" value="°Ë»ö" onclick="CheckSelect();")>
+         <input type="submit" value="ê²€ìƒ‰" onclick="CheckSelect();")>
       
       </form>
       
@@ -98,12 +99,12 @@ html{
       searchStr = request.getParameter("searchStr"); %>
       
       
-   <!-- ÇØ´ç °í°´ »óÇ° ÀüÃ¼ ¸ñ·Ï -->
+   <!-- í•´ë‹¹ ê³ ê° ìƒí’ˆ ì „ì²´ ëª©ë¡ -->
        <%
 
-	Connection conn = null;                                        // null·Î ÃÊ±âÈ­ ÇÑ´Ù.
-	ResultSet rs1 = null;	//»ç¿ëÀÚÀÇ id, ÀÌ¸§, »ý³â¿ùÀÏ, ¹øÈ£, ÁÖ¼Ò, ÀÌ¸ÞÀÏÁÖ¼Ò¸¦ °¡Á®¿À±â À§ÇÑ resultset
-	ResultSet rs2 = null;	//ÄÁ¼³ÅÏÆ®ÀÇ ÀÌ¸§, ¹øÈ£, ÀÌ¸ÞÀÏÁÖ¼Ò¸¦ °¡Á®¿À±â À§ÇÑ resultset
+	Connection conn = null;                                        // nullë¡œ ì´ˆê¸°í™” í•œë‹¤.
+	ResultSet rs1 = null;	//ì‚¬ìš©ìžì˜ id, ì´ë¦„, ìƒë…„ì›”ì¼, ë²ˆí˜¸, ì£¼ì†Œ, ì´ë©”ì¼ì£¼ì†Œë¥¼ ê°€ì ¸ì˜¤ê¸° ìœ„í•œ resultset
+	ResultSet rs2 = null;	//ì»¨ì„¤í„´íŠ¸ì˜ ì´ë¦„, ë²ˆí˜¸, ì´ë©”ì¼ì£¼ì†Œë¥¼ ê°€ì ¸ì˜¤ê¸° ìœ„í•œ resultset
 	DataSource ds;
 	try{
 		Context init = new InitialContext();
@@ -113,27 +114,27 @@ html{
 		Statement stmt2 = conn.createStatement();
 		
       if(!"".equals(searchStr)&&searchStr!=null){
-         //DB¿¡ Á¸ÀçÇÏÁö ¾Ê¾Æµµ Ãâ·ÂµÇÁö ¾Êµµ·Ï ¹Ù²Ù±â or Á¸ÀçÇØ¾ß Ãâ·ÂÇÏ´Â °Å·Î ¹Ù²Ù±â%>
-       <h3 style="text-align:center"><%=searchStr%> ´ÔÀÇ »óÇ° ¸ñ·Ï </h3>
-    <!-- ÅõÀÚÅ×ÀÌºí -->   	
+         //DBì— ì¡´ìž¬í•˜ì§€ ì•Šì•„ë„ ì¶œë ¥ë˜ì§€ ì•Šë„ë¡ ë°”ê¾¸ê¸° or ì¡´ìž¬í•´ì•¼ ì¶œë ¥í•˜ëŠ” ê±°ë¡œ ë°”ê¾¸ê¸°%>
+       <h3 style="text-align:center"><%=searchStr%> ë‹˜ì˜ ìƒí’ˆ ëª©ë¡ </h3>
+    <!-- íˆ¬ìží…Œì´ë¸” -->   	
     <% 	
 		//query = "ALTER TABLE users ADD (phone varchar(13))";
 		//query = "ALTER TABLE users ADD (address varchar(50), email varchar(30))";
 
 		
-		//ÅõÀÚ--------------------------------------
+		//íˆ¬ìž--------------------------------------
 		
 		rs1 = stmt.executeQuery("SELECT * FROM invest WHERE user_id = '"+ searchStr  +"'");
 		%>
-       <h4>- ÅõÀÚ</h4>
+       <h4>- íˆ¬ìž</h4>
        <table id="productCtmAll">
           <tr>
-            <th>ÅõÀÚ¹øÈ£</th>
-            <th>»óÇ°ÀÌ¸§</th>
-            <th>ÅõÀÚ±â°£</th>
-            <th>ÅõÀÚ±Ý¾×</th>
-            <th>ÅõÀÚ¼öÀÍ·ü</th>
-            <th>¹è´ç±ÝÁö±ÞÀÏ</th>
+            <th>íˆ¬ìžë²ˆí˜¸</th>
+            <th>ìƒí’ˆì´ë¦„</th>
+            <th>íˆ¬ìžê¸°ê°„</th>
+            <th>íˆ¬ìžê¸ˆì•¡</th>
+            <th>íˆ¬ìžìˆ˜ìµë¥ </th>
+            <th>ë°°ë‹¹ê¸ˆì§€ê¸‰ì¼</th>
           </tr>
        
         <%
@@ -168,19 +169,19 @@ html{
 		%>
        </table>
           
-    <!-- º¸ÇèÅ×ÀÌºí -->   
+    <!-- ë³´í—˜í…Œì´ë¸” -->   
    <% rs1 = stmt.executeQuery("SELECT * FROM insurance WHERE user_id = '"+ searchStr  +"'"); %>
     
-       <h4>- º¸Çè</h4>
+       <h4>- ë³´í—˜</h4>
        <table id="productCtmAll">
           <tr>
-            <th>º¸Çè¹øÈ£</th>
-            <th>»óÇ°ÀÌ¸§</th>
-            <th>³³ÀÔ±â°£</th>
-            <th>È¸»ç</th>
-            <th>º¸Çè·á</th>
-            <th>º¸Àå±â°£</th>
-            <th>º¸Àå³»¿ª</th>
+            <th>ë³´í—˜ë²ˆí˜¸</th>
+            <th>ìƒí’ˆì´ë¦„</th>
+            <th>ë‚©ìž…ê¸°ê°„</th>
+            <th>íšŒì‚¬</th>
+            <th>ë³´í—˜ë£Œ</th>
+            <th>ë³´ìž¥ê¸°ê°„</th>
+            <th>ë³´ìž¥ë‚´ì—­</th>
           </tr>
        
         <%
@@ -217,18 +218,18 @@ html{
 		%>      
        </table>
 
-   <!-- ÆÝµåÅ×ÀÌºí -->   
+   <!-- íŽ€ë“œí…Œì´ë¸” -->   
    <% rs1 = stmt.executeQuery("SELECT * FROM fund WHERE user_id = '"+ searchStr  +"'"); %>
-       <h4>- ÆÝµå</h4>
+       <h4>- íŽ€ë“œ</h4>
        <table id="productCtmAll">
           <tr>
-             <th>ÆÝµå¹øÈ£</th>
-            <th>»óÇ°ÀÌ¸§</th>
-            <th>°¡ÀÔÀÏ</th>
-            <th>¿ùÀû¸³</th>
-            <th>°ÅÄ¡±Ý¾×</th>
-            <th>È¸»ç</th>
-            <th>À¯Çü</th>
+             <th>íŽ€ë“œë²ˆí˜¸</th>
+            <th>ìƒí’ˆì´ë¦„</th>
+            <th>ê°€ìž…ì¼</th>
+            <th>ì›”ì ë¦½</th>
+            <th>ê±°ì¹˜ê¸ˆì•¡</th>
+            <th>íšŒì‚¬</th>
+            <th>ìœ í˜•</th>
           </tr>
        
        <%
@@ -264,19 +265,19 @@ html{
 	//	}
 		%></tbody></table><br><%
 
-		//ÀúÃà(Àû±Ý/¿¹±Ý)---------------------------------------------------------------------
+		//ì €ì¶•(ì ê¸ˆ/ì˜ˆê¸ˆ)---------------------------------------------------------------------
 		
 		rs1 = stmt.executeQuery("SELECT * FROM saving WHERE user_id = '"+ searchStr  +"'");
 		%>
-		<h4>- ÀúÃà</h4>
+		<h4>- ì €ì¶•</h4>
        <table id="productCtmAll">
 	    <thead>
-			<th>ÀúÃà¹øÈ£</th>
-			<th>»óÇ°ÀÌ¸§</th>
-			<th>³³ÀÔ±â°£</th>
-			<th>¿ù³³ÀÔ</th>
-			<th>¿¹±Ý¾×</th>
-			<th>È¸»ç</th>
+			<th>ì €ì¶•ë²ˆí˜¸</th>
+			<th>ìƒí’ˆì´ë¦„</th>
+			<th>ë‚©ìž…ê¸°ê°„</th>
+			<th>ì›”ë‚©ìž…</th>
+			<th>ì˜ˆê¸ˆì•¡</th>
+			<th>íšŒì‚¬</th>
 		</thead>
 		<tbody id="customTbody">
 		<%
@@ -317,7 +318,7 @@ html{
 	}
 	catch(Exception e){
 		e.printStackTrace();
-		out.println("¿¬°á½ÇÆÐ");
+		out.println("ì—°ê²°ì‹¤íŒ¨");
 	}
 %>
        

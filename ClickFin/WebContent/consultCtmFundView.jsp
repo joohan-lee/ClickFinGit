@@ -1,11 +1,16 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+ pageEncoding="UTF-8"%>
+<% request.setCharacterEncoding("UTF-8");%>
+
+<%@ page import="java.sql.*"%>
+<%@ page import="javax.sql.*"%>
+<%@ page import="javax.naming.*"%>
     <%
 	String userId = "";
 	userId = (String)session.getAttribute("userId");
 	if(userId == null || userId.equals(""))
 	{
-		%><script>alert("Àß¸øµÈ ·Î±×ÀÎ");
+		%><script>alert("ìž˜ëª»ëœ ë¡œê·¸ì¸");
 		location.href("login.html");
 		</script><%
 		
@@ -18,7 +23,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<title>°í°´°ü¸® - °í°´ ÆÝµå »óÇ° »ó¼¼Á¤º¸</title>
+<title>ê³ ê°ê´€ë¦¬ - ê³ ê° íŽ€ë“œ ìƒí’ˆ ìƒì„¸ì •ë³´</title>
 
 
 </head>
@@ -36,43 +41,43 @@ th{
 <body>
 
 <div id="content" style="width:400px">
-	<h1><%=searchStr%>°í°´ ÆÝµå»óÇ° º¸±â</h1>
+	<h1><%=searchStr%>ê³ ê° íŽ€ë“œìƒí’ˆ ë³´ê¸°</h1>
 	<table style="border-collapse:collapse;border:1px gray solid;
 		text-align: center;height:500px;width:400px;float:center;">
 		<tr>
-			<th>È¸»ç</th>
+			<th>íšŒì‚¬</th>
 			<td></td>
 		</tr>
 		<tr>
-			<th>»óÇ°¸í</th>
+			<th>ìƒí’ˆëª…</th>
 			<td>170705-170805</td>
 		</tr>
 		<tr>
-			<th>À¯Çü</th>
+			<th>ìœ í˜•</th>
 			<td></td>
 		</tr>
 		<tr>
-			<th>°¡ÀÔÀÏ</th>
+			<th>ê°€ìž…ì¼</th>
 			<td></td>
 		</tr>
 		<tr>
-			<th>¿ùÀû¸³/°ÅÄ¡±Ý¾×</th>
+			<th>ì›”ì ë¦½/ê±°ì¹˜ê¸ˆì•¡</th>
 			<td></td>
 		</tr>
 		<tr>
-			<th>ÇöÀç Àû¸³±Ý¾×</th>
+			<th>í˜„ìž¬ ì ë¦½ê¸ˆì•¡</th>
 			<td></td>
 		</tr>
 		<tr>
-			<th>º¸ÇèÁõ¼­ ½ºÄµº»</th>
+			<th>ë³´í—˜ì¦ì„œ ìŠ¤ìº”ë³¸</th>
 			<td></td>
 		</tr>
 	</table>
 	
 	<form action="">
-		<input type="button" value="È®ÀÎ" onclick="history.back();" 
+		<input type="button" value="í™•ì¸" onclick="history.back();" 
 			style="position:relative;left:50%;margin:10px" >
-		<input type="button" value="¼öÁ¤ÇÏ±â" onclick="location.href='consultCtmInvestModify.jsp'"
+		<input type="button" value="ìˆ˜ì •í•˜ê¸°" onclick="location.href='consultCtmInvestModify.jsp'"
 			style="float:right;margin-top:10px" > 
 	</form>
 </div>

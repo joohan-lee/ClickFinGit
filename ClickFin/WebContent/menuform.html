@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>menu form html</title> 
+  
+  <link rel ="stylesheet" type ="text/css" href = "topmenustyle.css"> <!-- css top,side메뉴,logout버튼 -->
+  <link rel ="stylesheet" type ="text/css" href = "sidemenustyle.css">
+  <link rel ="stylesheet" type ="text/css" href = "buttonstyle.css">
+  <style type = text/css>
+  <!--
+
+.loginSquare{
+height: 85px;
+width: 240px;
+border-width: 0.2px;
+border-radius:5px;
+border-style: solid;
+border-color:#C90000;
+font-family:"휴먼굴림체";
+color : #1B1B1B;
+font-size: 12px;
+text-align: center;
+vertical-align: middle;
+margin-left : 10px;
+margin-bottom : 4px;
+}
+
+.menuSquare{
+height: 900px;
+width: 265px;
+border: 1.4px;
+border-radius:1px;
+border-style: solid;
+border-top-color:white;
+border-left-color:white;
+border-bottom-color:white;
+border-right-color:#CFCFCF;
+font-family:"넥슨 풋볼고딕 B";
+color : #1B1B1B;
+font-size: 12px;
+text-align: center;
+padding-top:30px;
+
+}
+
+  -->
+ </style>
+ </head>
+ <body>
+   <nav id ="topmenu"> 
+
+	<ul>
+	<li><img src="HSR logo.png"></li>
+		
+	  <li class="topmenuLi"> <!-- 상단 메뉴 -->
+	    <a class="menulink" href="#">개인정보</a>
+			<ul class="submenu">
+				<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" class="submenulink">내 정보</a></li>
+				<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" class="submenulink">고객등록</a></li>
+				<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" class="submenulink" >고객등록</a></li>
+			</ul>
+		</li>
+			<li>|</li>
+	<li class="topmenuLi">
+		<a class="menulink" href="#">상품별 현황</a>
+			<ul class="submenu">
+				<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" class="submenulink">고객등록</a></li>
+				<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" class="submenulink">고객등록</a></li>
+				<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" class="submenulink" >고객등록</a></li>
+				
+			</ul>
+		</li>
+			<li>|</li>
+	<li class="topmenuLi">
+		<a class="menulink" href="#">보험관리</a>
+		<ul class="submenu">
+				<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" class="submenulink">고객등록</a></li>
+				<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" class="submenulink">고객등록</a></li>
+				<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" class="submenulink" >고객등록</a></li>
+			</ul>
+		</li>
+			<li>|</li>
+	<li class="topmenuLi">
+		<a class="menulink" href="#">고객지원</a>
+		<ul class="submenu">
+				<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" class="submenulink">고객등록</a></li>
+				<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" class="submenulink">고객등록</a></li>
+				<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" class="submenulink" >고객등록</a></li>
+			</ul>
+		</li>
+			<li>|</li>
+	<li class="topmenuLi">
+		<a class="menulink" href="#">회사소개</a>
+		<ul class="submenu">
+				<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" class="submenulink">고객등록</a></li>
+				<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" class="submenulink">고객등록</a></li>
+				<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" class="submenulink" >고객등록</a></li>
+			</ul>
+		</li>
+			<li>|</li>
+	<li class="topmenuLi">
+		<a class="menulink" href="#">시스템</a>
+		<ul class="submenu">
+				<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" class="submenulink">고객등록</a></li>
+				<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" class="submenulink">고객등록</a></li>
+				<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" class="submenulink" >고객등록</a></li>
+			</ul>
+		</li>
+			<li>|</li>
+	</ul> 
+
+</nav> 
+<hr width = "100%" size = "0.1px" color ="#C90000">
+  
+	
+	<div class = "menuSquare"><!-- 왼쪽 전체 wrap 상자-->
+
+		<div class ="loginSquare"><br><br><b><%=user_id %></b> 님 환영합니다 ! <br>최근 접속 : 2017.07.06 <br> 접속회수 3 / 1111<br>
+			</div>
+
+
+<!-- 로그아웃 및 마이 페이지 버튼 -->
+<input class ="buttonstyle" type="button" onClick="location.href = 'logout.jsp'" value="로그아웃" >
+&nbsp;&nbsp;
+<input class ="buttonstyle" type="button" onClick="location.href = 'logout.jsp'" value="마이 페이지"> <br><br>       
+ 
+	<nav id = "sideMenu"> <!-- Left side menu-->
+	<ul>
+	<li><a class = "sideMenulink" href="#">내 정보</li>
+	<li><a class = "sideMenulink" href="#">내 정보</li>
+	<li><a class = "sideMenulink" href="#">내 정보</li>
+	</ul>
+
+	</div>
+ </body>
+ </html>

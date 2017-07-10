@@ -20,7 +20,7 @@ td, tr, th {
 </head>
 <body>
 	<div style="text-align: center">
-		<font size="15">고객 현황</font>
+		<font size="6em">고객 현황</font>
 	</div>
 
 	<%
@@ -28,11 +28,18 @@ td, tr, th {
 	ResultSet rs = null;
 	Statement stmt = null;
 	DataSource ds;
+	
+	String id1 = null;
+	String name = null;
+	String rrn = null;
+	String show_rrn = null;
+	String num = null;
+		
 	try{
 		Context init = new InitialContext();
 		ds = (DataSource)init.lookup("java:comp/env/jdbc/oracle");
 		conn = ds.getConnection();
-		String sql = "select * from users";
+		String sql = "select * from users where role = 'customer'";
 		stmt = conn.createStatement();
 		rs = stmt.executeQuery(sql);
    	
@@ -53,26 +60,41 @@ td, tr, th {
 					<font size=3>ID</font>
 				</div></td>
 			<td width="100"><div style="text-align: center">
-					<font size=3>담당 컨설턴트</font>
+					<font size=3>주민등록번호</font>
+				</div></td>
+			<td width="100"><div style="text-align: center">
+					<font size=3>   </font>
 				</div></td>
 		</tr>
 		<%
    		while(rs.next())
    	   	{
-   			String id1 = rs.getString("id");
-   			String name = rs.getString("name");
-   			String role = rs.getString("role");
-   	   		if(role.equals("customer")){
-   	   		%>
+   			id1 = rs.getString("id");
+   			name = rs.getString("name");
+   			rrn = rs.getString("rrn");
+   			num = rs.getString("phone");
+   			
+   			if(rrn.length() != 13){
+				show_rrn = " ";
+			}
+			else{
+				show_rrn= rrn.substring(0,6) + "- *******";
+			}
+   	   		%> 	   		
 		<tr>
 
 			<td width="100"><div style="text-align: center"><%= name %></div></td>
 			<td width="100"><div style="text-align: center"><%= id1 %></div></td>
-			<td width="100"><div style="text-align: cente"></div>
+			<td width="100"><div style="text-align: cente"><%=show_rrn %></div></td>
+			<td width="100"><div style="text-align: cente">
+				<a href = "aInfoCustomerDetail.jsp?id=<%=id1%>&back=all">정보보기</a>
+			</div></td>
 		</tr>
-		<%}
+		<%
    	   	}
-   	
+		rs.close();
+		stmt.close();
+		conn.close();
    }catch(Exception e)
    {
    	out.println("ERROR");

@@ -1,10 +1,15 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+ pageEncoding="UTF-8"%>
+<% request.setCharacterEncoding("UTF-8");%>
+
+<%@ page import="java.sql.*"%>
+<%@ page import="javax.sql.*"%>
+<%@ page import="javax.naming.*"%>
 <%  String userId = "";
    userId = (String)session.getAttribute("userId");
    if(userId == null || userId.equals(""))
    {
-      %><script>alert("Àß¸øµÈ ·Î±×ÀÎ");
+      %><script>alert("ìž˜ëª»ëœ ë¡œê·¸ì¸");
       location.href("login.html");
       </script><%
       
@@ -13,12 +18,12 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<title>°í°´ °ü¸® - °í°´ ÀüÃ¼ ÇöÈ²</title>
+<title>ê³ ê° ê´€ë¦¬ - ê³ ê° ì „ì²´ í˜„í™©</title>
 <link rel="stylesheet" href="navbar.css">
 
 
 </head>
-<font size = "20px" ,style = "text-align:center">Click Fin _ ÄÁ¼³ÅÏÆ®¸ðµå</font>
+<font size = "20px" ,style = "text-align:center">Click Fin _ ì»¨ì„¤í„´íŠ¸ëª¨ë“œ</font>
 
 <style>
 td, tr, th{
@@ -29,54 +34,53 @@ td, tr, th{
 
 <body>
 <br>
-    <div style = "text-align:right" ><%=userId %>´Ô È¯¿µÇÕ´Ï´Ù.<br>
-    <a href ="logout.jsp" >·Î±×¾Æ¿ô</a></div>
+    <div style = "text-align:right" ><%=userId %>ë‹˜ í™˜ì˜í•©ë‹ˆë‹¤.<br>
+    <a href ="logout.jsp" >ë¡œê·¸ì•„ì›ƒ</a></div>
 <!-- navigator -->
 <div id="container" style="width: 1000px;">
     <div id="menu" style="width: 200px;float:left;">
     <ul id="navi">
         <li class="group">
-            <div class="title">ÄÁ¼³ÅÏÆ®</div>
+            <div class="title">ì»¨ì„¤í„´íŠ¸</div>
             <ul class="sub">
-                <li><a href="consultMyInfoView.jsp">°³ÀÎÁ¤º¸</a></li>
+                <li><a href="consultMyInfoView.jsp">ê°œì¸ì •ë³´</a></li>
             </ul>
         </li>
         <li class="group">
-            <div class="title">°í°´°ü¸®</div>
+            <div class="title">ê³ ê°ê´€ë¦¬</div>
             <ul class="sub">
-                <li><a href="consultShowAllCustom.jsp">°í°´ ÀüÃ¼ ÇöÈ²</a></li>
-                <li><a href="consultCtmInfoView.jsp">°í°´º° °³ÀÎÁ¤º¸</a></li>
-                <li><a href="consultCtmProductAll.jsp">°í°´º° °¡ÀÔ»óÇ°ÇöÈ²</a></li>                   
+                <li><a href="consultShowAllCustom.jsp">ê³ ê° ì „ì²´ í˜„í™©</a></li>
+                <li><a href="consultCtmInfoView.jsp">ê³ ê°ë³„ ê°œì¸ì •ë³´</a></li>
+                <li><a href="consultCtmProductAll.jsp">ê³ ê°ë³„ ê°€ìž…ìƒí’ˆí˜„í™©</a></li>                   
             </ul>
         </li>
         <li class="group">
-            <div class="title">»óÇ°º° ÇöÈ²</div>
+            <div class="title">ìƒí’ˆë³„ í˜„í™©</div>
             <ul class="sub">
-                <li><a href="consultAllInvestView.jsp">ÅõÀÚ</a></li>                
-                <li><a href="#">º¸Çè</a></li>
-                <li><a href="#">ÆÝµå</a></li>
-                <li><a href="#">Àû±Ý ¿¹±Ý</a></li>
-                <li><a href="#">±âÅ¸</a></li> 
+                <li><a href="consultAllInvestView.jsp">íˆ¬ìž</a></li>                
+                <li><a href="consultAllInsuranceView.jsp">ë³´í—˜</a></li>
+                <li><a href="consultAllFundView.jsp">íŽ€ë“œ</a></li>
+                <li><a href="consultAllSavingView.jsp">ì ê¸ˆ ì˜ˆê¸ˆ</a></li>
             </ul>
         </li>          
     </ul>
     </div>
     <div id="content" style="width: 800px">
-       <h2>°í°´°ü¸®</h2>
+       <h2>ê³ ê°ê´€ë¦¬</h2>
        <form action="consultShowAllCustom.jsp">
           <input type="text" name="customName">
-          <input type="button" value="°Ë»ö" onclick="">
+          <input type="button" value="ê²€ìƒ‰" onclick="">
        </form>
 
-<!-- ¼ø¹ø, °í°´¸í, È£Äª, È¸»ç¸í, ¿¬¶ôÃ³, ÆÝµå°Ç, º¸Çè°Ç -->
+<!-- ìˆœë²ˆ, ê³ ê°ëª…, í˜¸ì¹­, íšŒì‚¬ëª…, ì—°ë½ì²˜, íŽ€ë“œê±´, ë³´í—˜ê±´ -->
 
 <%@ page import = "java.sql.*" %>
 <%@ page import="javax.sql.*" %>
 <%@ page import="javax.naming.*" %>
 <%
-   Connection conn = null;                                        // null·Î ÃÊ±âÈ­ ÇÑ´Ù.
-   ResultSet rs1 = null;   //»ç¿ëÀÚÀÇ id, ÀÌ¸§, »ý³â¿ùÀÏ, ¹øÈ£, ÁÖ¼Ò, ÀÌ¸ÞÀÏÁÖ¼Ò¸¦ °¡Á®¿À±â À§ÇÑ resultset
-   ResultSet rs2 = null;   //ÄÁ¼³ÅÏÆ®ÀÇ ÀÌ¸§, ¹øÈ£, ÀÌ¸ÞÀÏÁÖ¼Ò¸¦ °¡Á®¿À±â À§ÇÑ resultset
+   Connection conn = null;                                        // nullë¡œ ì´ˆê¸°í™” í•œë‹¤.
+   ResultSet rs1 = null;   //ì‚¬ìš©ìžì˜ id, ì´ë¦„, ìƒë…„ì›”ì¼, ë²ˆí˜¸, ì£¼ì†Œ, ì´ë©”ì¼ì£¼ì†Œë¥¼ ê°€ì ¸ì˜¤ê¸° ìœ„í•œ resultset
+   ResultSet rs2 = null;   //ì»¨ì„¤í„´íŠ¸ì˜ ì´ë¦„, ë²ˆí˜¸, ì´ë©”ì¼ì£¼ì†Œë¥¼ ê°€ì ¸ì˜¤ê¸° ìœ„í•œ resultset
    DataSource ds;
    try{
       Context init = new InitialContext();
@@ -89,13 +93,13 @@ td, tr, th{
        style="border-collapse:collapse;border:1px gray solid;
        margin-top: 20px;">
        <thead>
-         <th>¼ø¹ø</th>
-         <th>°í°´¸í</th>
-         <th>È£Äª</th>
-         <th>È¸»ç¸í</th>
-         <th>¿¬¶ôÃ³</th>
-         <th>ÆÝµå°Ç</th>
-         <th>º¸Çè°Ç</th>
+         <th>ìˆœë²ˆ</th>
+         <th>ê³ ê°ëª…</th>
+         <th>í˜¸ì¹­</th>
+         <th>íšŒì‚¬ëª…</th>
+         <th>ì—°ë½ì²˜</th>
+         <th>íŽ€ë“œê±´</th>
+         <th>ë³´í—˜ê±´</th>
        </thead>
       <tbody id="customTbody">
          <%
@@ -132,13 +136,13 @@ td, tr, th{
       <%
    } catch(Exception e){
       e.printStackTrace();
-      out.println("¿¬°á½ÇÆÐ");
+      out.println("ì—°ê²°ì‹¤íŒ¨");
    }
     %>
     
-    <input type="button" value="°í°´ »óÇ°µî·Ï" style="margin:10px;float:right"
+    <input type="button" value="ê³ ê° ìƒí’ˆë“±ë¡" style="margin:10px;float:right"
     onclick="location.href='consultRegistWhichProduct.jsp'">
-    <input type="button" value="°í°´ µî·ÏÇÏ±â" style="margin:10px;float:right"
+    <input type="button" value="ê³ ê° ë“±ë¡í•˜ê¸°" style="margin:10px;float:right"
    	onclick="location.href='consultRegistCtm.jsp'")>
     
     </div>

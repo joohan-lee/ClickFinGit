@@ -1,30 +1,32 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
-<%@ page import = "java.sql.*" %>
-<%@ page import="javax.sql.*" %>
-<%@ page import="javax.naming.*" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+ pageEncoding="UTF-8"%>
+<% request.setCharacterEncoding("UTF-8");%>
+
+<%@ page import="java.sql.*"%>
+<%@ page import="javax.sql.*"%>
+<%@ page import="javax.naming.*"%>
     
 <% String userId = "";
    userId = (String)session.getAttribute("userId");
    if(userId == null || userId.equals(""))
    {
-      %><script>alert("Àß¸øµÈ ·Î±×ÀÎ");
+      %><script>alert("ì˜ëª»ëœ ë¡œê·¸ì¸");
       location.href("login.html");
       </script><%
       
    }%>
     
-    <%String searchStr = request.getParameter("searchStr");//°Ë»öÇÏ·Á´Â ¹®ÀÚ¿­
+    <%String searchStr = request.getParameter("searchStr");//ê²€ìƒ‰í•˜ë ¤ëŠ” ë¬¸ìì—´
        %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<title>°í°´°ü¸® - °í°´º° °³ÀÎÁ¤º¸</title>
+<title>ê³ ê°ê´€ë¦¬ - ê³ ê°ë³„ ê°œì¸ì •ë³´</title>
 <link rel="stylesheet" href="navbar.css">
 
 </head>
-<font size = "20px" ,style = "text-align:center">Click Fin _ ÄÁ¼³ÅÏÆ®¸ğµå</font>
+<font size = "20px" ,style = "text-align:center">Click Fin _ ì»¨ì„¤í„´íŠ¸ëª¨ë“œ</font>
 
 <style>
 td,tr,th{
@@ -34,69 +36,68 @@ td,tr,th{
 
 <body>
 <br>
-    <div style = "text-align:right" ><%=userId %>´Ô È¯¿µÇÕ´Ï´Ù.<br>
-    <a href ="logout.jsp" >·Î±×¾Æ¿ô</a></div>
+    <div style = "text-align:right" ><%=userId %>ë‹˜ í™˜ì˜í•©ë‹ˆë‹¤.<br>
+    <a href ="logout.jsp" >ë¡œê·¸ì•„ì›ƒ</a></div>
 <!-- navigator -->
 <div id="container" style="width: 1000px;">
     <div id="menu" style="width: 200px;float:left;">
     <ul id="navi">
         <li class="group">
-            <div class="title">ÄÁ¼³ÅÏÆ®</div>
+            <div class="title">ì»¨ì„¤í„´íŠ¸</div>
             <ul class="sub">
-                <li><a href="consultMyInfoView.jsp">°³ÀÎÁ¤º¸</a></li>
+                <li><a href="consultMyInfoView.jsp">ê°œì¸ì •ë³´</a></li>
             </ul>
         </li>
         <li class="group">
-            <div class="title">°í°´°ü¸®</div>
+            <div class="title">ê³ ê°ê´€ë¦¬</div>
             <ul class="sub">
-                <li><a href="consultShowAllCustom.jsp">°í°´ ÀüÃ¼ ÇöÈ²</a></li>
-                <li><a href="consultCtmInfoView.jsp">°í°´º° °³ÀÎÁ¤º¸</a></li>
-                <li><a href="consultCtmProductAll.jsp">°í°´º° °¡ÀÔ»óÇ°ÇöÈ²</a></li>                   
+                <li><a href="consultShowAllCustom.jsp">ê³ ê° ì „ì²´ í˜„í™©</a></li>
+                <li><a href="consultCtmInfoView.jsp">ê³ ê°ë³„ ê°œì¸ì •ë³´</a></li>
+                <li><a href="consultCtmProductAll.jsp">ê³ ê°ë³„ ê°€ì…ìƒí’ˆí˜„í™©</a></li>                   
             </ul>
         </li>
         <li class="group">
-            <div class="title">»óÇ°º° ÇöÈ²</div>
+            <div class="title">ìƒí’ˆë³„ í˜„í™©</div>
             <ul class="sub">
-                <li><a href="consultAllInvestView.jsp">ÅõÀÚ</a></li>                
-                <li><a href="#">º¸Çè</a></li>
-                <li><a href="#">Æİµå</a></li>
-                <li><a href="#">Àû±İ ¿¹±İ</a></li>
-                <li><a href="#">±âÅ¸</a></li> 
+                <li><a href="consultAllInvestView.jsp">íˆ¬ì</a></li>                
+                <li><a href="consultAllInsuranceView.jsp">ë³´í—˜</a></li>
+                <li><a href="consultAllFundView.jsp">í€ë“œ</a></li>
+                <li><a href="consultAllSavingView.jsp">ì ê¸ˆ ì˜ˆê¸ˆ</a></li>
             </ul>
         </li>          
     </ul>
     </div>
 <!-- customer's personal Info View -->
    <div id="content" style="width: 800px;">
-      <h2>°í°´ °³ÀÎÁ¤º¸</h2>
+      <h2>ê³ ê° ê°œì¸ì •ë³´</h2>
       <form action="consultCtmInfoView.jsp">
       
       <select id="searchCond" style="width:100px;">
-         <option value="ÀÌ¸§">ÀÌ¸§</option>
+         <option value="ì´ë¦„">ì´ë¦„</option>
       </select>
       
-      <!-- ¼±ÅÃµÈ select¸Ş´º -->
+      <!-- ì„ íƒëœ selectë©”ë‰´ -->
       <script type="text/javascript">
     function CheckSelect(){
         var ctrlSelect = document.getElementById("searchCond");
         if( ctrlSelect.selectedIndex == 0){
-            //alert("°ü½É»çÇ×À» ¼±ÅÃÇÏ½Ã¿À.");
+            //alert("ê´€ì‹¬ì‚¬í•­ì„ ì„ íƒí•˜ì‹œì˜¤.");
             ctrlSelect.focus();
         }else{
-            //window.alert("´ç½ÅÀÇ °ü½É»çÇ× : " + ctrlSelect.value );
+            //window.alert("ë‹¹ì‹ ì˜ ê´€ì‹¬ì‚¬í•­ : " + ctrlSelect.value );
         }
     }
   </script>
       
       
       <input type="text" name="searchStr" style="width:300px">
-      <input type="submit" value="°Ë»ö" onclick="CheckSelect();")>
+      <input type="submit" value="ê²€ìƒ‰" onclick="CheckSelect();")>
       
       </form>
    <%
-   //if(!"".equals(searchStr))//°Ë»öÇÏ·Á´Â ¹®ÀÚ¿­À» DB¿¡¼­ °Ë»öÇÏ°í Á¸ÀçÇÏ¸é Ãâ·Â
+   //if(!"".equals(searchStr))//ê²€ìƒ‰í•˜ë ¤ëŠ” ë¬¸ìì—´ì„ DBì—ì„œ ê²€ìƒ‰í•˜ê³  ì¡´ì¬í•˜ë©´ ì¶œë ¥
    //{
-   Connection conn = null;                                        // null·Î ÃÊ±âÈ­ ÇÑ´Ù.
+   Connection conn = null;                                        // nullë¡œ ì´ˆê¸°í™” í•œë‹¤.
    ResultSet rs1 = null;
    ResultSet rs2 = null;
    Statement stmt1 = null;
@@ -134,33 +135,33 @@ session.setAttribute("cusAnniversary", anniversary);
       <table width="70%"style="border-collapse:collapse;
             border: 1px solid gray;">
          <tr>
-            <th>ÀÌ¸§</th>
+            <th>ì´ë¦„</th>
             <td><%= name%></td>
          </tr>
          <tr>
-            <th>ÁÖ¹Î¹øÈ£</th>
-            <td><%= rrn%></td>
+            <th>ì£¼ë¯¼ë²ˆí˜¸</th>
+            <td><%= rrn%>-</td>
          </tr>
          <tr>
-            <th>¿¬¶ôÃ³</th>
+            <th>ì—°ë½ì²˜</th>
             <td><%= phone%></td>
          </tr>
          <tr>
-            <th>ÁÖ¼Ò</th>
+            <th>ì£¼ì†Œ</th>
             <td><%= address%></td>
          </tr>
          <tr>
-            <th>°áÈ¥À¯¹Â</th>
+            <th>ê²°í˜¼ìœ ë®¤</th>
             <td><%= marry %></td>
          </tr>
          <tr>
-            <th>ÀÚ³à</th>
+            <th>ìë…€</th>
             <td>
                <%= child %>
             </td>
          </tr>
          <tr>
-            <th>±â³äÀÏ</th>
+            <th>ê¸°ë…ì¼</th>
             <td>
             	<%= anniversary %>
             </td>
@@ -169,7 +170,7 @@ session.setAttribute("cusAnniversary", anniversary);
      <%}
    } catch(Exception e){
       e.printStackTrace();
-      out.println("¿¬°á½ÇÆĞ");
+      out.println("ì—°ê²°ì‹¤íŒ¨");
    }
     %>
 <!-- Button for modifying Customers' personal Info -->
@@ -178,7 +179,7 @@ session.setAttribute("cusAnniversary", anniversary);
       <form action="consultCtmInfoModify.jsp" method="post">
       <%session.setAttribute("searchStr",searchStr);
       //response.sendRedirect("consultCtmInfoModify.jsp");%>
-      <input type="button" value="°Ë»öÇÑ °í°´Á¤º¸¼öÁ¤" style="float:right;"
+      <input type="button" value="ê²€ìƒ‰í•œ ê³ ê°ì •ë³´ìˆ˜ì •" style="float:right;"
          onclick="location.href='consultCtmInfoModify.jsp'")>
       </form>
    </div>

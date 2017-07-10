@@ -1,11 +1,16 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+ pageEncoding="UTF-8"%>
+<% request.setCharacterEncoding("UTF-8");%>
+
+<%@ page import="java.sql.*"%>
+<%@ page import="javax.sql.*"%>
+<%@ page import="javax.naming.*"%>
     <%
 	String userId = "";
 	userId = (String)session.getAttribute("userId");
 	if(userId == null || userId.equals(""))
 	{
-		%><script>alert("Àß¸øµÈ ·Î±×ÀÎ");
+		%><script>alert("ìž˜ëª»ëœ ë¡œê·¸ì¸");
 		location.href("login.html");
 		</script><%
 		
@@ -18,7 +23,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<title>°í°´ ÆÝµå»óÇ° µî·Ï</title>
+<title>ê³ ê° íŽ€ë“œìƒí’ˆ ë“±ë¡</title>
 
 
 </head>
@@ -41,43 +46,43 @@ td input{
 <body>
 
 <div id="content" style="width:400px">
-	<h1><%=searchStr%>°í°´ ÆÝµå»óÇ° µî·Ï</h1>
-	<form action="//°í°´ »óÇ°Á¤º¸, Áõ¼­ º¸³¾ jsp·Î Àü¼Û" method="post">
+	<h1><%=searchStr%>ê³ ê° íŽ€ë“œìƒí’ˆ ë“±ë¡</h1>
+	<form action="//ê³ ê° ìƒí’ˆì •ë³´, ì¦ì„œ ë³´ë‚¼ jspë¡œ ì „ì†¡" method="post">
 	<table style="border-collapse:collapse;border:1px gray solid;
 		text-align: center;float:center;">
 		<tr>
-			<th>È¸»ç</th>
+			<th>íšŒì‚¬</th>
 			<td><input type="text" name=""></td>
 		</tr>
 		<tr>
-			<th>»óÇ°¸í</th>
+			<th>ìƒí’ˆëª…</th>
 			<td><input type="text" name=""></td>
 		</tr>
 		<tr>
-			<th>À¯Çü</th>
+			<th>ìœ í˜•</th>
 			<td><input type="text" name=""></td>
 		</tr>
 		<tr>
-			<th>°¡ÀÔÀÏ</th>
+			<th>ê°€ìž…ì¼</th>
 			<td><input type="text" name=""></td>
 		</tr>
 		<tr>
-			<th>¿ùÀû¸³/°ÅÄ¡±Ý¾×</th>
+			<th>ì›”ì ë¦½/ê±°ì¹˜ê¸ˆì•¡</th>
 			<td><input type="text" name="" width="45%">
 			/<input type="text" name="" width="45%"></td>
 		</tr>
 		<tr>
-			<th>ÇöÀç Àû¸³±Ý¾×</th>
-			<td><!-- ÀÔ·Â °ªÀº ¾Æ´Ô --></td>
+			<th>í˜„ìž¬ ì ë¦½ê¸ˆì•¡</th>
+			<td><!-- ìž…ë ¥ ê°’ì€ ì•„ë‹˜ --></td>
 		</tr>
 		<tr>
-			<th>º¸ÇèÁõ¼­ ½ºÄµº» ¾÷·Îµå</th>
-			<td><input type="file" name="//ÆÄÀÏ ¹Þ¾Æ¿Ã jsp¿¡¼­ ÀÌ¿ëÇÒ name"></td>
+			<th>ë³´í—˜ì¦ì„œ ìŠ¤ìº”ë³¸ ì—…ë¡œë“œ</th>
+			<td><input type="file" name="//íŒŒì¼ ë°›ì•„ì˜¬ jspì—ì„œ ì´ìš©í•  name"></td>
 		</tr>
 	</table>
-	<input type="button" value="Ãë¼Ò" onclick="history.back();"
+	<input type="button" value="ì·¨ì†Œ" onclick="history.back();"
 		style="float:right;margin:10px">
-	<input type="submit" value="µî·Ï" onclick="history.back();"
+	<input type="submit" value="ë“±ë¡" onclick="history.back();"
 		style="float:right;margin:10px">
 	</form>
 	
